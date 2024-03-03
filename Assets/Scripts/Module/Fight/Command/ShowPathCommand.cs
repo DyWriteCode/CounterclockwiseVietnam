@@ -9,6 +9,6 @@ public class ShowPathCommand : BaseCommand
 {
     public ShowPathCommand(ModelBase model) : base(model)
     {
-
+        
     }
 }
