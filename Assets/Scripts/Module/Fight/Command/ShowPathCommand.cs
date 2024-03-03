@@ -11,4 +11,14 @@ public class ShowPathCommand : BaseCommand
     {
         
     }
+
+    public override bool Update(float dt)
+    {
+        // 点击鼠标后 确定启动的位置
+        if (Input.GetMouseButtonDown(0))
+        {
+            return true;
+        }
+        return false;
+    }
 }
