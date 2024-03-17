@@ -115,4 +115,28 @@ public class MapManager
     {
         mapArr[rowIndex, colIndex].SetDirSp(dirSpArr[(int)dir], color);
     }
+
+    // 得到开始点和下一个点算出方向
+    public BlockDirection GetDirection1(AStarPoint start, AStarPoint next)
+    {
+        int row_offset = next.RowIndex - start.RowIndex;
+        int col_offset = next.ColIndex - start.ColIndex;
+        if (row_offset == 0)
+        {
+            return BlockDirection.horizontal;
+        }
+        else if (col_offset == 0)
+        {
+            return BlockDirection.vertical;
+        }
+        else
+        {
+            return BlockDirection.none;
+        }
+    }
+
+    public BlockDirection GetDirection2(AStarPoint end, AStarPoint pre)
+    {
+        return BlockDirection.none;
+    }
 }
