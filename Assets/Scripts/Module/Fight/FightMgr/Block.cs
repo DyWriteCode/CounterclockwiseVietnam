@@ -39,11 +39,13 @@ public class Block : MonoBehaviour
         gridSp = transform.Find("grid").GetComponent<SpriteRenderer>();
         dirSp = transform.Find("dir").GetComponent<SpriteRenderer>();
         GameApp.MsgCenter.AddEvent(gameObject, Defines.OnSelectEvent, OnSelectCallBack);
+        GameApp.MsgCenter.AddEvent(Defines.OnUnSelectEvent, OnUnSelectCallBack);
     }
 
     private void OnDestroy()
     {
         GameApp.MsgCenter.RemoveEvent(gameObject, Defines.OnSelectEvent, OnSelectCallBack);
+        GameApp.MsgCenter.RemoveEvent(Defines.OnUnSelectEvent, OnUnSelectCallBack);
     }
 
     // 显示格子
@@ -59,9 +61,16 @@ public class Block : MonoBehaviour
         gridSp.enabled = false;
     }
 
+    // 选中事件回调函数
     private void OnSelectCallBack(System.Object args)
     {
         GameApp.MsgCenter.PostEvent(Defines.OnUnSelectEvent);
+    }
+
+    // 未选中事件回调函数
+    private void OnUnSelectCallBack(System.Object args)
+    {
+        dirSp.sprite = null;
     }
 
     void Start()

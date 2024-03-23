@@ -74,6 +74,12 @@ public class MapManager
         }
     }
 
+    // 获得格子位置
+    public Vector3 GetBlockPos(int row, int col)
+    {
+        return mapArr[row, col].transform.position;
+    }
+
     public BlockType GetBlockType(int row, int col)
     {
         return mapArr[row, col].Type;
@@ -135,8 +141,70 @@ public class MapManager
         }
     }
 
+    // 终点 与 前一个点 算出方向
     public BlockDirection GetDirection2(AStarPoint end, AStarPoint pre)
     {
-        return BlockDirection.none;
+        int row_offset = end.RowIndex - pre.RowIndex;
+        int col_offset = end.ColIndex - pre.ColIndex;
+        if (row_offset == 0 && col_offset > 0)
+        {
+            return BlockDirection.right;
+        }
+        else if (row_offset == 0 && col_offset < 0)
+        {
+            return BlockDirection.left;
+        }
+        else if (col_offset == 0 && row_offset > 0)
+        {
+            return BlockDirection.up;
+        }
+        else if (col_offset == 0 && row_offset < 0)
+        {
+            return BlockDirection.down;
+        }
+        else
+        {
+            return BlockDirection.none;
+        }
+    }
+
+    // 三个点 算出方向
+    public BlockDirection GetDirection3(AStarPoint pre, AStarPoint current, AStarPoint end)
+    {
+        BlockDirection dir = BlockDirection.none;
+        int row_offset_1 = pre.RowIndex - current.RowIndex;
+        int col_offset_1 = pre.ColIndex - current.ColIndex;
+        int row_offset_2 = end.RowIndex - current.RowIndex;
+        int col_offset_2 = end.ColIndex - current.ColIndex;
+        int sum_row_offset = row_offset_1 + row_offset_2;
+        int sum_col_offset = col_offset_1 + col_offset_2;
+        if (sum_row_offset == 1 && sum_col_offset == -1)
+        {
+            dir = BlockDirection.left_up;
+        }
+        else if (sum_row_offset == 1 && sum_col_offset == 1)
+        {
+            dir = BlockDirection.right_up;
+        }
+        else if (sum_row_offset == -1 && sum_col_offset == -1)
+        {
+            dir = BlockDirection.left_down;
+        }
+        else if (sum_row_offset == -1 && sum_col_offset == 1)
+        {
+            dir = BlockDirection.right_down;
+        }
+        else
+        {
+            if (row_offset_1 == 0)
+            {
+                dir = BlockDirection.horizontal;
+            }
+            else
+            {
+                dir = BlockDirection.vertical;
+            }
+        }
+        return dir;
     }
 }

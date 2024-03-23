@@ -88,4 +88,39 @@ public class ModelBase : MonoBehaviour
         stop0bj = transform.Find("stop").gameObject;
         ani = transform.Find("body").GetComponent<Animator>();
     }
+
+    // 转向
+    public void Flip()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+    }
+
+    // 移动到指定下标的格子
+    public virtual bool Move(int rowIndex, int colIndex, float dt) 
+    { 
+        Vector3 pos = GameApp.MapManager.GetBlockPos(rowIndex, colIndex);
+        pos.z = transform.position.z;
+        if (transform.position.x > pos.x && transform.localScale.x > 0)
+        {
+            // 转向
+            Flip();
+        }
+        if (transform.position.x < pos.x && transform.localScale.x < 0)
+        {
+            // 转向
+            Flip();
+        }
+        // 如果离目的地很近返回true
+        if (Vector3.Distance(transform.position, pos) >= 0.02f)
+        {
+            this.RowIndex = rowIndex;
+            this.ColIndex = colIndex;
+            transform.position = pos;
+            return true;
+        }
+        transform.position = Vector3.MoveTowards(transform.position, pos, dt);
+        return false;
+    }
 }
