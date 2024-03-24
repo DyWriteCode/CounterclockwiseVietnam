@@ -113,7 +113,7 @@ public class ModelBase : MonoBehaviour
             Flip();
         }
         // 如果离目的地很近返回true
-        if (Vector3.Distance(transform.position, pos) >= 0.02f)
+        if (Vector3.Distance(transform.position, pos) <= 0.02f)
         {
             this.RowIndex = rowIndex;
             this.ColIndex = colIndex;
@@ -122,5 +122,11 @@ public class ModelBase : MonoBehaviour
         }
         transform.position = Vector3.MoveTowards(transform.position, pos, dt);
         return false;
+    }
+
+    // 播放动画
+    public void PlayAni(string aniName)
+    {
+        ani.Play(aniName);
     }
 }
