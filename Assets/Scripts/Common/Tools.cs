@@ -28,4 +28,11 @@ public static class Tools
         Collider2D col = Physics2D.OverlapCircle(worldPos, 0.02f);
         return col;
     }
+
+    // 占位函数 
+    public static void PassProgram()
+    {
+        Debug.Log("use a pass program, please remember to clear it");
+        return;
+    }
 }
