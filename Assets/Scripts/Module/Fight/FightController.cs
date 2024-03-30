@@ -9,6 +9,7 @@ public class FightController : BaseController
 {
     public FightController() : base()
     {
+        SetModel(new FightModel(this)); // 设置战斗数据模型
         GameApp.ViewManager.Reister(ViewType.FightView, new ViewInfo()
         {
             PrefabName = "FightView",
@@ -26,7 +27,7 @@ public class FightController : BaseController
         {
             PrefabName = "DragHeroView",
             controller = this,
-            parentTf = GameApp.ViewManager.worldCanvasTf, // 设置到世界画布,
+            parentTf = GameApp.ViewManager.worldCanvasTf, // 设置到世界画布
             Sorting_Order = 2,
         });
         GameApp.ViewManager.Reister(ViewType.TipView, new ViewInfo()
@@ -51,6 +52,11 @@ public class FightController : BaseController
             Sorting_Order = 2,
         });
         InitModuleEvent();
+    }
+
+    public override void Init()
+    {
+        model.Init();
     }
 
     public override void InitModuleEvent()
