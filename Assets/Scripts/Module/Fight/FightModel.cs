@@ -17,7 +17,7 @@ public class OptionData
 /// </summary>
 public class FightModel : BaseModel
 {
-    private List<OptionData> options;
+    public List<OptionData> options;
     public ConfigData optionConfig;
 
     // 初始化

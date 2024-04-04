@@ -29,6 +29,9 @@ public class ShowPathCommand : BaseCommand
             if (prePaths.Count != 0 && this.model.Step >= prePaths.Count - 1)
             {
                 GameApp.CommandManager.AddCommand(new MoveCommand(this.model, prePaths)); // 移动
+                // 检测移动步数是否正常的代码
+                // Tools.test++;
+                // Debug.Log(Tools.test);
             }
             else
             {
