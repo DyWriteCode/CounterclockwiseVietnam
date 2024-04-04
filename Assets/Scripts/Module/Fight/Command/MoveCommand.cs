@@ -28,8 +28,8 @@ public class MoveCommand : BaseCommand
     public override void Do()
     {
         base.Do();
-        this.preColIndex = this.model.ColIndex;
         this.preRowIndex = this.model.RowIndex;
+        this.preColIndex = this.model.ColIndex;
         // 设置当前格子所占为null
         GameApp.MapManager.ChangeBlockType(this.model.RowIndex, this.model.ColIndex, BlockType.Null);
     }
@@ -39,12 +39,12 @@ public class MoveCommand : BaseCommand
     {
         base.UnDo();
         // 回到之前的位置
-        Vector3 pos = GameApp.MapManager.GetBlockPos(preColIndex, preRowIndex);
+        Vector3 pos = GameApp.MapManager.GetBlockPos(preRowIndex, preColIndex);
         pos.z = this.model.transform.position.z;
         this.model.transform.position = pos;
         GameApp.MapManager.ChangeBlockType(this.model.RowIndex, this.model.ColIndex, BlockType.Null);
-        this.preColIndex = this.model.ColIndex;
-        this.preRowIndex = this.model.RowIndex;
+        this.model.RowIndex = preRowIndex;
+        this.model.ColIndex = preColIndex;
         GameApp.MapManager.ChangeBlockType(this.model.RowIndex, this.model.ColIndex, BlockType.Obstacle);
     }
 

@@ -21,4 +21,10 @@ public static class Defines
     public static readonly string HideLevelDesEvent = "HideLevelDesEvent"; // 隐藏关卡详情事件
     public static readonly string OnSelectEvent = "OnSelectEvent"; // 选中事件
     public static readonly string OnUnSelectEvent = "OnUnSelectEvent"; // 未选中事件
+
+    // option
+    public static readonly string OnAttackEvent = "OnAttackEvent"; 
+    public static readonly string OnIdleEvent = "OnIdleEvent";
+    public static readonly string OnCancelEvent = "OnCancelEvent";
+    public static readonly string OnRemoveHeroToSceneEvent = "OnOnRemoveHeroToSceneEvent";
 }

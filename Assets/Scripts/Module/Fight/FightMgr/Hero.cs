@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,20 +27,51 @@ public class Hero : ModelBase
         // 玩家回合才能选中角色
         if (GameApp.FightManager.state == GameState.Player)
         {
-            // 不可以操作
-            if (IsStop == true)
-            {
-                return;
-            }
             if (GameApp.CommandManager.IsRunningCommand == true)
             {
                 return;
             }
-            // 添加显示路径指令
-            GameApp.CommandManager.AddCommand(new ShowPathCommand(this));
-            base.OnSelectCallback(args);
+            // 执行未选中
+            GameApp.MsgCenter.PostEvent(Defines.OnUnSelectEvent);       
+            // 不可以操作
+            if (IsStop == false)
+            {
+                // 显示路径
+                GameApp.MapManager.ShowStepGird(this, Step);
+                // 添加显示路径指令
+                GameApp.CommandManager.AddCommand(new ShowPathCommand(this));
+                // 添加选项事件
+                addOptionEvent();
+            }
             GameApp.ViewManager.Open(ViewType.HeroDesView, this);
         }
+    }
+
+    private void addOptionEvent()
+    {
+        GameApp.MsgCenter.AddTempEvent(Defines.OnAttackEvent, OnAttackCallBack);
+        GameApp.MsgCenter.AddTempEvent(Defines.OnIdleEvent, OnIdleCallBack);
+        GameApp.MsgCenter.AddTempEvent(Defines.OnCancelEvent, OnCancelCallBack);
+    }
+
+    // 取消 移动
+    private void OnCancelCallBack(System.Object args)
+    {
+        // Debug.Log("Cancel");
+        GameApp.CommandManager.UnDo();
+    }
+
+    // 待机状态
+    private void OnIdleCallBack(System.Object args)
+    {
+        // Debug.Log("Idle");
+        IsStop = true;
+    }
+
+    // 攻击状态
+    private void OnAttackCallBack(System.Object args)
+    {
+        // Debug.Log("Attack");
     }
 
     // 没有被选中回调函数
