@@ -9,6 +9,8 @@ public static class Tools
 {
     // 临时使用的变量
     public static int test = 0;
+    public static int test2 = 0;
+    public static int test3 = 0;
 
     // 设置图标
     public static void SetIcon(this UnityEngine.UI.Image img, string res)
