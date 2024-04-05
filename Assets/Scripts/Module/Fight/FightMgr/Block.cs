@@ -89,4 +89,17 @@ public class Block : MonoBehaviour
         dirSp.sprite = sp;
         dirSp.color = color;
     }
+
+    //显示格子
+    public void ShowGrid(Color color)
+    {
+        gridSp.enabled = true;
+        gridSp.color = color;
+    }
+
+    //隐藏格子
+    public void HideGrid()
+    {
+        gridSp.enabled = false;
+    }
 }

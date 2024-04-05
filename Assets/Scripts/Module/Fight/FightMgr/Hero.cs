@@ -84,11 +84,13 @@ public class Hero : ModelBase, ISkill
         GameApp.ViewManager.Close((int)ViewType.HeroDesView);
     }
 
+    // 显示技能区域
     public void ShowSkillArea()
     {
 
     }
 
+    // 隐藏技能区域
     public void HideSkillArea()
     {
         

@@ -207,4 +207,43 @@ public class MapManager
         }
         return dir;
     }
+
+    public void ShowAttackStep(ModelBase model, int attackStep, Color color)
+    {
+        int minRow = model.RowIndex - attackStep >= 0 ? model.RowIndex - attackStep : 0;
+        int minCol = model.ColIndex - attackStep >= 0 ? model.ColIndex - attackStep : 0;
+        int maxRow = model.RowIndex + attackStep > RowCount - 1 ? RowCount - 1 : model.RowIndex + attackStep;
+        int maxCol = model.ColIndex + attackStep > ColCount - 1 ? ColCount - 1 : model.ColIndex + attackStep;
+
+        for (int row = minRow; row <= maxRow; row++)
+        {
+            for (int col = minCol; col <= maxCol; col++)
+            {
+                if (Mathf.Abs(model.RowIndex - row) + Mathf.Abs(model.ColIndex - col) <= attackStep)
+                {
+                    mapArr[row, col].ShowGrid(color);
+                }
+            }
+        }
+
+    }
+
+    public void HideAttackStep(ModelBase model, int attackStep)
+    {
+        int minRow = model.RowIndex - attackStep >= 0 ? model.RowIndex - attackStep : 0;
+        int minCol = model.ColIndex - attackStep >= 0 ? model.ColIndex - attackStep : 0;
+        int maxRow = model.RowIndex + attackStep > RowCount - 1 ? RowCount - 1 : model.RowIndex + attackStep;
+        int maxCol = model.ColIndex + attackStep > ColCount - 1 ? ColCount - 1 : model.ColIndex + attackStep;
+
+        for (int row = minRow; row <= maxRow; row++)
+        {
+            for (int col = minCol; col <= maxCol; col++)
+            {
+                if (Mathf.Abs(model.RowIndex - row) + Mathf.Abs(model.ColIndex - col) <= attackStep)
+                {
+                    mapArr[row, col].HideGrid();
+                }
+            }
+        }
+    }
 }
