@@ -6,8 +6,10 @@ using UnityEngine;
 /// <summary>
 /// 英雄脚本
 /// </summary>
-public class Hero : ModelBase
+public class Hero : ModelBase, ISkill
 {
+    public SkillProperty SkillPro { get; set; }
+
     public void Init(Dictionary<string, string> data, int row, int col)
     {
         this.data = data;
@@ -19,6 +21,7 @@ public class Hero : ModelBase
         Step = int.Parse(this.data["Step"]);
         MaxHp = int.Parse(this.data["Hp"]);
         CurHp = MaxHp;
+        SkillPro = new SkillProperty(int.Parse(this.data["Skill"]));
     }
 
     // 被选中回调函数
@@ -79,5 +82,15 @@ public class Hero : ModelBase
     {
         base.OnUnSelectCallback(args);
         GameApp.ViewManager.Close((int)ViewType.HeroDesView);
+    }
+
+    public void ShowSkillArea()
+    {
+
+    }
+
+    public void HideSkillArea()
+    {
+        
     }
 }
