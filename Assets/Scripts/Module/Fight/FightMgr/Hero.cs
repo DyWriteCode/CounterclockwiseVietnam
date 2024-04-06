@@ -75,6 +75,7 @@ public class Hero : ModelBase, ISkill
     private void OnAttackCallBack(System.Object args)
     {
         // Debug.Log("Attack");
+        GameApp.CommandManager.AddCommand(new ShowSkillAreaCommand(this));
     }
 
     // 没有被选中回调函数
@@ -87,12 +88,12 @@ public class Hero : ModelBase, ISkill
     // 显示技能区域
     public void ShowSkillArea()
     {
-
+        GameApp.MapManager.ShowAttackStep(this, SkillPro.AttackRange, Color.red);
     }
 
     // 隐藏技能区域
     public void HideSkillArea()
     {
-        
+        GameApp.MapManager.HideAttackStep(this, SkillPro.AttackRange);
     }
 }

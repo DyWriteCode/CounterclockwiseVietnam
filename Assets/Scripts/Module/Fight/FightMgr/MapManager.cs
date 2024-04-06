@@ -208,8 +208,10 @@ public class MapManager
         return dir;
     }
 
+    // 显示攻击
     public void ShowAttackStep(ModelBase model, int attackStep, Color color)
     {
+        // Debug.Log(attackStep);
         int minRow = model.RowIndex - attackStep >= 0 ? model.RowIndex - attackStep : 0;
         int minCol = model.ColIndex - attackStep >= 0 ? model.ColIndex - attackStep : 0;
         int maxRow = model.RowIndex + attackStep > RowCount - 1 ? RowCount - 1 : model.RowIndex + attackStep;
@@ -228,6 +230,7 @@ public class MapManager
 
     }
 
+    // 隐藏攻击
     public void HideAttackStep(ModelBase model, int attackStep)
     {
         int minRow = model.RowIndex - attackStep >= 0 ? model.RowIndex - attackStep : 0;
