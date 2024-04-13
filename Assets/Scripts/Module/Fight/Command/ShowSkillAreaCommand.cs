@@ -22,7 +22,8 @@ public class ShowSkillAreaCommand : BaseCommand
         if (Input.GetMouseButtonDown(0))
         {
             skill.HideSkillArea();
-            // Debug.Log("use attack");
+            // Debug.Log("use attack method");
+            GameApp.CommandManager.AddCommand(new SkillCommand(model));
             return true;
         }
         return false;

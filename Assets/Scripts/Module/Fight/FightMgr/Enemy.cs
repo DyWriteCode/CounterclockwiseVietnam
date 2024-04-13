@@ -18,6 +18,10 @@ public class Enemy : ModelBase
     // 被选中回调函数
     protected override void OnSelectCallback(object args)
     {
+        if (GameApp.CommandManager.IsRunningCommand == true)
+        {
+            return;
+        }
         base.OnSelectCallback(args);
         GameApp.ViewManager.Open(ViewType.EnemyDesView, this);
     }

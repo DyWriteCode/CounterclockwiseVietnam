@@ -156,7 +156,7 @@ public class ModelBase : MonoBehaviour
     }
 
     // 看向某个Model 
-    public void LootAt(ModelBase model)
+    public void LootAtModel(ModelBase model)
     {
         if ((model.transform.position.x > transform.position.x) && transform.localScale.x < 0)
         {
