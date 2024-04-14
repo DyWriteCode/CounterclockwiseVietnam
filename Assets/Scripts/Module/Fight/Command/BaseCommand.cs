@@ -16,6 +16,11 @@ public class BaseCommand
         this.isFinish = false;
     }
 
+    public BaseCommand()
+    {
+
+    }
+
     public virtual bool Update(float dt)
     {
         return isFinish;

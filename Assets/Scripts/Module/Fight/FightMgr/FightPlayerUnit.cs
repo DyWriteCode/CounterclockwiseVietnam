@@ -12,6 +12,7 @@ public class FightPlayerUnit : FightUnitBase
         base.Init();
         // test
         // Debug.Log("player");
+        GameApp.FightManager.ResetEnemys(); // 重置敌人行动
         GameApp.ViewManager.Open(ViewType.TipView, "玩家回合");
     }
 }
