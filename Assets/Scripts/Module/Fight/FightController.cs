@@ -57,6 +57,13 @@ public class FightController : BaseController
             controller = this,
             parentTf = GameApp.ViewManager.canvasTf,
         });
+        GameApp.ViewManager.Reister(ViewType.FightOptionDesView, new ViewInfo()
+        {
+            PrefabName = "FightOptionDesView",
+            controller = this,
+            parentTf = GameApp.ViewManager.canvasTf,
+            Sorting_Order = 3,
+        });
         InitModuleEvent();
     }
 
