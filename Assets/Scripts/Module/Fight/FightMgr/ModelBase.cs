@@ -139,7 +139,7 @@ public class ModelBase : MonoBehaviour
     // 播放特效(特效物体)
     public virtual void PlayEffect(string name)
     {
-        GameObject obj = Instantiate(Resources.Load($"Effect{name}")) as GameObject;
+        GameObject obj = Instantiate(Resources.Load($"Effect/{name}")) as GameObject;
         obj.transform.position = transform.position;
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 /// <summary>
 /// 视图信息类
@@ -195,5 +196,17 @@ public class ViewManager
     public void Open(ViewType viewType, params object[] args)
     {
         Open((int)viewType, args);
+    }
+
+    // 显示伤害数字
+    public void ShowHitNum(string num, Color color, Vector3 pos) 
+    { 
+        GameObject obj = UnityEngine.Object.Instantiate(Resources.Load("View/HitNum"), worldCanvasTf) as GameObject;
+        obj.transform.position = pos;
+        obj.transform.DOMove(pos + Vector3.up * 1.75f, 0.65f).SetEase(Ease.OutBack);
+        UnityEngine.Object.Destroy(obj, 0.75f);
+        Text hitTxt = obj.GetComponent<Text>();
+        hitTxt.text = num;
+        hitTxt.color = color;
     }
 }
