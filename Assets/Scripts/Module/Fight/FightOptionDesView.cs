@@ -20,14 +20,13 @@ public class FightOptionDesView : BaseView
     private void onGameOverBtn()
     {
         GameApp.ViewManager.Close((int)ViewType.FightOptionDesView);
-
     }
 
     // 回合结束切换到敌人回合
     private void onChangeEnemyTurn()
     {
         GameApp.ViewManager.Close((int)ViewType.FightOptionDesView);
-
+        GameApp.FightManager.ChangeState(GameState.Enemy); // 切换到敌人回合
     }
 
     // 取消

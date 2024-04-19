@@ -20,6 +20,7 @@ public class GameApp : Singleton<GameApp>
     public static UserInputManager UserInputManager; // 用户控制管理器定义
     public static CommandManager CommandManager; // 命令管理器定义
     public static SkillManager SkillManager; // 技能管理器定义
+    public static HelperManager HelperManager; // 帮助器管理器定义
 
     // 初始化所有管理器
     public override void Init()
@@ -37,6 +38,7 @@ public class GameApp : Singleton<GameApp>
         UserInputManager = new UserInputManager();
         CommandManager = new CommandManager();
         SkillManager = new SkillManager();
+        HelperManager = new HelperManager();
     }
 
     public override void Update(float dt)

@@ -103,6 +103,7 @@ public class FightWorldManager
     public void RemoveEnemy(Enemy enemy)
     {
         enemys.Remove(enemy);
+        GameApp.MapManager.ChangeBlockType(enemy.RowIndex, enemy.ColIndex, BlockType.Null); // 死亡后不需要占用格子
     }
 
     // 重置英雄行动
@@ -121,5 +122,35 @@ public class FightWorldManager
         {
             enemys[i].IsStop = false;
         }
+    }
+
+    // 获得离目标最近的英雄 
+    // 传入的参数为目标
+    public ModelBase GetMinDisHero(ModelBase model)
+    {
+        // 场内没有英雄
+        if (heros.Count == 0)
+        {
+            return null;
+        }
+        Hero hero = heros[0];
+        float dis_min = hero.GetDis(model);
+        for (int i = 1; i < heros.Count; i++)
+        {
+            float dis = heros[i].GetDis(model);
+            if (dis < dis_min)
+            {
+                dis_min = dis;
+                hero = heros[i];
+            }
+        }
+        return hero;
+    }
+
+    // 移除英雄
+    public void RemoveHero(Hero hero)
+    {
+        heros.Remove(hero);
+        GameApp.MapManager.ChangeBlockType(hero.RowIndex, hero.ColIndex, BlockType.Null); // 死亡后不需要占用格子
     }
 }

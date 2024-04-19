@@ -4,6 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// 技能帮助类
+/// 这个类由于引用已经有一定引用次数 没放入helper类管理
 /// </summary>
 public static class SkillHelper
 {

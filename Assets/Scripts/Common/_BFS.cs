@@ -127,4 +127,38 @@ public class _BFS
             temps.Add(p);
         }
     }
+
+    // 寻找可移动的点 离终点最近的点的一个路径
+    public List<Point> FindMinPath(ModelBase model, int step, int endRowIndex, int endColIndex) 
+    {
+        List<Point> results = Search(model.RowIndex, model.ColIndex, step); // 获得可以行动的点的集合
+        if (results.Count == 0)
+        {
+            return null;
+        }
+        else
+        {
+            Point minPoint = results[0]; // 默认一个点为离目标点最近的点   
+            int min_dis = Mathf.Abs(minPoint.RowIndex - endRowIndex) + Mathf.Abs(minPoint.ColIndex - endColIndex);
+            for (int i = 1; i < results.Count; i++)
+            {
+                int temp_dis = Mathf.Abs(results[i].RowIndex - endRowIndex) + Mathf.Abs(results[i].ColIndex - endColIndex);
+                if (temp_dis < min_dis)
+                {
+                    min_dis = temp_dis;
+                    minPoint = results[i];
+                }
+            }
+            List<Point> paths = new List<Point>();
+            Point current = minPoint.Father;
+            paths.Add(minPoint);
+            while (current != null)
+            {
+                paths.Add(current);
+                current = current.Father;
+            }
+            paths.Reverse(); // 反置
+            return paths;
+        }
+    }
 }
