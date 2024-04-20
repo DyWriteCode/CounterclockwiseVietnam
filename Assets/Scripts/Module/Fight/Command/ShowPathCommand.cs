@@ -36,6 +36,8 @@ public class ShowPathCommand : BaseCommand
             else
             {
                 GameApp.MsgCenter.PostEvent(Defines.OnUnSelectEvent);
+                // 不移动就直接显示操作选项
+                GameApp.ViewManager.Open(ViewType.SelectOptionView, this.model.data["Event"], (Vector2)this.model.transform.position);
             }
             return true;
         }
