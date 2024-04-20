@@ -23,4 +23,5 @@ public enum ViewType
     FightOptionDesView,
     LossView,
     WinView,
+    TalkView,
 }

@@ -17,7 +17,7 @@ public class FightView : BaseView
     {
         base.OnStart();
         roundTxt = Find<Text>("TurnTxt");
-        moneyTxt = Find<Text>("icon.txt");
+        moneyTxt = Find<Text>("icon/txt");
     }
 
     private void Update()

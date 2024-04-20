@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +35,14 @@ public class GameUIController : BaseController
             parentTf = GameApp.ViewManager.canvasTf,
             Sorting_Order = 10 // 挡住任何面板层级更高一级
         });
+        // 游戏剧情对话视图
+        GameApp.ViewManager.Reister(ViewType.TalkView, new ViewInfo()
+        {
+            PrefabName = "TalkView",
+            controller = this,
+            parentTf = GameApp.ViewManager.canvasTf,
+            Sorting_Order = 3,
+        });
         InitModuleEvent(); // 初始化模块事件
         InitGlobalEvent(); // 初始化全局事件
     }
@@ -43,6 +52,12 @@ public class GameUIController : BaseController
         RegisterFunc(Defines.OpenStartView, openStartView); // 注册并打开开始面板
         RegisterFunc(Defines.OpenSetView, openSetView); // 注册并打开设置面板
         RegisterFunc(Defines.OpenMessageView, openMessageView); // 注册并打开设置面板
+        RegisterFunc(Defines.OpenTalkView, openTalkView); // 注册并打开剧情对话面板
+    }
+
+    private void openTalkView(System.Object[] args)
+    {
+        GameApp.ViewManager.Open(ViewType.TalkView, args);
     }
 
     // 测试模板注册事件 例子

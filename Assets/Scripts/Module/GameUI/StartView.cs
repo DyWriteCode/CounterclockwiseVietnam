@@ -42,15 +42,28 @@ public class StartView : BaseView
     {
         Controller.ApplyControllerFunc(ControllerType.GameUI, Defines.OpenMessageView, new Messagelnfo()
         {
-            okCallback = delegate()
+            okCallback = delegate ()
             {
                 Application.Quit(); // 退出游戏
             },
-            noCallBack = delegate()
+            noCallBack = delegate ()
             {
 
             },
             MsgIxt = "你确定要退出游戏吗？ "
         });
+        //Controller.ApplyControllerFunc(ControllerType.GameUI, Defines.OpenTalkView, new TalkInfo()
+        //{
+        //    Name = "enemy",
+        //    MsgIxt = "hi",
+        //    Turn = "All",
+        //    ImgPath = "icon/down",
+        //    ImgPathLeft = "icon/down",
+        //    ImgPathRight = "icon/down",
+        //    Callback = delegate ()
+        //    {
+
+        //    }
+        //});
     }
 }

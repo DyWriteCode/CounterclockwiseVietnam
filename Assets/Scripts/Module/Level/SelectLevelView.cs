@@ -11,6 +11,8 @@ public class SelectLevelView : BaseView
     protected override void OnStart()
     {
         base.OnStart();
+        // 换一首音乐
+        GameApp.SoundManager.PlayBGM("mapbgm");
         Find<Button>("close").onClick.AddListener(onCloseBtn);
         Find<Button>("level/fightBtn").onClick.AddListener(onFightBtn);
     }
