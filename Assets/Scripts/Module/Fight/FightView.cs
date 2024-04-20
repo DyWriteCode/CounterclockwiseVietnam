@@ -8,5 +8,18 @@ using UnityEngine.UI;
 /// </summary>
 public class FightView : BaseView
 {
+    // 缓存回和数组件
+    private Text roundTxt;
 
+    protected override void OnStart()
+    {
+        base.OnStart();
+        roundTxt = Find<Text>("TurnTxt");
+    }
+
+    private void Update()
+    {
+        // 更新回合数
+        roundTxt.text = $"第 {GameApp.FightManager.RoundCount} 回合";
+    }
 }

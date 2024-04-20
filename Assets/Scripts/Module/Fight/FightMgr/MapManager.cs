@@ -249,4 +249,11 @@ public class MapManager
             }
         }
     }
+
+    // 清空
+    public void Clear()
+    {
+        mapArr = null;
+        dirSpArr.Clear();
+    }
 }

@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.Linq;
 
 /// <summary>
 /// 视图信息类
@@ -208,5 +209,15 @@ public class ViewManager
         Text hitTxt = obj.GetComponent<Text>();
         hitTxt.text = num;
         hitTxt.color = color;
+    }
+
+    // 关闭所有页面
+    public void CloseAll()
+    {
+        List<IBaseView> list = _opens.Values.ToList();
+        for (int i = list.Count - 1; i >= 0; i--)
+        {
+            Close(list[i].ViewId);
+        }
     }
 }

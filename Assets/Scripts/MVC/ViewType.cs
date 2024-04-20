@@ -21,4 +21,6 @@ public enum ViewType
     EnemyDesView,
     SelectOptionView,
     FightOptionDesView,
+    LossView,
+    WinView,
 }

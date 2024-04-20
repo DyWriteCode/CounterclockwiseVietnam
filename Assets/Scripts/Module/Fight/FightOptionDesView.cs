@@ -26,7 +26,14 @@ public class FightOptionDesView : BaseView
     private void onChangeEnemyTurn()
     {
         GameApp.ViewManager.Close((int)ViewType.FightOptionDesView);
-        GameApp.FightManager.ChangeState(GameState.Enemy); // 切换到敌人回合
+        if (GameApp.FightManager.IsHerosReady == true)
+        {
+            GameApp.FightManager.ChangeState(GameState.Enemy); // 切换到敌人回合
+        }
+        else
+        {
+            GameApp.ViewManager.Open(ViewType.TipView, "玩家请先选择至少一个英雄");
+        }
     }
 
     // 取消

@@ -12,6 +12,7 @@ public enum GameState
     Enter,
     Player,
     Enemy,
+    GameOver,
 }
 
 /// <summary>
@@ -25,6 +26,7 @@ public class FightWorldManager
     public List<Hero> heros; // 正在战斗中的英雄集合
     public List<Enemy> enemys; // 正在战斗中的敌人集合
     public int RoundCount; // 回合数目
+    public bool IsHerosReady = false; // 英雄是否选择好
 
     public FightWorldManager() 
     {
@@ -63,6 +65,9 @@ public class FightWorldManager
                 break;
             case GameState.Enemy:
                 _current = new FightEnemyUnit();
+                break;
+            case GameState.GameOver:
+                _current = new FightGameOverUnit();
                 break;
         }
         _current.Init();
@@ -104,6 +109,11 @@ public class FightWorldManager
     {
         enemys.Remove(enemy);
         GameApp.MapManager.ChangeBlockType(enemy.RowIndex, enemy.ColIndex, BlockType.Null); // 死亡后不需要占用格子
+        // 判断场上是否还存在敌人 
+        if (enemys.Count == 0)
+        {
+            ChangeState(GameState.GameOver);
+        }
     }
 
     // 重置英雄行动
@@ -152,5 +162,19 @@ public class FightWorldManager
     {
         heros.Remove(hero);
         GameApp.MapManager.ChangeBlockType(hero.RowIndex, hero.ColIndex, BlockType.Null); // 死亡后不需要占用格子
+        // 判断场上是否还存在敌人 
+        if (enemys.Count == 0)
+        {
+            ChangeState(GameState.GameOver);
+        }
+    }
+
+    public void ReLoadRes()
+    {
+        RoundCount = 0;
+        enemys.Clear();
+        heros.Clear();
+        GameApp.MapManager.Clear();
+        IsHerosReady = false;
     }
 }

@@ -8,7 +8,7 @@ using System.IO;
 using UnityEngine.UI;
 public static class MyEditor
 {
-    [MenuItem("我的工具/excel转csv")]
+    [MenuItem("MyTools/ExcelToCsv")]
     public static void ExportExcelToTxt()
     {
         string gamePath = Application.dataPath;

@@ -30,6 +30,8 @@ public class FightSelectHeroView : BaseView
         else
         {
             GameApp.ViewManager.Close(ViewId);
+            // 英雄已准备完成
+            GameApp.FightManager.IsHerosReady = true;
             // 切换到玩家回合
             GameApp.FightManager.ChangeState(GameState.Player);
         }
