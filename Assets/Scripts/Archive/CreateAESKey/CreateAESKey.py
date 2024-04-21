@@ -1,0 +1,1 @@
+"""@author : dy"""from crypto.Random import get_random_bytesdef generate_aes_key(key_length: int = 16) -> bytes:    """    :param key_length : 密钥长度    :return: 密钥的二进制数据    """    if key_length not in [16, 24, 32]:        generate_aes_key()    return get_random_bytes(key_length)aes_key = generate_aes_key()print("AES KEY：", aes_key.hex())

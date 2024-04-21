@@ -15,6 +15,7 @@ public class TalkInfo
     public string ImgPathLeft = null;
     public string ImgPathRight = null;
     public string Turn;
+    public string AniName = null;
     public System.Action Callback;
 }
 
@@ -25,11 +26,15 @@ public class TalkView : BaseView
 {
     TalkInfo Info;
     List<TalkInfo> Infos;
+    Animator AniLeft;
+    Animator AniRight;
 
     protected override void OnAwake()
     {
         base.OnAwake();
         Find<Button>("NextBtn").onClick.AddListener(onBtn);
+        AniLeft = Find<Image>("CharImg/Left").GetComponent<Animator>();
+        AniRight = Find<Image>("CharImg/Right").GetComponent<Animator>();
     }
 
     public override void Open(params object[] args)
@@ -59,6 +64,19 @@ public class TalkView : BaseView
         {
             Find<Image>($"CharImg/{Info.Turn}").enabled = true;
             Find<Image>($"CharImg/{Info.Turn}").sprite = Resources.Load<Sprite>(Info.ImgPath);
+        }
+        if (Info.AniName != "" && Info.Turn == "All")
+        {
+            AniLeft.Play(Info.AniName);
+            AniRight.Play(Info.AniName);
+        }
+        else if (Info.AniName != "" && Info.Turn == "Left")
+        {
+            AniLeft.Play(Info.AniName);
+        }
+        else if (Info.AniName != "" && Info.Turn == "Right")
+        {
+            AniRight.Play(Info.AniName);
         }
     }
 

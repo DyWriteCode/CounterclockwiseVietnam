@@ -7,6 +7,5 @@ using UnityEngine;
 /// </summary>
 public class HelperManager
 {
-    // 所有帮助器类别的初始化
-    public HelperManager() { }
+    public TimeHelper TimeHelper = new TimeHelper();
 }
