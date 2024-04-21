@@ -52,18 +52,48 @@ public class StartView : BaseView
             },
             MsgIxt = "你确定要退出游戏吗？ "
         });
-        //Controller.ApplyControllerFunc(ControllerType.GameUI, Defines.OpenTalkView, new TalkInfo()
+        //List<TalkInfo> test = new List<TalkInfo>
         //{
-        //    Name = "enemy",
-        //    MsgIxt = "hi",
-        //    Turn = "All",
-        //    ImgPath = "icon/down",
-        //    ImgPathLeft = "icon/down",
-        //    ImgPathRight = "icon/down",
-        //    Callback = delegate ()
+        //    new TalkInfo()
         //    {
+        //        Name = "enemy",
+        //        MsgIxt = "hi",
+        //        Turn = "All",
+        //        ImgPath = "icon/down",
+        //        ImgPathLeft = "icon/up",
+        //        ImgPathRight = "icon/down",
+        //        Callback = delegate ()
+        //        {
 
+        //        }
+        //    },
+        //    new TalkInfo()
+        //    {
+        //        Name = "enemy",
+        //        MsgIxt = "hi",
+        //        Turn = "Left",
+        //        ImgPath = "icon/down",
+        //        ImgPathLeft = "icon/up",
+        //        ImgPathRight = "icon/down",
+        //        Callback = delegate ()
+        //        {
+
+        //        }
+        //    },
+        //    new TalkInfo()
+        //    {
+        //        Name = "enemy",
+        //        MsgIxt = "hi",
+        //        Turn = "Right",
+        //        ImgPath = "icon/down",
+        //        ImgPathLeft = "icon/up",
+        //        ImgPathRight = "icon/down",
+        //        Callback = delegate ()
+        //        {
+
+        //        }
         //    }
-        //});
+        //};
+        //Controller.ApplyControllerFunc(ControllerType.GameUI, Defines.OpenTalkView, test);
     }
 }

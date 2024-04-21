@@ -24,18 +24,27 @@ public class TalkInfo
 public class TalkView : BaseView
 {
     TalkInfo Info;
+    List<TalkInfo> Infos;
 
     protected override void OnAwake()
     {
         base.OnAwake();
         Find<Button>("NextBtn").onClick.AddListener(onBtn);
-        Find<Image>("CharImg/Right").enabled = false;
-        Find<Image>("CharImg/Left").enabled = false;
     }
 
     public override void Open(params object[] args)
     {
-        Info = args[0] as TalkInfo;
+        Find<Image>("CharImg/Right").sprite = null;
+        Find<Image>("CharImg/Left").sprite = null;
+        Find<Image>("CharImg/Right").enabled = false;
+        Find<Image>("CharImg/Left").enabled = false;
+        Infos = args[0] as List<TalkInfo>;
+        if (Infos.Count == 0)
+        {
+            GameApp.ViewManager.Close(ViewId);
+            return;
+        }
+        Info = Infos[0];
         Find<Text>("NameTxt").text = $"{Info.Name}:";
         // Find<Text>("ContentTxt").text = Info.MsgIxt;
         TypeWriterEffect(0.2f, Info.MsgIxt, Find<Text>("ContentTxt"));
@@ -43,8 +52,8 @@ public class TalkView : BaseView
         {
             Find<Image>("CharImg/Right").enabled = true;
             Find<Image>("CharImg/Left").enabled = true;
-            Find<Image>("CharImg/Right").sprite = Resources.Load<Sprite>(Info.ImgPathRight);
-            Find<Image>("CharImg/Left").sprite = Resources.Load<Sprite>(Info.ImgPathLeft);
+            Find<Image>("CharImg/Right").sprite = Resources.Load<Sprite>((Info.ImgPathRight != null) ? Info.ImgPathRight : Info.ImgPath);
+            Find<Image>("CharImg/Left").sprite = Resources.Load<Sprite>((Info.ImgPathLeft != null) ? Info.ImgPathLeft : Info.ImgPath);
         }
         else
         {
@@ -56,7 +65,9 @@ public class TalkView : BaseView
     private void onBtn()
     {
         Info.Callback?.Invoke();
+        Infos.Remove(Info);
         GameApp.ViewManager.Close(ViewId);
+        GameApp.ViewManager.Open(ViewType.TalkView, Infos);
     }
 
     // 打字机效果
