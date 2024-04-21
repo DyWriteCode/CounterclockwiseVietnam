@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,4 +10,6 @@ using UnityEngine;
 public class TestAchive : ArchiveData
 {
     public string hello;
+    public List<string> tags;
+    public Dictionary<string, string> tags2;
 }
