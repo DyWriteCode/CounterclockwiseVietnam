@@ -13,4 +13,5 @@ public enum ControllerType
     Upgrade,
     Level,
     Fight,
+    Dialogue,
 }

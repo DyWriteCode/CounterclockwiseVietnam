@@ -1,0 +1,6 @@
+Id,Name,Msg,ImgPath,ImgLeft,ImgRight,Type,Ani,NextId
+Id,名字,对话内容,对话人物图像路径,对话人物图像路径,对话人物图像路径,类型,动画名字,下一个对话ID
+10001,test_none,test_none,icon/down,icon/down,icon/down,none,null,10002
+10002,test_all,test_all,icon/down,icon/up,icon/down,all,null,10003
+10003,test_left,test_left,icon/down,icon/up,icon/down,left,null,10004
+10004,test_right,test_right,icon/down,icon/up,icon/down,right,null,0

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8260733596258280406}
   m_Layer: 5
-  m_Name: TalkView
+  m_Name: DialogueView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 7647775465543053577}
   - component: {fileID: 5898447056864068681}
   m_Layer: 5
-  m_Name: Right
+  m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 4897904551910438923}
   - component: {fileID: 4420159423777108969}
   m_Layer: 5
-  m_Name: Left
+  m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

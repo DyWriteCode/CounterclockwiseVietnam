@@ -50,6 +50,7 @@ public class GameScenes : MonoBehaviour
         GameApp.ControllerManager.Register(ControllerType.Upgrade, new UpgradeController());
         GameApp.ControllerManager.Register(ControllerType.Level, new LevelController());
         GameApp.ControllerManager.Register(ControllerType.Fight, new FightController());
+        GameApp.ControllerManager.Register(ControllerType.Dialogue, new DialogueController());
     }
 
     // 初始化所有控制器
@@ -67,6 +68,7 @@ public class GameScenes : MonoBehaviour
         GameApp.ConfigManager.Register("player", new ConfigData("player"));
         GameApp.ConfigManager.Register("role", new ConfigData("role"));
         GameApp.ConfigManager.Register("skill", new ConfigData("skill"));
+        GameApp.ConfigManager.Register("dialogue", new ConfigData("dialogue"));
     }
     
     void Update()

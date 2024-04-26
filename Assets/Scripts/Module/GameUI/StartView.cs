@@ -40,60 +40,18 @@ public class StartView : BaseView
     // 退出游戏
     private void onQuitGameBtn()
     {
-        Controller.ApplyControllerFunc(ControllerType.GameUI, Defines.OpenMessageView, new Messagelnfo()
-        {
-            okCallback = delegate ()
-            {
-                Application.Quit(); // 退出游戏
-            },
-            noCallBack = delegate ()
-            {
-
-            },
-            MsgIxt = "你确定要退出游戏吗？ "
-        });
-        //List<TalkInfo> test = new List<TalkInfo>
+        //Controller.ApplyControllerFunc(ControllerType.GameUI, Defines.OpenMessageView, new Messagelnfo()
         //{
-        //    new TalkInfo()
+        //    okCallback = delegate ()
         //    {
-        //        Name = "enemy",
-        //        MsgIxt = "hi",
-        //        Turn = "All",
-        //        ImgPath = "icon/down",
-        //        ImgPathLeft = "icon/up",
-        //        ImgPathRight = "icon/down",
-        //        Callback = delegate ()
-        //        {
-
-        //        }
+        //        Application.Quit(); // 退出游戏
         //    },
-        //    new TalkInfo()
+        //    noCallBack = delegate ()
         //    {
-        //        Name = "enemy",
-        //        MsgIxt = "hi",
-        //        Turn = "Left",
-        //        ImgPath = "icon/down",
-        //        ImgPathLeft = "icon/up",
-        //        ImgPathRight = "icon/down",
-        //        Callback = delegate ()
-        //        {
 
-        //        }
         //    },
-        //    new TalkInfo()
-        //    {
-        //        Name = "enemy",
-        //        MsgIxt = "hi",
-        //        Turn = "Right",
-        //        ImgPath = "icon/down",
-        //        ImgPathLeft = "icon/up",
-        //        ImgPathRight = "icon/down",
-        //        Callback = delegate ()
-        //        {
-
-        //        }
-        //    }
-        //};
-        //Controller.ApplyControllerFunc(ControllerType.GameUI, Defines.OpenTalkView, test);
+        //    MsgIxt = "你确定要退出游戏吗？ "
+        //});
+        Controller.ApplyControllerFunc(ControllerType.Dialogue, Defines.OpenDialogueView, GameApp.DialogueManager.GetDialogueInfos(GameApp.ConfigManager.GetConfigData("dialogue"), 10001));
     }
 }

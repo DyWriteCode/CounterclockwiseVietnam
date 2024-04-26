@@ -78,13 +78,6 @@ public class FightController : BaseController
             parentTf = GameApp.ViewManager.canvasTf,
             Sorting_Order = 3,
         });
-        GameApp.ViewManager.Reister(ViewType.TalkView, new ViewInfo()
-        {
-            PrefabName = "TalkView",
-            controller = this,
-            parentTf = GameApp.ViewManager.canvasTf,
-            Sorting_Order = 3,
-        });
         InitModuleEvent();
     }
 
