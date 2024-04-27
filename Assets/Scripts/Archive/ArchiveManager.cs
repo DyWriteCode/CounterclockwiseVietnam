@@ -10,18 +10,18 @@ using UnityEngine;
 public class ArchiveManager
 {
     // 游戏存档
-    public void SaveArchive(ArchiveData save, string fileName)
+    public IEnumerator SaveArchive(ArchiveData save, string fileName)
     {
         // 创建一个二进制格式化程序
         BinaryFormatter bf = new BinaryFormatter();  // 引入命名空间using System.Runtime.Serialization.Formatters.Binary;
         // 创建一个文件流（就是在Assets中创建的一个文件夹名称为StreamFile,然后系统会给我创建一个byBin的文本文档用于保存信息）
-        FileStream fileStream = File.Create(Application.dataPath + "/PlayerData" + $"/{fileName}.bin");  //引入命名空间using System.IO;
+        FileStream fileStream = File.Create(Application.streamingAssetsPath + "/PlayerData" + $"/{fileName}.bin");  //引入命名空间using System.IO;
         // 用二进制格式化程序的序列化方法来序列化Save对象，参数：创建的文件流和需要系列化对象
         bf.Serialize(fileStream, save);
         // 关闭流
         fileStream.Close();
         //检测这个二进制文件是否存在，也就是是否保存成功
-        if (File.Exists(Application.dataPath + "/PlayerData" + $"/{fileName}.bin"))
+        if (File.Exists(Application.streamingAssetsPath + "/PlayerData" + $"/{fileName}.bin"))
         {
              GameApp.ViewManager.Open(ViewType.TipView, "游戏已存档");
         }
@@ -29,19 +29,20 @@ public class ArchiveManager
         {
             GameApp.ViewManager.Open(ViewType.TipView, "游戏存档失败");
         }
+        yield return null;
     }
 
     // 游戏读档
-    public T LoadArchive<T>(string fileName)
+    public T LoadArchive<T>(string fileName) where T : ArchiveData, new()
     {
         // 如果该二进制文件存在的话
-        if (File.Exists(Application.dataPath + "/PlayerData" + $"/{fileName}.bin"))
+        if (File.Exists(Application.streamingAssetsPath + "/PlayerData" + $"/{fileName}.bin"))
         {
             // 反系列化的过程
             // 创建一个二进制格式化程序
             BinaryFormatter bf = new BinaryFormatter();
             // 打开一个文件流
-            FileStream fileStream = File.Open(Application.dataPath + "/PlayerData" + $"/{fileName}.bin", FileMode.Open);
+            FileStream fileStream = File.Open(Application.streamingAssetsPath + "/PlayerData" + $"/{fileName}.bin", FileMode.Open);
             // 调用格式化程序的反序列化方法，将文件流转换为一个Save对象
             T save = (T)bf.Deserialize(fileStream);
             // 关闭文件流
@@ -52,16 +53,19 @@ public class ArchiveManager
         else
         {
             GameApp.ViewManager.Open(ViewType.TipView, "游戏读档失败");
-            return default;
+            return new T
+            {
+                IsRight = false
+            };
         }
     }
 
     // 游戏删档
     public void DelArchive(string fileName)
     {
-        if (File.Exists(Application.dataPath + "/PlayerData" + $"/{fileName}.bin"))
+        if (File.Exists(Application.streamingAssetsPath + "/PlayerData" + $"/{fileName}.bin"))
         {
-            File.Delete(Application.dataPath + "/PlayerData" + $"/{fileName}.bin");
+            File.Delete(Application.streamingAssetsPath + "/PlayerData" + $"/{fileName}.bin");
             GameApp.ViewManager.Open(ViewType.TipView, "游戏删档成功");
         }
         else

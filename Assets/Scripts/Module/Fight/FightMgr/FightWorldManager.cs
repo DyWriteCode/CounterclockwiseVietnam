@@ -163,7 +163,7 @@ public class FightWorldManager
         heros.Remove(hero);
         GameApp.MapManager.ChangeBlockType(hero.RowIndex, hero.ColIndex, BlockType.Null); // 死亡后不需要占用格子
         // 判断场上是否还存在敌人 
-        if (enemys.Count == 0)
+        if (heros.Count == 0)
         {
             ChangeState(GameState.GameOver);
         }

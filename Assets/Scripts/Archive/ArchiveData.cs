@@ -13,4 +13,5 @@ public class ArchiveData
 {
     public string SaveTime; // 存档的时间
     public string Key; // 存档的密钥
+    public bool IsRight = true; // 用于判断读档是否成功
 }

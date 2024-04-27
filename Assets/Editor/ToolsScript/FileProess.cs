@@ -5,15 +5,26 @@ using UnityEditor;
 using Excel;
 using System.Data;
 using System.IO;
+using Sirenix.OdinInspector;
 
-public static class FileProess
+[CreateAssetMenu(fileName = "FileProess", menuName = "ScriptableObject/FileProess", order = 0)]
+public class FileProess : ScriptableObject
 {
-    [MenuItem("Tools/FileProcess/ExcelToCsv")]
-    public static void ExportExcelToTxt()
+    [LabelText("ExcelPath")] 
+    public string ExcelPath = $"{Application.dataPath}/_Excel";
+    [LabelText("CSVPath")] 
+    public string CSVPath = $"{Application.dataPath}/Resources/Data";
+
+    [Button("ExcelToCSV", ButtonSizes.Large, Style = ButtonStyle.Box)]
+    public void GetTotalScore()
     {
-        string gamePath = Application.dataPath;
-        string excelPath = gamePath + "/_Excel";
-        Debug.Log(excelPath);
+        ExportExcelToTxt(ExcelPath, CSVPath);
+        Debug.Log($"ExcelPath : {ExcelPath}");
+        Debug.Log($"CSVPath : {CSVPath}");
+    }
+
+    public static void ExportExcelToTxt(string excelPath, string csvPath)
+    {
         if (!Directory.Exists(excelPath))
         {
             Directory.CreateDirectory(excelPath);
@@ -32,7 +43,7 @@ public static class FileProess
                     continue;
                 }
                 DataTable table = dataSet.Tables[0];
-                readTableToTxt(files[i], "Resources/Data", table);
+                readTableToTxt(files[i], csvPath, table);
             }
         }
         AssetDatabase.Refresh();
@@ -41,7 +52,7 @@ public static class FileProess
     private static void readTableToTxt(string filePath, string outPathStr, DataTable table)
     {
         string fileName = Path.GetFileNameWithoutExtension(filePath);
-        string path = Application.dataPath + "/" + outPathStr + "/" + fileName + ".txt";
+        string path = filePath + "/" + fileName + ".txt";
         if (File.Exists(path))
         {
             File.Delete(path);
