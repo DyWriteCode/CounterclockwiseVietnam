@@ -6,9 +6,9 @@ using Excel;
 using System.Data;
 using System.IO;
 
-public static class MyEditor
+public static class FileProess
 {
-    [MenuItem("MyTools/ExcelToCsv")]
+    [MenuItem("Tools/FileProcess/ExcelToCsv")]
     public static void ExportExcelToTxt()
     {
         string gamePath = Application.dataPath;

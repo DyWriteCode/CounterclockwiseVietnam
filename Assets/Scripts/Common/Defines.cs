@@ -13,6 +13,7 @@ public static class Defines
     public static readonly string OpenMessageView = "OpenMessageView"; // 打开消息面板
     public static readonly string OpenSelectLevelView = "OpenSelectLevelView"; // 打开关卡选择面板
     public static readonly string OpenDialogueView = "OpenDialogueView"; // 打开剧情对话面板
+    public static readonly string OpenSpeakView = "OpenSpeakView"; // 打开浮窗对话面板
     public static readonly string LoadingScene = "LoadingScene"; // 加载场景面板                                                     
     public static readonly string UpgradeView = "UpgradeView"; // 更新场景面板
     public static readonly string BeginFight = "onBeginFight"; // 开始战斗

@@ -70,20 +70,6 @@ public class ArchiveManager
         }
     }
 
-    public bool TestArchive()
-    {
-        SaveArchive(new TestAchive
-        {
-            hello = "test",
-            tags = new List<string>() { "test", "test" },
-            tags2 = new Dictionary<string, string>() { { "test", "test" } }
-        }, "test");
-        Debug.Log(LoadArchive<TestAchive>("test").hello);
-        Debug.Log(LoadArchive<TestAchive>("test").tags[0]);
-        Debug.Log(LoadArchive<TestAchive>("test").tags2["test"]);
-        return true;
-    }
-
     public ArchiveManager()
     {
         // 保存AESKEY

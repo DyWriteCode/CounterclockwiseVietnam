@@ -40,18 +40,19 @@ public class StartView : BaseView
     // 退出游戏
     private void onQuitGameBtn()
     {
-        //Controller.ApplyControllerFunc(ControllerType.GameUI, Defines.OpenMessageView, new Messagelnfo()
-        //{
-        //    okCallback = delegate ()
-        //    {
-        //        Application.Quit(); // 退出游戏
-        //    },
-        //    noCallBack = delegate ()
-        //    {
+        Controller.ApplyControllerFunc(ControllerType.GameUI, Defines.OpenMessageView, new Messagelnfo()
+        {
+            okCallback = delegate ()
+            {
+                Application.Quit(); // 退出游戏
+            },
+            noCallBack = delegate ()
+            {
 
-        //    },
-        //    MsgIxt = "你确定要退出游戏吗？ "
-        //});
-        Controller.ApplyControllerFunc(ControllerType.Dialogue, Defines.OpenDialogueView, GameApp.DialogueManager.GetDialogueInfos(GameApp.ConfigManager.GetConfigData("dialogue"), 10001));
+            },
+            MsgIxt = "你确定要退出游戏吗？"
+        });
+        // test
+        //Controller.ApplyControllerFunc(ControllerType.Dialogue, Defines.OpenDialogueView, GameApp.DialogueManager.GetDialogueInfos(GameApp.ConfigManager.GetConfigData("dialogue"), 10001));
     }
 }

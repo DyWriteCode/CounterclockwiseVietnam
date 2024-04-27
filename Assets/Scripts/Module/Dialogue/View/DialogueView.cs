@@ -52,7 +52,7 @@ public class DialogueView : BaseView
         Info = Infos[0];
         Find<Text>("NameTxt").text = $"{Info.Name}:";
         // Find<Text>("ContentTxt").text = Info.MsgIxt;
-        StartCoroutine(TypeWriterEffect(Info.MsgIxt.Length * 3f, Info.MsgIxt, Find<Text>("ContentTxt")));
+        StartCoroutine(GameApp.DialogueManager.TypeWriterEffect(Info.MsgIxt.Length * 3f, Info.MsgIxt, Find<Text>("ContentTxt")));
         if (Info.Type == "all")
         {
             Find<Image>("CharImg/right").enabled = true;
@@ -96,22 +96,5 @@ public class DialogueView : BaseView
         Infos.Remove(Info);
         GameApp.ViewManager.Close(ViewId);
         GameApp.ViewManager.Open(ViewType.DialogueView, Infos);
-    }
-
-    // 打字机效果
-    private IEnumerator TypeWriterEffect(float charsPer, string words, Text text)
-    {
-        float t = 0; // 经过的时间
-        int charIndex = 0; // 字符串索引值
-        while (charIndex < words.Length)
-        {
-            t += Time.deltaTime * charsPer; // 简单计时器赋值给t
-            charIndex = Mathf.FloorToInt(t); // 把t转为int类型赋值给charIndex
-            charIndex = Mathf.Clamp(charIndex, 0, words.Length);
-            text.text = words.Substring(0, charIndex);
-
-            yield return null;
-        }
-        text.text = words;
     }
 }

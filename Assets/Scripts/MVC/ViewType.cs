@@ -24,4 +24,5 @@ public enum ViewType
     LossView,
     WinView,
     DialogueView,
+    SpeakView,
 }
