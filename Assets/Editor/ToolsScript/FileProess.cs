@@ -5,18 +5,13 @@ using UnityEditor;
 using Excel;
 using System.Data;
 using System.IO;
-using Sirenix.OdinInspector;
 
-[CreateAssetMenu(fileName = "FileProess", menuName = "ScriptableObject/FileProess", order = 0)]
-public class FileProess : ScriptableObject
+public class FileProess
 {
-    [LabelText("ExcelPath")] 
     public string ExcelPath = $"{Application.dataPath}/_Excel";
-    [LabelText("CSVPath")] 
     public string CSVPath = $"{Application.dataPath}/Resources/Data";
 
-    [Button("ExcelToCSV", ButtonSizes.Large, Style = ButtonStyle.Box)]
-    public void GetTotalScore()
+    public void FileProessFunc()
     {
         ExportExcelToTxt(ExcelPath, CSVPath);
         Debug.Log($"ExcelPath : {ExcelPath}");
