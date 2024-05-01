@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
-public class Enemy : ModelBase, ISkill
+/// <summary>
+/// 地形脚本
+/// </summary>
+public class Massif : ModelBase, ISkill
 {
-    public SkillProperty SkillPro { get ; set ; }
+    public SkillProperty SkillPro { get; set; }
     private Slider hpSlider;
 
     protected override void Start()
@@ -17,12 +20,38 @@ public class Enemy : ModelBase, ISkill
         Type = int.Parse(this.data["Type"]);
         Attack = int.Parse(this.data["Attack"]);
         Step = int.Parse(this.data["Step"]);
+        // Step = 0;
         MaxHp = int.Parse(this.data["Hp"]);
         CurHp = MaxHp;
         SkillPro = new SkillProperty(int.Parse(data["Skill"]));
     }
 
-    // 被选中回调函数
+    public void Init(Dictionary<string, string> data, int row, int col)
+    {
+        this.data = data;
+        this.RowIndex = row;
+        this.ColIndex = col;
+        hpSlider = transform.Find("hp/bg").GetComponent<Slider>();
+        Id = int.Parse(this.data["Id"]);
+        Type = int.Parse(this.data["Type"]);
+        Attack = int.Parse(this.data["Attack"]);
+        Step = int.Parse(this.data["Step"]);
+        // Step = 0;
+        MaxHp = int.Parse(this.data["Hp"]);
+        CurHp = MaxHp;
+        SkillPro = new SkillProperty(int.Parse(this.data["Skill"]));
+    }
+
+    public void HideSkillArea()
+    {
+        
+    }
+
+    public void ShowSkillArea()
+    {
+        
+    }
+
     protected override void OnSelectCallback(object args)
     {
         if (GameApp.CommandManager.IsRunningCommand == true)
@@ -30,27 +59,13 @@ public class Enemy : ModelBase, ISkill
             return;
         }
         base.OnSelectCallback(args);
-        GameApp.ViewManager.Open(ViewType.EnemyDesView, this);
     }
 
-    // 没有被选中回调函数
     protected override void OnUnSelectCallback(object args)
     {
         base.OnUnSelectCallback(args);
-        GameApp.ViewManager.Close((int)ViewType.EnemyDesView);
     }
 
-    public void ShowSkillArea()
-    {
-       
-    }
-
-    public void HideSkillArea()
-    {
-
-    }
-
-    // 受伤
     public override void GetHit(ISkill skill)
     {
         // 播放受伤音效
@@ -68,7 +83,7 @@ public class Enemy : ModelBase, ISkill
             PlayAni("die");
             Destroy(gameObject, 1.2f);
             // 从敌人集合中移除
-            GameApp.FightManager.RemoveEnemy(this);
+            GameApp.FightManager.RemoveMessif(this);
         }
         StopAllCoroutines();
         StartCoroutine(ChangeColor());

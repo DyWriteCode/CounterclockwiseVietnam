@@ -5,8 +5,8 @@ using UnityEngine.Tilemaps;
 using UnityEditor;
 using System;
 
-[CanEditMultipleObjects, CustomEditor(typeof(Enemy))]
-public class EnemyEditor : Editor
+[CanEditMultipleObjects, CustomEditor(typeof(Massif))]
+public class TerrainEditor : Editor
 {
     public override void OnInspectorGUI()
     {
@@ -23,11 +23,11 @@ public class EnemyEditor : Editor
                 min_x = current.x;
                 min_y = current.y;
             }
-            Enemy enemy = target as Enemy;
-            Vector3Int cellPos = tilemap.WorldToCell(enemy.transform.position);
-            enemy.RowIndex = (int)MathF.Abs(min_y - cellPos.y);
-            enemy.ColIndex = (int)MathF.Abs(min_x - cellPos.x);
-            enemy.transform.position = tilemap.CellToWorld(cellPos) + new Vector3(0.5f, 0.5f, -1);
+            Massif massif = target as Massif;
+            Vector3Int cellPos = tilemap.WorldToCell(massif.transform.position);
+            massif.RowIndex = (int)MathF.Abs(min_y - cellPos.y);
+            massif.ColIndex = (int)MathF.Abs(min_x - cellPos.x);
+            massif.transform.position = tilemap.CellToWorld(cellPos) + new Vector3(0.5f, 0.5f, -1);
         }
     }
 }

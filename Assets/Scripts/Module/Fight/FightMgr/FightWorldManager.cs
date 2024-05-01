@@ -25,6 +25,7 @@ public class FightWorldManager
     public FightUnitBase Current { get => current;}
     public List<Hero> heros; // 正在战斗中的英雄集合
     public List<Enemy> enemys; // 正在战斗中的敌人集合
+    public List<Massif> massifs; // 正处在战斗中的地形集合
     public int RoundCount; // 回合数目
     public bool IsHerosReady = false; // 英雄是否选择好
 
@@ -32,6 +33,7 @@ public class FightWorldManager
     {
         heros = new List<Hero>();
         enemys = new List<Enemy>();
+        massifs = new List<Massif>();
         ChangeState(GameState.Idle);
     }
 
@@ -88,6 +90,14 @@ public class FightWorldManager
             GameApp.MapManager.ChangeBlockType(enemy.RowIndex, enemy.ColIndex, BlockType.Obstacle);
             enemys.Add(enemy);
         }
+        // 把场景中的地形脚本进行存储
+        objs = GameObject.FindGameObjectsWithTag("Massif"); // 给地形添加了"Massif"标签
+        for (int i = 0; i < objs.Length; i++)
+        {
+            Massif massif = objs[i].GetComponent<Massif>();
+            // 当前方块被占用了把方块类型改为障碍物
+            GameApp.MapManager.ChangeBlockType(massif.RowIndex, massif.ColIndex, BlockType.Obstacle);
+        }
         // test
         // Debug.Log("enemy:" + objs.Length);
     }
@@ -114,6 +124,25 @@ public class FightWorldManager
         {
             ChangeState(GameState.GameOver);
         }
+    }
+
+    // 创建(添加)英雄
+    public void AddMassif(Block b, Dictionary<string, string> data)
+    {
+        GameObject obj = UnityEngine.Object.Instantiate(Resources.Load($"Model/{data["Model"]}")) as GameObject;
+        obj.transform.position = new Vector3(b.transform.position.x, b.transform.position.y, -1);
+        Massif massif = obj.AddComponent<Massif>();
+        massif.Init(data, b.RowIndex, b.ColIndex);
+        // 这个位置有方块了 改变方块的类型为障碍物
+        b.Type = BlockType.Obstacle;
+        massifs.Add(massif);
+    }
+
+    // 移除地形
+    public void RemoveMessif(Massif massif)
+    {
+        massifs.Remove(massif);
+        GameApp.MapManager.ChangeBlockType(massif.RowIndex, massif.ColIndex, BlockType.Null); // 被破坏后不需要占用格子
     }
 
     // 重置英雄行动
@@ -169,11 +198,13 @@ public class FightWorldManager
         }
     }
 
+    // 游戏重开
     public void ReLoadRes()
     {
         RoundCount = 0;
         enemys.Clear();
         heros.Clear();
+        massifs.Clear();
         GameApp.MapManager.Clear();
         IsHerosReady = false;
     }

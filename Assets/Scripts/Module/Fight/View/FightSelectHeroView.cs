@@ -51,4 +51,14 @@ public class FightSelectHeroView : BaseView
             item.Init(data);
         }
     }
+
+    public override void Close(params object[] args)
+    {
+        HeroItem[] heros = Object.FindObjectsOfType<HeroItem>();
+        for (int i = 0;i < heros.Length;i++)
+        {
+            Destroy(heros[i].gameObject);
+        }
+        base.Close(args);
+    }
 }

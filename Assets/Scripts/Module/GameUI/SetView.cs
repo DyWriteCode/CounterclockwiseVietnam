@@ -20,20 +20,9 @@ public class SetView : BaseView
     public override void Open(params object[] args)
     {
         base.Open(args);
-        // 初始值设定
-        SetArchive archive = GameApp.ArchiveManager.LoadArchive<SetArchive>("SetArchive");
-        if (archive.IsRight != false ) 
-        {
-            Find<Toggle>("bg/IsOpnSound").isOn = archive.IsStop;
-            Find<Slider>("bg/soundCount").value = archive.BgmVolume;
-            Find<Slider>("bg/effectCount").value = archive.EffectVolume;
-        }
-        else
-        {
-            Find<Toggle>("bg/IsOpnSound").isOn = GameApp.SoundManager.IsStop;
-            Find<Slider>("bg/soundCount").value = GameApp.SoundManager.BgmVolume;
-            Find<Slider>("bg/effectCount").value = GameApp.SoundManager.EffectVolume;
-        }
+        Find<Toggle>("bg/IsOpnSound").isOn = GameApp.SoundManager.IsStop;
+        Find<Slider>("bg/soundCount").value = GameApp.SoundManager.BgmVolume;
+        Find<Slider>("bg/effectCount").value = GameApp.SoundManager.EffectVolume;
     }
 
     // 关闭设置面板按钮
@@ -58,16 +47,5 @@ public class SetView : BaseView
     private void onSliderSoundEffectBtn(float val)
     {
         GameApp.SoundManager.EffectVolume = val;
-    }
-
-    public override void Close(params object[] args)
-    {
-        StartCoroutine(GameApp.ArchiveManager.SaveArchive(new SetArchive
-        {
-            IsStop = GameApp.SoundManager.IsStop,
-            BgmVolume = GameApp.SoundManager.BgmVolume,
-            EffectVolume = GameApp.SoundManager.EffectVolume
-        }, "SetArchive"));
-        base.Close(args);
     }
 }

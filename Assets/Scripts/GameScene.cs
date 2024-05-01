@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// 继承MonoBehaviour的脚本,需要挂载物体,跳转脚本后当前脚本不删除
@@ -20,6 +21,11 @@ public class GameScenes : MonoBehaviour
         else
         {
             isLoaded = true;
+            // 手动创建事件系统
+            GameObject eventSystem = new GameObject("EventSystem");
+            eventSystem.AddComponent<EventSystem>();
+            eventSystem.AddComponent<StandaloneInputModule>();
+            eventSystem.transform.SetParent(transform);
             DontDestroyOnLoad(gameObject);
             GameApp.Instance.Init();
         }
