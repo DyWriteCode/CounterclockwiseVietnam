@@ -1,0 +1,19 @@
+﻿syntax ="proto3";
+package ProtoMsg;
+import "RootPB.proto";
+
+message BattleUserInputC2S{
+	int32 RolesID=1;//角色ID
+	int32 RoomID=2;//房间ID
+	int32 key=3;//键码
+	V3Info MousePosition=4;//鼠标位置
+	string LockTag=5;//锁定的标签
+	int32 LockID=6;//锁定的ID
+
+}
+
+message BattleUserInputS2C{
+	BattleUserInputC2S CMD=1;//用户的输入
+
+}
+

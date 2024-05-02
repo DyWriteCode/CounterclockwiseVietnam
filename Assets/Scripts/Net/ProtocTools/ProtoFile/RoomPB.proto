@@ -1,0 +1,88 @@
+﻿syntax ="proto3";
+package ProtoMsg;
+import "RootPB.proto";
+
+message RoomSelectHeroC2S{
+	int32 HeroID=1;//英雄ID
+
+}
+
+message RoomSelectHeroS2C{
+	int32 RolesID=1;//选择英雄的角色
+	int32 HeroID=2;//英雄ID
+
+}
+
+message RoomSelectHeroSkillC2S{
+	int32 SkillID=1;//技能ID
+	int32 GridID=2;//格子ID
+
+}
+
+message RoomSelectHeroSkillS2C{
+	int32 RolesID=1;//选择英雄的角色
+	int32 GridID=2;//格子ID
+	int32 SkillID=3;//技能ID
+
+}
+
+message RoomCreateC2S{
+
+}
+
+message RoomCreateS2C{
+	RoomInfo RoomInfo=1;//房间信息
+
+}
+
+message RoomCloseC2S{
+
+}
+
+message RoomCloseS2C{
+
+}
+
+message RoomSendMsgC2S{
+	string Text=1;//要发送的内容
+
+}
+
+message RoomSendMsgS2C{
+	int32 RolesID=1;//发送的角色
+	string Text=2;//要发送的内容
+
+}
+
+message RoomLockHeroC2S{
+	int32 HeroID=1;//英雄ID
+
+}
+
+message RoomLockHeroS2C{
+	int32 RolesID=1;//发送的角色
+	int32 HeroID=2;//英雄ID
+
+}
+
+message RoomLoadProgressC2S{
+	int32 LoadProgress=1;//当前的加载进度
+
+}
+
+message RoomLoadProgressS2C{
+	bool IsBattleStart=1;//是否开始战斗
+	repeated int32 RolesID=2;//全部角色,0-4索引表示A队伍 5-9的索引表示B队伍
+	repeated int32 LoadProgress=3;//全部角色当前的加载进度
+
+}
+
+message RoomToBattleC2S{
+
+}
+
+message RoomToBattleS2C{
+	repeated PlayerInfo PlayerList=1;//玩家列表
+
+}
+

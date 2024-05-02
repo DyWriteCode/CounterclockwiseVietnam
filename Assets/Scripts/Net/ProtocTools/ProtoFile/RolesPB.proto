@@ -1,0 +1,15 @@
+﻿syntax ="proto3";
+package ProtoMsg;
+import "RootPB.proto";
+
+message RolesCreateC2S{
+	string NickName=1;//昵称
+
+}
+
+message RolesCreateS2C{
+	int32 Result=1;//结果:0创建成功 1角色已存在
+	RolesInfo RolesInfo=2;//角色信息 结果为0时返回
+
+}
+

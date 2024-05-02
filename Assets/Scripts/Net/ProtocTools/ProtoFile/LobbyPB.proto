@@ -1,0 +1,32 @@
+﻿syntax ="proto3";
+package ProtoMsg;
+import "RootPB.proto";
+
+message LobbyToMatchC2S{
+
+}
+
+message LobbyToMatchS2C{
+	int32 Result=1;//结果:0进入匹配成功
+
+}
+
+message LobbyUpdateMatchStateC2S{
+
+}
+
+message LobbyUpdateMatchStateS2C{
+	int32 Result=1;//结果:0匹配成功,就可以进入到房间模块
+	RoomInfo RoomInfo=2;//房间信息
+
+}
+
+message LobbyQuitMatchC2S{
+
+}
+
+message LobbyQuitMatchS2C{
+	int32 Result=1;//结果:0成功
+
+}
+

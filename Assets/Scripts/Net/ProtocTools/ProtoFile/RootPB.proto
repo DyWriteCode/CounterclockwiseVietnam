@@ -1,0 +1,75 @@
+﻿syntax ="proto3";
+package ProtoMsg;
+
+message UserInfo{
+	int32 ID=1;//用户ID,服务器自动生成,用户注册成功后返回给客户端
+	string Account=2;//帐号
+	string Password=3;//密码
+
+}
+
+message RolesInfo{
+	int32 ID=1;//用户ID-与账号一样
+	int32 RolesID=2;//角色ID（自动生成）
+	string NickName=3;//昵称
+	int32 Level=4;//等级
+	int32 State=5;//状态：0休闲 1游戏中 2离线
+	int32 VictoryPoint=6;//胜点:用于推算段位
+	int32 GoldCoin=7;//金币数量
+	int32 Diamonds=8;//钻石数量
+	int32 RoomID=9;//当前所在的房间ID,战斗时候掉线,重连时候用
+	int32 SeatID=10;//房间中的位置ID
+
+}
+
+message RoomInfo{
+	int32 ID=1;//房间ID
+	repeated RolesInfo TeamA=2;//队伍1 (0-4)
+	repeated RolesInfo TeamB=3;//队伍2 (5-9)
+	int64 StartTime=4;//开始的时间
+
+}
+
+message PlayerInfo{
+	RolesInfo RolesInfo=1;//玩家的角色信息
+	int32 SkillA=2;//玩家的技能A 默认是103 点燃
+	int32 SkillB=3;//玩家的技能B 默认是106 闪现
+	int32 HeroID=4;//选择的英雄ID
+	int32 TeamID=5;//队伍ID 0表示队伍A 1表示队伍B
+	int32 PosID=6;//位置
+
+}
+
+message V3Info{
+	int32 X=1;//x轴
+	int32 Y=2;//y轴
+	int32 Z=3;//z轴
+
+}
+
+message BattleFrameInfo{
+	int32 UserID=1;//用户ID
+	repeated MoveInfo PlayerMove=2;//用户输入-移动
+	repeated SkillInfo ReleaseSkills=3;//用户输入-释放技能
+	repeated BuyEquipmentInfo BuyEquipmentMSG=4;//用户输入-购买装备
+
+}
+
+message MoveInfo{
+	V3Info Position=1;//目标位置
+
+}
+
+message SkillInfo{
+	int32 SkillID=1;//技能ID
+	V3Info Position=2;//释放位置
+	V3Info Rotation=3;//释放朝向
+	int32 LockID=4;//锁定的目标ID
+
+}
+
+message BuyEquipmentInfo{
+	int32 EquipmentID=1;//装备ID
+
+}
+
