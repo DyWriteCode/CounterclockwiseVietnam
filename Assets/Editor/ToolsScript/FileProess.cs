@@ -5,54 +5,58 @@ using UnityEditor;
 using Excel;
 using System.Data;
 using System.IO;
-
-public class FileProess
+using UnityEngine.UI;
+public static class MyEditor
 {
-    public static string ExcelPath = $"{Application.dataPath}/_Excel";
-    public static string CSVPath = $"{Application.dataPath}/Resources/Data";
-
-    [MenuItem("Tools/ExcelToCsv")]
-    public static void FileProessFunc()
+    [MenuItem("Tools/ExcelToCSV")]
+    public static void ExportExcelToTxt()
     {
-        ExportExcelToTxt(ExcelPath, CSVPath);
-        Debug.Log($"ExcelPath : {ExcelPath}");
-        Debug.Log($"CSVPath : {CSVPath}");
-    }
-
-    public static void ExportExcelToTxt(string excelPath, string csvPath)
-    {
+        string gamePath = Application.dataPath;
+        string excelPath = gamePath + "/_Excel";
+        Debug.Log(excelPath);
         if (!Directory.Exists(excelPath))
         {
             Directory.CreateDirectory(excelPath);
             return;
         }
+
         string[] files = Directory.GetFiles(excelPath, "*.xlsx");
+
         for (int i = 0; i < files.Length; i++)
         {
             files[i] = files[i].Replace('\\', '/');
+
             using (FileStream fs = File.Open(files[i], FileMode.Open, FileAccess.Read))
             {
                 var excelDataReader = ExcelReaderFactory.CreateOpenXmlReader(fs);
+
                 DataSet dataSet = excelDataReader.AsDataSet();
+
                 if (dataSet == null)
                 {
                     continue;
                 }
+
                 DataTable table = dataSet.Tables[0];
-                readTableToTxt(files[i], csvPath, table);
+
+                readTableToTxt(files[i], "Resources/Data", table);
             }
         }
+
         AssetDatabase.Refresh();
     }
 
     private static void readTableToTxt(string filePath, string outPathStr, DataTable table)
     {
         string fileName = Path.GetFileNameWithoutExtension(filePath);
-        string path = filePath + "/" + fileName + ".txt";
+
+        string path = Application.dataPath + "/" + outPathStr + "/" + fileName + ".txt";
+
         if (File.Exists(path))
         {
             File.Delete(path);
         }
+
         using (FileStream fs = new FileStream(path, FileMode.Create))
         {
             using (StreamWriter sw = new StreamWriter(fs))
@@ -60,10 +64,12 @@ public class FileProess
                 for (int row = 0; row < table.Rows.Count; row++)
                 {
                     DataRow dataRow = table.Rows[row];
+
                     string str = "";
                     for (int col = 0; col < table.Columns.Count; col++)
                     {
                         string val = dataRow[col].ToString();
+
                         if (col != table.Columns.Count - 1)
                         {
                             str = str + val + ",";
@@ -73,7 +79,9 @@ public class FileProess
                             str = str + val;
                         }
                     }
+
                     sw.Write(str);
+
                     if (row != table.Rows.Count - 1)
                     {
                         sw.WriteLine();

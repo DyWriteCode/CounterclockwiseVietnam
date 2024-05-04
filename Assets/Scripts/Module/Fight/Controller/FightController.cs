@@ -50,6 +50,12 @@ public class FightController : BaseController
             controller = this,
             parentTf = GameApp.ViewManager.canvasTf,
             Sorting_Order = 2,
+        }); GameApp.ViewManager.Reister(ViewType.MassifDesView, new ViewInfo()
+        {
+            PrefabName = "MassifDesView",
+            controller = this,
+            parentTf = GameApp.ViewManager.canvasTf,
+            Sorting_Order = 2,
         });
         GameApp.ViewManager.Reister(ViewType.SelectOptionView, new ViewInfo()
         {

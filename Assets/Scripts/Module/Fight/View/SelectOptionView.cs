@@ -34,7 +34,7 @@ public class SelectOptionView : BaseView
     {
         // 需要传入两个参数 一个是英雄的event字符串 对应的ID 需要切割
         // 另外一个是角色位置
-        // Event 1001-1002-1005
+        // Event 1001-1002-1009-1005
         string[] evtArr = args[0].ToString().Split("-");
         Find("bg/grid").transform.position = (Vector2)args[1];
         foreach (var item in opItems) 

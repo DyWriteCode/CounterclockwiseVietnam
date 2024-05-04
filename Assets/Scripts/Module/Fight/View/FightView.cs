@@ -24,5 +24,7 @@ public class FightView : BaseView
     {
         // 更新回合数
         roundTxt.text = $"第 {GameApp.FightManager.RoundCount} 回合";
+        // 重新金币
+        moneyTxt.text = GameApp.ConfigManager.GetConfigData("role").GetDataById(10001)["Money"];
     }
 }

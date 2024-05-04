@@ -16,7 +16,7 @@ public class Massif : ModelBase, ISkill
     {
         base.Start();
         hpSlider = transform.Find("hp/bg").GetComponent<Slider>();
-        data = GameApp.ConfigManager.GetConfigData("enemy").GetDataById(Id);
+        data = GameApp.ConfigManager.GetConfigData("massif").GetDataById(Id);
         Type = int.Parse(this.data["Type"]);
         Attack = int.Parse(this.data["Attack"]);
         Step = int.Parse(this.data["Step"]);
@@ -82,7 +82,7 @@ public class Massif : ModelBase, ISkill
             CurHp = 0;
             PlayAni("die");
             Destroy(gameObject, 1.2f);
-            // 从敌人集合中移除
+            // 从地形集合中移除
             GameApp.FightManager.RemoveMessif(this);
         }
         StopAllCoroutines();

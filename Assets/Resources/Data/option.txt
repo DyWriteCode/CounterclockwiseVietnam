@@ -4,3 +4,4 @@ Id,事件名称,事件
 1002,待机,OnIdleEvent
 1005,取消,OnCancelEvent
 1007,撤销,OnRemoveHeroToSceneEvent
+1009,拾取,OnPickUpItemEvent
