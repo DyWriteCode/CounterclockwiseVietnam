@@ -7,5 +7,6 @@ using UnityEngine;
 /// </summary>
 public class HelperManager
 {
-    public TimeHelper TimeHelper = new TimeHelper();
+    public TimeHelper TimeHelper = new();
+    public JsonHelper JsonHelper = new();
 }

@@ -8,10 +8,11 @@ using System.IO;
 
 public class FileProess
 {
-    public string ExcelPath = $"{Application.dataPath}/_Excel";
-    public string CSVPath = $"{Application.dataPath}/Resources/Data";
+    public static string ExcelPath = $"{Application.dataPath}/_Excel";
+    public static string CSVPath = $"{Application.dataPath}/Resources/Data";
 
-    public void FileProessFunc()
+    [MenuItem("Tools/ExcelToCsv")]
+    public static void FileProessFunc()
     {
         ExportExcelToTxt(ExcelPath, CSVPath);
         Debug.Log($"ExcelPath : {ExcelPath}");
