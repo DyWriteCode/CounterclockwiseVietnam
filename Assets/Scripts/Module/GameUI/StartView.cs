@@ -48,8 +48,9 @@ public class StartView : BaseView
                 {
                     IsStop = GameApp.SoundManager.IsStop,
                     BgmVolume = GameApp.SoundManager.BgmVolume,
-                    EffectVolume = GameApp.SoundManager.EffectVolume
-                }, "SetArchive"));
+                    EffectVolume = GameApp.SoundManager.EffectVolume,
+                    IsDebug = GameApp.DebugManager.IsDebug
+                }, "SetArchive")); 
                 GameApp.TimerManager.Register(0.2f, delegate ()
                 {
                     Application.Quit(); // 退出游戏
@@ -75,6 +76,7 @@ public class StartView : BaseView
             GameApp.SoundManager.IsStop = archive.IsStop;
             GameApp.SoundManager.BgmVolume = archive.BgmVolume;
             GameApp.SoundManager.EffectVolume = archive.EffectVolume;
+            GameApp.DebugManager.IsDebug = archive.IsDebug;
         }
     }
 }

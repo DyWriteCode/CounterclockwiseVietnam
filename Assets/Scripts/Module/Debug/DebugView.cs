@@ -19,7 +19,7 @@ class DebugView : MonoBehaviour
     public int maxLogs = 1000; // 最大保留日志数量
     readonly List<Log> logs = new List<Log>();
     private Vector2 scrollPosition;
-    private bool visible;
+    private bool visible = false;
     private bool collapse;
     // 视觉元素
     static readonly Dictionary<LogType, Color> logTypeColors = new Dictionary<LogType, Color>
@@ -35,7 +35,7 @@ class DebugView : MonoBehaviour
     readonly GUIContent clearLabel = new GUIContent("Clear", "Clear the contents of the console.");
     readonly GUIContent collapseLabel = new GUIContent("Collapse", "Hide repeated messages.");
     readonly Rect titleBarRect = new Rect(0, 0, 10000, 20);
-    Rect windowRect = new Rect(margin, margin, Screen.width - (margin * 2), Screen.height - (margin * 2));
+    Rect windowRect = new Rect(margin, margin, (Screen.width - (margin * 2)) * 0.75f, (Screen.height - (margin * 2)) * 0.75f);
 
     void OnEnable()
     {
@@ -57,6 +57,10 @@ class DebugView : MonoBehaviour
 
     void OnGUI()
     {
+        if (GameApp.DebugManager.IsDebug != true)
+        {
+            return;
+        }
         if (!visible)
         {
             return;

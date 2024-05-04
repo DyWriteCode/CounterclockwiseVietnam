@@ -13,6 +13,7 @@ public class SetView : BaseView
         base.OnAwake();
         Find<Button>("bg/closeBtn").onClick.AddListener(onCloseBtn);
         Find<Toggle>("bg/IsOpnSound").onValueChanged.AddListener(onIsStopBtn);
+        Find<Toggle>("bg/IsDebug").onValueChanged.AddListener(onIsDebug);
         Find<Slider>("bg/soundCount").onValueChanged.AddListener(onSliderBgmBtn);
         Find<Slider>("bg/effectCount").onValueChanged.AddListener(onSliderSoundEffectBtn);
     }
@@ -21,8 +22,15 @@ public class SetView : BaseView
     {
         base.Open(args);
         Find<Toggle>("bg/IsOpnSound").isOn = GameApp.SoundManager.IsStop;
+        Find<Toggle>("bg/IsDebug").isOn = GameApp.DebugManager.IsDebug;
         Find<Slider>("bg/soundCount").value = GameApp.SoundManager.BgmVolume;
         Find<Slider>("bg/effectCount").value = GameApp.SoundManager.EffectVolume;
+    }
+
+    // 设置是否调试游戏
+    private void onIsDebug(bool isDebug)
+    {
+        GameApp.DebugManager.IsDebug = isDebug;
     }
 
     // 关闭设置面板按钮

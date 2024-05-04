@@ -8,7 +8,8 @@ using UnityEngine;
 [System.Serializable]
 public class SetArchive : ArchiveData
 {
-   public bool IsStop;
-   public float BgmVolume;
-   public float EffectVolume;
+    public bool IsStop;
+    public float BgmVolume;
+    public float EffectVolume;
+    public bool IsDebug;
 }

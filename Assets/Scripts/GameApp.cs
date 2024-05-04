@@ -23,6 +23,7 @@ public class GameApp : Singleton<GameApp>
     public static HelperManager HelperManager; // 帮助器管理器定义
     public static ArchiveManager ArchiveManager; // 存档管理器定义
     public static DialogueManager DialogueManager; // 剧情对话管理器定义
+    public static DebugManager DebugManager; // Debug管理器定义
 
     // 初始化所有管理器
     public override void Init()
@@ -43,6 +44,7 @@ public class GameApp : Singleton<GameApp>
         HelperManager = new HelperManager();
         ArchiveManager = new ArchiveManager();
         DialogueManager = new DialogueManager();
+        DebugManager = new DebugManager();
     }
 
     public override void Update(float dt)

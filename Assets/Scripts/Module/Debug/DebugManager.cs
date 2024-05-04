@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 游戏调试管理器
 /// </summary>
-class DebugManager : MonoBehaviour
+public class DebugManager
 {
-    
+    public bool IsDebug = true;
 }
