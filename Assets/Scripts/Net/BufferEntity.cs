@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 
-namespace Game.Net {
-
+/// <summary>
+/// 报文数据结构
+/// </summary>
     public class BufferEntity
     {
         public int recurCount = 0;//重发次数 工程内部使用到 并非业务数据
@@ -154,5 +155,3 @@ namespace Game.Net {
         }
 
     }
-
-}

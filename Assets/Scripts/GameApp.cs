@@ -24,6 +24,7 @@ public class GameApp : Singleton<GameApp>
     public static ArchiveManager ArchiveManager; // 存档管理器定义
     public static DialogueManager DialogueManager; // 剧情对话管理器定义
     public static DebugManager DebugManager; // Debug管理器定义
+    public static NetManager NetManager; // 网络管理器定义
 
     // 初始化所有管理器
     public override void Init()
@@ -45,6 +46,7 @@ public class GameApp : Singleton<GameApp>
         ArchiveManager = new ArchiveManager();
         DialogueManager = new DialogueManager();
         DebugManager = new DebugManager();
+        NetManager = new NetManager();
     }
 
     public override void Update(float dt)
@@ -54,5 +56,6 @@ public class GameApp : Singleton<GameApp>
         UserInputManager.Update();
         CommandManager.Update(dt);
         SkillManager.Update(dt);
+        NetManager.Update(dt);
     }
 }

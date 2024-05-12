@@ -7,10 +7,10 @@ using System.Net.Sockets;
 using UnityEngine;
 
 
-namespace Game.Net
-{
-    //USocket 提供Socket发送的接口 以及 Socket接收的业务
-    public class USocket
+/// <summary>
+/// USocket 提供Socket发送的接口 以及 Socket接收的业务
+/// </summary>
+public class USocket
     {
         UdpClient udpClient;
 
@@ -111,4 +111,3 @@ namespace Game.Net
            
         }
     }
-}

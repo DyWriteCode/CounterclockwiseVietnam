@@ -30,4 +30,5 @@ public static class Defines
     public static readonly string OnCancelEvent = "OnCancelEvent";
     public static readonly string OnRemoveHeroToSceneEvent = "OnOnRemoveHeroToSceneEvent";
     public static readonly string OnPickUpItemEvent = "OnPickUpItemEvent";
+    public static readonly string OnInteractEvent = "OnInteractEvent";
 }

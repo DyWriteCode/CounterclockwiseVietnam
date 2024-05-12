@@ -6,10 +6,10 @@ using System.Net;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Game.Net
-{
-    //网络客户端代理
-    public class UClient
+/// <summary>
+/// 网络客户端代理
+/// </summary>
+public class UClient
     {
         public IPEndPoint endPoint;
         USocket uSocket;//内部封装了发送的接口
@@ -164,7 +164,3 @@ namespace Game.Net
         }
 
     }
-
-    
-
-}

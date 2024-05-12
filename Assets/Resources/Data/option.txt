@@ -5,3 +5,4 @@ Id,事件名称,事件
 1005,取消,OnCancelEvent
 1007,撤销,OnRemoveHeroToSceneEvent
 1009,拾取,OnPickUpItemEvent
+1011,交互,OnInteractEvent

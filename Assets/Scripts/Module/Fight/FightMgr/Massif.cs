@@ -59,11 +59,13 @@ public class Massif : ModelBase, ISkill
             return;
         }
         base.OnSelectCallback(args);
+        GameApp.ViewManager.Open(ViewType.MassifDesView, this);
     }
 
     protected override void OnUnSelectCallback(object args)
     {
         base.OnUnSelectCallback(args);
+        GameApp.ViewManager.Close((int)ViewType.MassifDesView);
     }
 
     public override void GetHit(ISkill skill)

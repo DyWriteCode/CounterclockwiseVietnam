@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// 地块信息面板
 /// </summary>
-public class MassifView : BaseView
+public class MassifDesView : BaseView
 {
     public override void Open(params object[] args)
     {

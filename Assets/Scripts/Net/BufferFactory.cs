@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Net
-{
-    public class BufferFactory 
+/// <summary>
+/// 报文工厂
+/// </summary>
+public class BufferFactory 
     {
         enum MessageType
         {
@@ -31,5 +32,4 @@ namespace Game.Net
         }
 
     }
-}
 

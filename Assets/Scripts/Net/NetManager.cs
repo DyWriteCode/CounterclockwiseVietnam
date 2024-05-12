@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NetManager : MonoBehaviour
+/// <summary>
+/// 网络管理器
+/// </summary>
+public class NetManager
 {
-    // Start is called before the first frame update
-    void Start()
+    // 创建一个工厂实例
+    public BufferFactory bufferFactory;
+
+    public NetManager()
     {
-        
+        bufferFactory = new BufferFactory();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update(float dt)
     {
         
     }

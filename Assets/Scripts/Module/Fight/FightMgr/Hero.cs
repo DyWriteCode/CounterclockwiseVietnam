@@ -63,7 +63,9 @@ public class Hero : ModelBase, ISkill
     {
         GameApp.MsgCenter.AddTempEvent(Defines.OnAttackEvent, OnAttackCallBack);
         GameApp.MsgCenter.AddTempEvent(Defines.OnIdleEvent, OnIdleCallBack);
+        GameApp.MsgCenter.AddTempEvent(Defines.OnPickUpItemEvent, OnPickUpItemCallback);
         GameApp.MsgCenter.AddTempEvent(Defines.OnCancelEvent, OnCancelCallBack);
+        GameApp.MsgCenter.AddTempEvent(Defines.OnInteractEvent, OnInteractCallback);
     }
 
     // 取消 移动
@@ -85,6 +87,18 @@ public class Hero : ModelBase, ISkill
     {
         // Debug.Log("Attack");
         GameApp.CommandManager.AddCommand(new ShowSkillAreaCommand(this));
+    }
+
+    // 拾取物品状态
+    private void OnPickUpItemCallback(System.Object args)
+    {
+        
+    }
+
+    // 与物品交互状态
+    private void OnInteractCallback(System.Object args)
+    {
+
     }
 
     // 没有被选中回调函数

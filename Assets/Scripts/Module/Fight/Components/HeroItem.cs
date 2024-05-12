@@ -49,7 +49,6 @@ public class HeroItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         });
     }
 
-
     public void OnDrag(PointerEventData eventData)
     {
         
