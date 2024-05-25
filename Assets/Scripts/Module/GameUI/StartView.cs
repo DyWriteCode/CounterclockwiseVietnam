@@ -44,12 +44,15 @@ public class StartView : BaseView
         {
             okCallback = delegate ()
             {
+                int keyid = Random.Range(0, 99);
+                string key = AESKey.AESKEYS[keyid];
                 StartCoroutine(GameApp.ArchiveManager.SaveArchive(new SetArchive
                 {
-                    IsStop = GameApp.SoundManager.IsStop,
-                    BgmVolume = GameApp.SoundManager.BgmVolume,
-                    EffectVolume = GameApp.SoundManager.EffectVolume,
-                    IsDebug = GameApp.DebugManager.IsDebug
+                    IsStop = GameApp.ArchiveManager.DataToArchive(key, GameApp.SoundManager.IsStop),
+                    BgmVolume = GameApp.ArchiveManager.DataToArchive(key, GameApp.SoundManager.BgmVolume),
+                    EffectVolume = GameApp.ArchiveManager.DataToArchive(key, GameApp.SoundManager.EffectVolume),
+                    IsDebug = GameApp.ArchiveManager.DataToArchive(key, GameApp.DebugManager.IsDebug),
+                    KeyId = keyid,
                 }, "SetArchive")); 
                 GameApp.TimerManager.Register(0.2f, delegate ()
                 {
@@ -73,10 +76,10 @@ public class StartView : BaseView
         SetArchive archive = GameApp.ArchiveManager.LoadArchive<SetArchive>("SetArchive");
         if (archive.IsRight != false)
         {
-            GameApp.SoundManager.IsStop = archive.IsStop;
-            GameApp.SoundManager.BgmVolume = archive.BgmVolume;
-            GameApp.SoundManager.EffectVolume = archive.EffectVolume;
-            GameApp.DebugManager.IsDebug = archive.IsDebug;
+            GameApp.SoundManager.IsStop = (bool)GameApp.ArchiveManager.ArchiveToData(AESKey.AESKEYS[archive.KeyId], archive.IsStop);
+            GameApp.SoundManager.BgmVolume = (float)GameApp.ArchiveManager.ArchiveToData(AESKey.AESKEYS[archive.KeyId], archive.BgmVolume);
+            GameApp.SoundManager.EffectVolume = (float)GameApp.ArchiveManager.ArchiveToData(AESKey.AESKEYS[archive.KeyId], archive.EffectVolume);
+            GameApp.DebugManager.IsDebug = (bool)GameApp.ArchiveManager.ArchiveToData(AESKey.AESKEYS[archive.KeyId], archive.IsDebug);
         }
     }
 }

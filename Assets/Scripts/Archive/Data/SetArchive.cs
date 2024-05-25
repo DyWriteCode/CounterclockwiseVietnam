@@ -8,8 +8,9 @@ using UnityEngine;
 [System.Serializable]
 public class SetArchive : ArchiveData
 {
-    public bool IsStop;
-    public float BgmVolume;
-    public float EffectVolume;
-    public bool IsDebug;
+    // 存档内容以这样的方式存 {"Type", AES("Value")}
+    public Dictionary<string, string> IsStop; // 是否静音 bool
+    public Dictionary<string, string> BgmVolume; // Bgm音量 float
+    public Dictionary<string, string> EffectVolume; // Effect音量 float
+    public Dictionary<string, string> IsDebug; // 是否debug bool
 }

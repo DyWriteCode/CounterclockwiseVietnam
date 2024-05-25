@@ -74,9 +74,61 @@ public class ArchiveManager
         }
     }
 
+    // 游戏存档的内容加密
+    public Dictionary<string, string> DataToArchive(string key, System.Object value)
+    {
+        Dictionary<string, string> result = new Dictionary<string, string>();
+        if (value.GetType() == typeof(string))
+        {
+            result["string"] = _AES.EncryptString(key, value as string);
+        }
+        else if (value.GetType() == typeof(int))
+        {
+            result["int"] = _AES.EncryptString(key, value as string);
+        }
+        else if (value.GetType() == typeof(float))
+        {
+            result["float"] = _AES.EncryptString(key, value as string);
+        }
+        else if (value.GetType() == typeof(bool))
+        {
+            result["bool"] = _AES.EncryptString(key, value as string);
+        }
+        return result;
+    }
+
+    // 游戏存档的内容解密
+    public System.Object ArchiveToData(string key, Dictionary<string, string> value)
+    {
+        try
+        {
+            if (value.ContainsKey("string"))
+            {
+                return _AES.DecryptString(key, value["string"]);
+            }
+            if (value.ContainsKey("int"))
+            {
+                return int.Parse(_AES.DecryptString(key, value["int"]));
+            }
+            if (value.ContainsKey("float"))
+            {
+                return int.Parse(_AES.DecryptString(key, value["float"]));
+            }
+            if (value.ContainsKey("bool"))
+            {
+                return _AES.DecryptString(key, value["bool"]) == "True";
+            }
+        }
+        catch
+        {
+
+        }
+        return null;
+    }
+
     public ArchiveManager()
     {
-        // 保存AESKEY
+        // 保存AESKEY 由于建立了一个密钥库 废弃的这种方式
         PlayerPrefs.SetString("AESKEY", "a3a2f89bdad3d49ba6f260221b2e717b");
         // test
         //SaveArchive(new TestAchive

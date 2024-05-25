@@ -29,6 +29,7 @@ public static class Defines
     public static readonly string OnIdleEvent = "OnIdleEvent";
     public static readonly string OnCancelEvent = "OnCancelEvent";
     public static readonly string OnRemoveHeroToSceneEvent = "OnOnRemoveHeroToSceneEvent";
-    public static readonly string OnPickUpItemEvent = "OnPickUpItemEvent";
+    // 与OnInteractEvent这个事件合并了
+    // public static readonly string OnPickUpItemEvent = "OnPickUpItemEvent";
     public static readonly string OnInteractEvent = "OnInteractEvent";
 }
