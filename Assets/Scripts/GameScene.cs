@@ -77,6 +77,8 @@ public class GameScenes : MonoBehaviour
         GameApp.ConfigManager.Register("dialogue", new ConfigData("dialogue"));
         GameApp.ConfigManager.Register("massif", new ConfigData("massif"));
         GameApp.ConfigManager.Register("role", new ConfigData("role"));
+        GameApp.ConfigManager.Register("pitfall", new ConfigData("pitfall"));
+        GameApp.ConfigManager.Register("supplies", new ConfigData("supplies"));
     }
     
     void Update()
