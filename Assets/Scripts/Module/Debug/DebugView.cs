@@ -14,7 +14,7 @@ class DebugView : MonoBehaviour
         public string stackTrace;
         public LogType type;
     }
-    public KeyCode toggleKey = KeyCode.Space; // 规定进入调试模式的按键
+    public KeyCode toggleKey = KeyCode.Tab; // 规定进入调试模式的按键
     public bool restrictLogCount = false; // 是否只保留一定数量的日志
     public int maxLogs = 1000; // 最大保留日志数量
     readonly List<Log> logs = new List<Log>();
@@ -49,6 +49,10 @@ class DebugView : MonoBehaviour
 
     void Update()
     {
+        if (GameApp.DebugManager.IsDebug != true)
+        {
+            return;
+        }
         if (Input.GetKeyDown(toggleKey))
         {
             visible = !visible;
@@ -100,7 +104,7 @@ class DebugView : MonoBehaviour
                 fontStyle = FontStyle.Bold,
             };
             style.normal.textColor = logTypeColors[log.type];
-            GUILayout.Label($"[log]{log.message}", style);
+            GUILayout.Label($"[{log.type}]{log.message}", style);
         }
         GUILayout.EndScrollView();
         // 在绘制其他组件之前 确保 GUI 颜色已重置

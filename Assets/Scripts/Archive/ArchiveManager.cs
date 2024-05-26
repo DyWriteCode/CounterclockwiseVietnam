@@ -1,11 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 /// <summary>
 /// 存档系统管理类
+/// 只完成了基本几种数据类型的加密与存储
+/// 1 如果是直接存放游戏对象的话呢 它的列表以及字典就不需要进行加密
+/// 2 如果是嵌套的字典 只需加密嵌套那一部分外部字典不需要加密
+/// 3 如果是嵌套的列表 最外层列表不需加密，只需加密最内层列表
 /// </summary>
 public class ArchiveManager
 {
@@ -80,19 +86,39 @@ public class ArchiveManager
         Dictionary<string, string> result = new Dictionary<string, string>();
         if (value.GetType() == typeof(string))
         {
-            result["string"] = _AES.EncryptString(key, value as string);
+            result["string"] = _AES.EncryptString(key, value.ToString());
         }
         else if (value.GetType() == typeof(int))
         {
-            result["int"] = _AES.EncryptString(key, value as string);
+            result["int"] = _AES.EncryptString(key, value.ToString());
         }
         else if (value.GetType() == typeof(float))
         {
-            result["float"] = _AES.EncryptString(key, value as string);
+            result["float"] = _AES.EncryptString(key, value.ToString());
         }
         else if (value.GetType() == typeof(bool))
         {
-            result["bool"] = _AES.EncryptString(key, value as string);
+            result["bool"] = _AES.EncryptString(key, value.ToString());
+        }
+        else if (value.GetType() == typeof(List<string>))
+        {
+            string data = "";
+            for (int i = 0;i < (value as List<string>).Count; i++)
+            {
+                data += _AES.EncryptString(key, (value as List<string>)[i]);
+                data += ";";
+            }
+            result["list"] = _AES.EncryptString(key, data);
+        }
+        else if (value.GetType() == typeof(Dictionary<string, string>))
+        {
+            string data = "";
+            foreach (var item in (value as Dictionary<string, string>))
+            {
+                data += _AES.EncryptString(key, item.Key + "-" + item.Value);
+                data += ";";
+            }
+            result["dict"] = _AES.EncryptString(key, data);
         }
         return result;
     }
@@ -100,28 +126,42 @@ public class ArchiveManager
     // 游戏存档的内容解密
     public System.Object ArchiveToData(string key, Dictionary<string, string> value)
     {
-        try
+        if (value.ContainsKey("string"))
         {
-            if (value.ContainsKey("string"))
-            {
-                return _AES.DecryptString(key, value["string"]);
-            }
-            if (value.ContainsKey("int"))
-            {
-                return int.Parse(_AES.DecryptString(key, value["int"]));
-            }
-            if (value.ContainsKey("float"))
-            {
-                return int.Parse(_AES.DecryptString(key, value["float"]));
-            }
-            if (value.ContainsKey("bool"))
-            {
-                return _AES.DecryptString(key, value["bool"]) == "True";
-            }
+            return _AES.DecryptString(key, value["string"]);
         }
-        catch
+        if (value.ContainsKey("int"))
         {
-
+            return int.Parse(_AES.DecryptString(key, value["int"]));
+        }
+        if (value.ContainsKey("float"))
+        {
+            return float.Parse(_AES.DecryptString(key, value["float"]));
+        }
+        if (value.ContainsKey("bool"))
+        {
+            return _AES.DecryptString(key, value["bool"]) == "True";
+        }
+        if (value.ContainsKey("list"))
+        {
+            List<string> temp = new List<string>(_AES.DecryptString(key, value["list"]).Split(";"));
+            string temp2;
+            for (int i = 0; i < temp.Count - 1; i++)
+            {
+                temp2 = _AES.DecryptString(key, temp[i]);
+                temp[i] = temp2;
+            }
+            return temp;
+        }
+        if (value.ContainsKey("dict"))
+        {
+            List<string> temp = new List<string>(_AES.DecryptString(key, value["dict"]).Split(";"));
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            for (int i = 0; i < temp.Count - 1; i++)
+            {
+                 result[_AES.DecryptString(key, temp[i]).Split("-")[0]] = _AES.DecryptString(key, temp[i]).Split("-")[1];
+            }
+            return result;
         }
         return null;
     }

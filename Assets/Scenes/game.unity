@@ -527,8 +527,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d83647fb8c68974faaa10260ded3014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggleKey: 32
-  restrictLogCount: 0
+  toggleKey: 9
+  restrictLogCount: 1
   maxLogs: 1000
 --- !u!1 &1986048406
 GameObject:

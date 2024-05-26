@@ -40,4 +40,16 @@ public static class Tools
         Debug.Log("use a pass program, please remember to clear it");
         return;
     }
+
+    // 退出游戏
+    public static void ExitGame()
+    {
+#if UNITY_EDITOR
+
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+
+    }
 }
