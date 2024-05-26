@@ -5,9 +5,9 @@ using UnityEngine.UI;
 using DG.Tweening;
 
 /// <summary>
-/// 地形脚本
+/// 补给物脚本
 /// </summary>
-public class Massif : ModelBase, ISkill
+public class Supplie : ModelBase, ISkill
 {
     public SkillProperty SkillPro { get; set; }
     private Slider hpSlider;
@@ -16,7 +16,7 @@ public class Massif : ModelBase, ISkill
     {
         base.Start();
         hpSlider = transform.Find("hp/bg").GetComponent<Slider>();
-        data = GameApp.ConfigManager.GetConfigData("massif").GetDataById(Id);
+        data = GameApp.ConfigManager.GetConfigData("supplies").GetDataById(Id);
         Type = int.Parse(this.data["Type"]);
         Attack = int.Parse(this.data["Attack"]);
         Step = int.Parse(this.data["Step"]);
@@ -59,13 +59,13 @@ public class Massif : ModelBase, ISkill
             return;
         }
         base.OnSelectCallback(args);
-        GameApp.ViewManager.Open(ViewType.MassifDesView, this);
+        GameApp.ViewManager.Open(ViewType.SupplieDesView, this);
     }
 
     protected override void OnUnSelectCallback(object args)
     {
         base.OnUnSelectCallback(args);
-        GameApp.ViewManager.Close((int)ViewType.MassifDesView);
+        GameApp.ViewManager.Close((int)ViewType.SupplieDesView);
     }
 
     public override void GetHit(ISkill skill)
@@ -88,7 +88,7 @@ public class Massif : ModelBase, ISkill
                 PlayAni("die");
                 Destroy(gameObject, 1.2f);
                 // 从地形集合中移除
-                GameApp.FightManager.RemoveMessif(this);
+                GameApp.FightManager.RemoveSupplie(this);
             })); // 等待
         }
         StopAllCoroutines();
@@ -114,5 +114,10 @@ public class Massif : ModelBase, ISkill
         hpSlider.DOValue((float)CurHp / (float)MaxHp, 0.25f);
         yield return new WaitForSeconds(0.75f);
         hpSlider.gameObject.SetActive(false);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
     }
 }

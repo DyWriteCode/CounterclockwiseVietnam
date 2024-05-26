@@ -42,7 +42,7 @@ public class SkillManager
             int atkCount = skill.SkillPro.AttackCount >= targets.Count ? targets.Count : skill.SkillPro.AttackCount;
             for (int i = 0; i < atkCount; i++)
             {
-                targets[i].GetHit(skill); // 敌人受伤
+                targets[i].GetHit(skill); // 受伤
             }
         });
         // 技能的持续时长

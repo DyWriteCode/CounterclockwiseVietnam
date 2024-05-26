@@ -20,6 +20,7 @@ public enum ViewType
     HeroDesView,
     EnemyDesView,
     MassifDesView,
+    SupplieDesView,
     SelectOptionView,
     FightOptionDesView,
     LossView,

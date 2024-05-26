@@ -26,6 +26,7 @@ public class FightWorldManager
     public List<Hero> heros; // 正在战斗中的英雄集合
     public List<Enemy> enemys; // 正在战斗中的敌人集合
     public List<Massif> massifs; // 正处在战斗中的地形集合
+    public List<Supplie> supplies; // 正处在战斗中的补给集合
     public int RoundCount; // 回合数目
     public bool IsHerosReady = false; // 英雄是否选择好
 
@@ -34,6 +35,7 @@ public class FightWorldManager
         heros = new List<Hero>();
         enemys = new List<Enemy>();
         massifs = new List<Massif>();
+        supplies = new List<Supplie>();
         ChangeState(GameState.Idle);
     }
 
@@ -97,6 +99,17 @@ public class FightWorldManager
             Massif massif = objs[i].GetComponent<Massif>();
             // 当前方块被占用了把方块类型改为障碍物
             GameApp.MapManager.ChangeBlockType(massif.RowIndex, massif.ColIndex, BlockType.Obstacle);
+            massifs.Add(massif);
+        }
+        // supplie不可攻击 可以重叠
+        objs = GameObject.FindGameObjectsWithTag("Supplie"); // 给地形添加了"Massif"标签
+        for (int i = 0; i < objs.Length; i++)
+        {
+            Supplie supplie = objs[i].GetComponent<Supplie>();
+            // 当前方块被占用了把方块类型改为障碍物
+            // GameApp.MapManager.ChangeBlockType(supplie.RowIndex, supplie.ColIndex, BlockType.Obstacle);
+            GameApp.MapManager.ChangeBlockType(supplie.RowIndex, supplie.ColIndex, BlockType.Null);
+            supplies.Add(supplie);
         }
         // test
         // Debug.Log("enemy:" + objs.Length);
@@ -126,7 +139,7 @@ public class FightWorldManager
         }
     }
 
-    // 创建(添加)英雄
+    // 创建(添加)地形
     public void AddMassif(Block b, Dictionary<string, string> data)
     {
         GameObject obj = UnityEngine.Object.Instantiate(Resources.Load($"Model/{data["Model"]}")) as GameObject;
@@ -143,6 +156,25 @@ public class FightWorldManager
     {
         massifs.Remove(massif);
         GameApp.MapManager.ChangeBlockType(massif.RowIndex, massif.ColIndex, BlockType.Null); // 被破坏后不需要占用格子
+    }
+
+    // 创建(添加)补给物
+    public void AddSupplie(Block b, Dictionary<string, string> data)
+    {
+        GameObject obj = UnityEngine.Object.Instantiate(Resources.Load($"Model/{data["Model"]}")) as GameObject;
+        obj.transform.position = new Vector3(b.transform.position.x, b.transform.position.y, -1);
+        Supplie supplie = obj.AddComponent<Supplie>();
+        supplie.Init(data, b.RowIndex, b.ColIndex);
+        // 不可攻击 可以重叠
+        // 这个位置有方块了 改变方块的类型为障碍物
+        // b.Type = BlockType.Obstacle;
+        supplies.Add(supplie);
+    }
+
+    // 移除补给物
+    public void RemoveSupplie(Supplie supplie)
+    {
+        supplies.Remove(supplie);
     }
 
     // 重置英雄行动
@@ -205,6 +237,7 @@ public class FightWorldManager
         enemys.Clear();
         heros.Clear();
         massifs.Clear();
+        supplies.Clear();
         GameApp.MapManager.Clear();
         IsHerosReady = false;
     }
