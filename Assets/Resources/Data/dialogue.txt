@@ -4,3 +4,4 @@ Id,名字,对话内容,对话人物图像路径,对话人物图像路径,对话�
 10002,test_all,test_all,icon/down,icon/up,icon/down,all,null,10003
 10003,test_left,test_left,icon/down,icon/up,icon/down,left,null,10004
 10004,test_right,test_right,icon/down,icon/up,icon/down,right,null,0
+10005,interact,玩家交互,icon/down,icon/up,icon/down,none,null,10001

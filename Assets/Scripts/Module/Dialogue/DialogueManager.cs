@@ -14,12 +14,12 @@ public class DialogueManager
     }
 
     // 获得对应类型的整个对话列表数据
-    public List<DialogueInfo> GetDialogueInfos(ConfigData data, int startId, bool isCon = true)
+    public List<DialogueInfo> GetDialogueInfos(ConfigData data, int startId, bool isNext = false)
     {
         int Id = startId;
         List <DialogueInfo> result = new List<DialogueInfo>();
         // Id,Name,Msg,ImgPath,ImgLeft,ImgRight,Type,Ani,NextId
-        if (isCon == true)
+        if (isNext == false)
         {
             result.Add(new DialogueInfo()
             {

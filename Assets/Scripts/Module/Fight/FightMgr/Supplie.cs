@@ -115,9 +115,4 @@ public class Supplie : ModelBase, ISkill
         yield return new WaitForSeconds(0.75f);
         hpSlider.gameObject.SetActive(false);
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
 }

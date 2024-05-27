@@ -35,6 +35,7 @@ public class DialogueView : BaseView
         Find<Button>("NextBtn").onClick.AddListener(onBtn);
         AniLeft = Find<Image>("CharImg/left").GetComponent<Animator>();
         AniRight = Find<Image>("CharImg/right").GetComponent<Animator>();
+        Infos = new List<DialogueInfo>();
     }
 
     public override void Open(params object[] args)

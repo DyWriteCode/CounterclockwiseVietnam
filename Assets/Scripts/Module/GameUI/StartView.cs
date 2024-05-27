@@ -86,7 +86,7 @@ public class StartView : BaseView
             MsgIxt = "你确定要退出游戏吗？"
         });
         // test
-        //Controller.ApplyControllerFunc(ControllerType.Dialogue, Defines.OpenDialogueView, GameApp.DialogueManager.GetDialogueInfos(GameApp.ConfigManager.GetConfigData("dialogue"), 10001));
+        // Controller.ApplyControllerFunc(ControllerType.Dialogue, Defines.OpenDialogueView, GameApp.DialogueManager.GetDialogueInfos(GameApp.ConfigManager.GetConfigData("dialogue"), 10001));
     }
 
     public override void Open(params object[] args)

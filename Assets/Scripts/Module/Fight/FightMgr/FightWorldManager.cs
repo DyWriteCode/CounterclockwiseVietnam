@@ -167,7 +167,7 @@ public class FightWorldManager
         supplie.Init(data, b.RowIndex, b.ColIndex);
         // 不可攻击 可以重叠
         // 这个位置有方块了 改变方块的类型为障碍物
-        // b.Type = BlockType.Obstacle;
+        b.Type = BlockType.Null;
         supplies.Add(supplie);
     }
 

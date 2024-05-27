@@ -93,7 +93,11 @@ public class Hero : ModelBase, ISkill
     // 与物品交互状态
     private void OnInteractCallback(System.Object args)
     {
-
+        GameApp.CommandManager.AddCommand(new ShowSkillAreaCommand(this, true, delegate
+        {
+            GameApp.ViewManager.Open(ViewType.DialogueView, GameApp.DialogueManager.GetDialogueInfos(GameApp.ConfigManager.GetConfigData("dialogue"), 10001, true));
+            GameApp.ViewManager.Open(ViewType.TipView, "interact with player");
+        }));
     }
 
     // 没有被选中回调函数

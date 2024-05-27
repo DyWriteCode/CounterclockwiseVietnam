@@ -5,10 +5,15 @@ using UnityEngine;
 public class ShowSkillAreaCommand : BaseCommand
 {
     ISkill skill;
+    bool IsInteract;
+    private System.Action callback;
 
-    public ShowSkillAreaCommand(ModelBase model) : base(model)
+
+    public ShowSkillAreaCommand(ModelBase model, bool isInteract = false, System.Action callback = null) : base(model)
     {
         skill = model as ISkill;
+        IsInteract = isInteract;
+        this.callback = callback;
     }
 
     public override void Do()
@@ -22,9 +27,18 @@ public class ShowSkillAreaCommand : BaseCommand
         if (Input.GetMouseButtonDown(0))
         {
             skill.HideSkillArea();
-            // Debug.Log("use attack method");
-            GameApp.CommandManager.AddCommand(new SkillCommand(model));
-            return true;
+            if (IsInteract == true)
+            {
+                // Debug.Log("use interact method");
+                GameApp.CommandManager.AddCommand(new InteractCommand(callback, model));
+                return true;
+            }
+            else
+            {
+                // Debug.Log("use attack method");
+                GameApp.CommandManager.AddCommand(new SkillCommand(model));
+                return true;
+            }
         }
         return false;
     }
