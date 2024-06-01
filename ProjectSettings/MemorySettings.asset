@@ -21,7 +21,7 @@ MemorySettings:
     m_ProfilerBucketAllocatorBlockSize: -1
     m_ProfilerBucketAllocatorBlockCount: -1
     m_TempAllocatorSizeMain: -1
-    m_JobTempAllocatorBlockSize: -1
+    m_JobTempAllocatorBlockSize: 2097152
     m_BackgroundJobTempAllocatorBlockSize: -1
     m_JobTempAllocatorReducedBlockSize: -1
     m_TempAllocatorSizeGIBakingWorker: -1

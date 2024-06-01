@@ -13,7 +13,10 @@ public static class MyEditor
     {
         string gamePath = Application.dataPath;
         string excelPath = gamePath + "/_Excel";
-        Debug.Log(excelPath);
+        Debug.Log($"ExcelPath : {excelPath}");
+        Debug.Log($"GamePath : {gamePath}");
+        Debug.Log("------------------------------------------------------------");
+
         if (!Directory.Exists(excelPath))
         {
             Directory.CreateDirectory(excelPath);
@@ -21,6 +24,11 @@ public static class MyEditor
         }
 
         string[] files = Directory.GetFiles(excelPath, "*.xlsx");
+        foreach (string file in files)
+        {
+            Debug.Log($"ExcelFile : {file}");
+        }
+        Debug.Log("------------------------------------------------------------");
 
         for (int i = 0; i < files.Length; i++)
         {
@@ -51,6 +59,7 @@ public static class MyEditor
         string fileName = Path.GetFileNameWithoutExtension(filePath);
 
         string path = Application.dataPath + "/" + outPathStr + "/" + fileName + ".txt";
+        Debug.Log($"TxtPath : {path}");
 
         if (File.Exists(path))
         {
