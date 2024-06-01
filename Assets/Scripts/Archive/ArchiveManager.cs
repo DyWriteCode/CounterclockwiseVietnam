@@ -15,8 +15,18 @@ using UnityEngine;
 /// </summary>
 public class ArchiveManager
 {
-    // 游戏存档
-    public IEnumerator SaveArchive(ArchiveData save, string fileName)
+    // {"type", "type id"}
+    public Dictionary<string, string> TypeIdentifier = new Dictionary<string, string>
+    {
+        { "string", "10001" },
+        { "int", "10002" },
+        { "float", "10003" },
+        { "list", "10004" },
+        { "dict", "10005" }
+    };
+
+// 游戏存档
+public IEnumerator SaveArchive(ArchiveData save, string fileName)
     {
         // 创建一个二进制格式化程序
         BinaryFormatter bf = new BinaryFormatter();  // 引入命名空间using System.Runtime.Serialization.Formatters.Binary;
@@ -81,47 +91,63 @@ public class ArchiveManager
     }
 
     // 游戏存档的内容加密
-    public Dictionary<string, string> DataToArchive(string key, System.Object value)
+    public string DataToArchiveNormal(string key, System.Object value)
     {
-        Dictionary<string, string> result = new Dictionary<string, string>();
+        string result = "";
         if (value.GetType() == typeof(string))
         {
-            result["string"] = _AES.EncryptString(key, value.ToString());
+            result = _AES.EncryptString(key, $"{TypeIdentifier["string"]}{value}");
         }
         else if (value.GetType() == typeof(int))
         {
-            result["int"] = _AES.EncryptString(key, value.ToString());
+            result = _AES.EncryptString(key, $"{TypeIdentifier["int"]}{value}");
         }
         else if (value.GetType() == typeof(float))
         {
-            result["float"] = _AES.EncryptString(key, value.ToString());
+            result = _AES.EncryptString(key, $"{TypeIdentifier["float"]}{value}");
         }
         else if (value.GetType() == typeof(bool))
         {
-            result["bool"] = _AES.EncryptString(key, value.ToString());
+            result = _AES.EncryptString(key, $"{TypeIdentifier["bool"]}{value}");
         }
-        else if (value.GetType() == typeof(List<string>))
+        return _AES.EncryptString(key, result);
+    }
+
+    public string DataToArchiveList<T>(string key, T value)
+    {
+        string result = "";
+        if (value.GetType() != typeof(T))
         {
-            string data = "";
-            for (int i = 0;i < (value as List<string>).Count; i++)
-            {
-                data += _AES.EncryptString(key, (value as List<string>)[i]);
-                data += ";";
-            }
-            result["list"] = _AES.EncryptString(key, data);
+            result = _AES.EncryptString(key, $"{TypeIdentifier["list"]}");
         }
-        else if (value.GetType() == typeof(Dictionary<string, string>))
+        else 
         {
-            string data = "";
-            foreach (var item in (value as Dictionary<string, string>))
+            result = TypeIdentifier["list"];
+            foreach (var item in (value as List<T>))
             {
-                data += _AES.EncryptString(key, item.Key + "-" + item.Value);
-                data += ";";
+                if (typeof(List<>).IsAssignableFrom(item.GetType()) == false || typeof(Dictionary<,>).IsAssignableFrom(item.GetType()) == false)
+                {
+                    result += DataToArchiveNormal(key, item);
+                    result += ";";
+                    continue;
+                }
+                if (typeof(List<>).IsAssignableFrom(item.GetType()) == true)
+                { 
+                    result += DataToArchiveList<T>(key, item);
+                    result += ";";
+                    continue;
+                }
             }
-            result["dict"] = _AES.EncryptString(key, data);
         }
+        return _AES.EncryptString(key, result);
+    }
+
+    public string DataToArchiveDict<TKey, TValue>(string key, System.Object value)
+    {
+        string result = "";
         return result;
     }
+
 
     // 游戏存档的内容解密
     public System.Object ArchiveToData(string key, Dictionary<string, string> value)

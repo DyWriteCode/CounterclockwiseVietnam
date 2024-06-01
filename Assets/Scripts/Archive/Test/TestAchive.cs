@@ -13,5 +13,6 @@ public class TestAchive : ArchiveData
     // public List<string> tags;
     // public Dictionary<string, string> tags2;
     // public Dictionary<string, string> list1;
-    public Dictionary<string, string> dict1;
+    // public Dictionary<string, string> dict1;
+    public string list1;
 }

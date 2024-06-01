@@ -49,8 +49,10 @@ public static class MyEditor
 
                 readTableToTxt(files[i], "Resources/Data", table);
             }
+            EditorUtility.DisplayProgressBar("Clear AB Names", $"Name : {files[i]}", i * 1.0f / files.Length);
         }
 
+        EditorUtility.ClearProgressBar();
         AssetDatabase.Refresh();
     }
 
