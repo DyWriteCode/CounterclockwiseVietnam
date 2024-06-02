@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using UnityEngine;
 
 /// <summary>
@@ -16,17 +18,18 @@ using UnityEngine;
 public class ArchiveManager
 {
     // {"type", "type id"}
-    public Dictionary<string, string> TypeIdentifier = new Dictionary<string, string>
+    public static Dictionary<string, string> TypeIdentifier = new Dictionary<string, string>
     {
         { "string", "10001" },
         { "int", "10002" },
         { "float", "10003" },
-        { "list", "10004" },
-        { "dict", "10005" }
+        { "bool", "10004" },
+        { "list", "10005" },
+        { "dict", "10006" }
     };
 
-// 游戏存档
-public IEnumerator SaveArchive(ArchiveData save, string fileName)
+    // 游戏存档
+    public IEnumerator SaveArchive(ArchiveData save, string fileName)
     {
         // 创建一个二进制格式化程序
         BinaryFormatter bf = new BinaryFormatter();  // 引入命名空间using System.Runtime.Serialization.Formatters.Binary;
@@ -96,100 +99,150 @@ public IEnumerator SaveArchive(ArchiveData save, string fileName)
         string result = "";
         if (value.GetType() == typeof(string))
         {
-            result = _AES.EncryptString(key, $"{TypeIdentifier["string"]}{value}");
+            result = $"{TypeIdentifier["string"]}[{_AES.EncryptString(key, value.ToString())}]";
         }
         else if (value.GetType() == typeof(int))
         {
-            result = _AES.EncryptString(key, $"{TypeIdentifier["int"]}{value}");
+            result = $"{TypeIdentifier["int"]}[{_AES.EncryptString(key, value.ToString())}]";
         }
         else if (value.GetType() == typeof(float))
         {
-            result = _AES.EncryptString(key, $"{TypeIdentifier["float"]}{value}");
+            result = $"{TypeIdentifier["float"]}[{_AES.EncryptString(key, value.ToString())}]";
         }
         else if (value.GetType() == typeof(bool))
         {
-            result = _AES.EncryptString(key, $"{TypeIdentifier["bool"]}{value}");
+            result = $"{TypeIdentifier["bool"]}[{_AES.EncryptString(key, value.ToString())}]";
         }
         return _AES.EncryptString(key, result);
     }
 
-    public string DataToArchiveList<T>(string key, T value)
+    public string DataToArchiveList(string key, IEnumerable value)
     {
-        string result = "";
-        if (value.GetType() != typeof(T))
+        StringBuilder resultBuilder = new StringBuilder();
+        resultBuilder.Append($"{TypeIdentifier["list"]}["); // 开始包裹列表
+        bool isFirst = true; // 用于在连接字符串时跳过第一个分隔符
+        foreach (var item in value)
         {
-            result = _AES.EncryptString(key, $"{TypeIdentifier["list"]}");
-        }
-        else 
-        {
-            result = TypeIdentifier["list"];
-            foreach (var item in (value as List<T>))
+            if (isFirst)
             {
-                if (typeof(List<>).IsAssignableFrom(item.GetType()) == false || typeof(Dictionary<,>).IsAssignableFrom(item.GetType()) == false)
+                isFirst = false;
+            }
+            else
+            {
+                resultBuilder.Append("<;>");
+            }
+            // 根据元素类型递归处理或直接添加标识符
+            resultBuilder.Append(ProcessItem(key, item));
+        }
+        resultBuilder.Append(']'); // 结束包裹列表
+        return _AES.EncryptString(key, resultBuilder.ToString());
+    }
+
+    // 辅助方法，用于递归处理列表中的每个元素
+    private string ProcessItem(string key, object item)
+    {
+        if (item is IEnumerable enumerableItem && (item is string) == false)
+        {
+            // 如果元素是IEnumerable类型（列表）且不是字符串，递归调用ProcessList
+            return DataToArchiveList(key, (IEnumerable)item);
+        }
+        else if (item is Dictionary<object, object> dictItem)
+        {
+            // 如果元素是字典，递归调用ProcessDictionary
+            return DataToArchiveDict(key, (Dictionary<object, object>)item);
+        }
+        else
+        {
+            return DataToArchiveNormal(key, item);
+        }
+    }
+
+    public string DataToArchiveDict(string key, System.Object value)
+    {
+        StringBuilder resultBuilder = new StringBuilder();
+        resultBuilder.Append($"{TypeIdentifier["dict"]}["); // 开始包裹字典
+        bool isFirst = true;
+        if (value is IDictionary)
+        {
+            foreach (DictionaryEntry kvp in (value as IDictionary))
+            {
+                if (isFirst)
                 {
-                    result += DataToArchiveNormal(key, item);
-                    result += ";";
-                    continue;
+                    isFirst = false;
                 }
-                if (typeof(List<>).IsAssignableFrom(item.GetType()) == true)
-                { 
-                    result += DataToArchiveList<T>(key, item);
-                    result += ";";
-                    continue;
+                else
+                {
+                    resultBuilder.Append("<;>");
                 }
+                // 对于字典中的每个键值对，递归调用ProcessItem处理键和值
+                // 键不是字符串类型时，需要添加相应的标识符
+                string processedKey = ProcessItem(key, kvp.Key.ToString());
+                string processedValue = ProcessItem(key, kvp.Value.ToString());
+                resultBuilder.Append($"{processedKey}<->{processedValue}");
             }
         }
-        return _AES.EncryptString(key, result);
+        resultBuilder.Append(']'); // 结束包裹字典
+        return _AES.EncryptString(key, resultBuilder.ToString());
     }
 
-    public string DataToArchiveDict<TKey, TValue>(string key, System.Object value)
-    {
-        string result = "";
-        return result;
-    }
 
 
     // 游戏存档的内容解密
-    public System.Object ArchiveToData(string key, Dictionary<string, string> value)
+    public System.Object ArchiveToDataNormal(string key, string value)
     {
-        if (value.ContainsKey("string"))
+        if (_AES.DecryptString(key, value).Substring(0, 5) == TypeIdentifier["string"])
         {
-            return _AES.DecryptString(key, value["string"]);
+            return _AES.DecryptString(key, Tools.CutString(_AES.DecryptString(key, value), "[", "]"));
         }
-        if (value.ContainsKey("int"))
+        if (_AES.DecryptString(key, value).Substring(0, 5) == TypeIdentifier["int"])
         {
-            return int.Parse(_AES.DecryptString(key, value["int"]));
+            return int.Parse(_AES.DecryptString(key, Tools.CutString(_AES.DecryptString(key, value), "[", "]")));
         }
-        if (value.ContainsKey("float"))
+        if (_AES.DecryptString(key, value).Substring(0, 5) == TypeIdentifier["float"])
         {
-            return float.Parse(_AES.DecryptString(key, value["float"]));
+            return float.Parse(_AES.DecryptString(key, Tools.CutString(_AES.DecryptString(key, value), "[", "]")));
         }
-        if (value.ContainsKey("bool"))
+        if (_AES.DecryptString(key, value).Substring(0, 5) == TypeIdentifier["bool"])
         {
-            return _AES.DecryptString(key, value["bool"]) == "True";
-        }
-        if (value.ContainsKey("list"))
-        {
-            List<string> temp = new List<string>(_AES.DecryptString(key, value["list"]).Split(";"));
-            string temp2;
-            for (int i = 0; i < temp.Count - 1; i++)
-            {
-                temp2 = _AES.DecryptString(key, temp[i]);
-                temp[i] = temp2;
-            }
-            return temp;
-        }
-        if (value.ContainsKey("dict"))
-        {
-            List<string> temp = new List<string>(_AES.DecryptString(key, value["dict"]).Split(";"));
-            Dictionary<string, string> result = new Dictionary<string, string>();
-            for (int i = 0; i < temp.Count - 1; i++)
-            {
-                 result[_AES.DecryptString(key, temp[i]).Split("-")[0]] = _AES.DecryptString(key, temp[i]).Split("-")[1];
-            }
-            return result;
+            return _AES.DecryptString(key, Tools.CutString(_AES.DecryptString(key, value), "[", "]")) == "True";
         }
         return null;
+    }
+
+    public System.Object ArchiveToDataList(string key, string value)
+    {
+        List<object> result = new List<object>();
+        if (_AES.DecryptString(key, value).Substring(0, 5) == TypeIdentifier["list"])
+        {
+            string[] temp = Tools.CutString(_AES.DecryptString(key, value), "[", "]").Split("<;>");
+            foreach(var item in temp)
+            {
+                result.Add(DecProcessItem(key, item));
+            }
+        }
+        return result;
+    }
+
+    private System.Object DecProcessItem(string key, string value)
+    {
+        if (_AES.DecryptString(key, value).Substring(0, 5) == TypeIdentifier["list"])
+        {
+            return ArchiveToDataList(key, value);
+        }
+        else if (_AES.DecryptString(key, value).Substring(0, 5) == TypeIdentifier["dict"])
+        {
+            return ArchiveToDataDict(key, value);
+        }
+        else
+        {
+            return ArchiveToDataNormal(key, value);
+        }
+    }
+
+    public System.Object ArchiveToDataDict(string key, string item)
+    {
+        Dictionary<object, object> result = null;
+        return result;
     }
 
     public ArchiveManager()

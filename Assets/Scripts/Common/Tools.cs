@@ -52,4 +52,13 @@ public static class Tools
 #endif
 
     }
+
+    // 截取字符串
+    public static string CutString(string s, string s1, string s2)
+    {
+        int n1, n2;
+        n1 = s.IndexOf(s1, 0) + s1.Length;
+        n2 = s.IndexOf(s2, n1);
+        return s.Substring(n1, n2 - n1);
+    }
 }

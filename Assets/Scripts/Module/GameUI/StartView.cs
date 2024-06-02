@@ -49,31 +49,38 @@ public class StartView : BaseView
                 StartCoroutine(GameApp.ArchiveManager.SaveArchive(new SetArchive
                 {
                     KeyId = keyid,
-                    IsStop = GameApp.ArchiveManager.DataToArchive(key, GameApp.SoundManager.IsStop),
-                    BgmVolume = GameApp.ArchiveManager.DataToArchive(key, GameApp.SoundManager.BgmVolume),
-                    EffectVolume = GameApp.ArchiveManager.DataToArchive(key, GameApp.SoundManager.EffectVolume),
-                    IsDebug = GameApp.ArchiveManager.DataToArchive(key, GameApp.DebugManager.IsDebug),
+                    IsStop = GameApp.ArchiveManager.DataToArchiveNormal(key, GameApp.SoundManager.IsStop),
+                    BgmVolume = GameApp.ArchiveManager.DataToArchiveNormal(key, GameApp.SoundManager.BgmVolume),
+                    EffectVolume = GameApp.ArchiveManager.DataToArchiveNormal(key, GameApp.SoundManager.EffectVolume),
+                    IsDebug = GameApp.ArchiveManager.DataToArchiveNormal(key, GameApp.DebugManager.IsDebug),
                 }, "SetArchive"));
-                // test
-                StartCoroutine(GameApp.ArchiveManager.SaveArchive(new TestAchive
-                {
-                    KeyId = keyid,
-                    //list1 = GameApp.ArchiveManager.DataToArchive(key, new List<string>() {
-                    //    "1",
-                    //    "2",
-                    //    "3",
-                    //    "4",
-                    //    "5",
-                    //})
-                    dict1 = GameApp.ArchiveManager.DataToArchive(key, new Dictionary<string, string>()
-                    {
-                        {"1", "1"},
-                        {"2", "2"},
-                        {"3", "3"},
-                        {"4", "4"},
-                        {"5", "5"},
-                    })
-                    }, "TestArchive"));
+                // test 
+                Debug.Log(GameApp.ArchiveManager.ArchiveToDataList(key, GameApp.ArchiveManager.DataToArchiveList(key, new List<int>() { 1, 2, 3 })).ToString());
+                //Debug.Log((int)GameApp.ArchiveManager.ArchiveToDataNormal(key, GameApp.ArchiveManager.DataToArchiveNormal(key, 10)));
+                //Debug.Log((float)GameApp.ArchiveManager.ArchiveToDataNormal(key, GameApp.ArchiveManager.DataToArchiveNormal(key, 10.5f)));
+                //Debug.Log((string)GameApp.ArchiveManager.ArchiveToDataNormal(key, GameApp.ArchiveManager.DataToArchiveNormal(key, "test")));
+                // GameApp.ArchiveManager.DataToArchiveList(key, new List<int>() { 1, 2, 3 });
+                //Dictionary<string, string> keyValues = new Dictionary<string, string>() { { "1", "1" }, { "2", "2" } };
+                //GameApp.ArchiveManager.DataToArchiveDict(key, keyValues);
+                //StartCoroutine(GameApp.ArchiveManager.SaveArchive(new TestAchive
+                //{
+                //KeyId = keyid,
+                //list1 = GameApp.ArchiveManager.DataToArchive(key, new List<string>() {
+                //    "1",
+                //    "2",
+                //    "3",
+                //    "4",
+                //    "5",
+                //})
+                //dict1 = GameApp.ArchiveManager.DataToArchive(key, new Dictionary<string, string>()
+                //{
+                //    {"1", "1"},
+                //    {"2", "2"},
+                //    {"3", "3"},
+                //    {"4", "4"},
+                //    {"5", "5"},
+                //})
+                //}, "TestArchive"));
                 GameApp.TimerManager.Register(0.2f, delegate ()
                 {
                     Tools.ExitGame(); // 退出游戏
@@ -98,12 +105,14 @@ public class StartView : BaseView
         TestAchive test = GameApp.ArchiveManager.LoadArchive<TestAchive>("TestArchive");
         if (archive.IsRight != false)
         {
-            GameApp.SoundManager.IsStop = (bool)GameApp.ArchiveManager.ArchiveToData(AESKey.AESKEYS[archive.KeyId], archive.IsStop);
-            GameApp.SoundManager.BgmVolume = (float)GameApp.ArchiveManager.ArchiveToData(AESKey.AESKEYS[archive.KeyId], archive.BgmVolume);
-            // GameApp.SoundManager.BgmVolume = 1.0f;
-            GameApp.SoundManager.EffectVolume = (float)GameApp.ArchiveManager.ArchiveToData(AESKey.AESKEYS[archive.KeyId], archive.EffectVolume);
-            // GameApp.SoundManager.EffectVolume = 1.0f;
-            GameApp.DebugManager.IsDebug = (bool)GameApp.ArchiveManager.ArchiveToData(AESKey.AESKEYS[archive.KeyId], archive.IsDebug);
+            // GameApp.SoundManager.IsStop = (bool)GameApp.ArchiveManager.ArchiveToData(AESKey.AESKEYS[archive.KeyId], archive.IsStop);
+            GameApp.SoundManager.IsStop = true;
+            // GameApp.SoundManager.BgmVolume = (float)GameApp.ArchiveManager.ArchiveToData(AESKey.AESKEYS[archive.KeyId], archive.BgmVolume);
+            GameApp.SoundManager.BgmVolume = 1.0f;
+            // GameApp.SoundManager.EffectVolume = (float)GameApp.ArchiveManager.ArchiveToData(AESKey.AESKEYS[archive.KeyId], archive.EffectVolume);
+            GameApp.SoundManager.EffectVolume = 1.0f;
+            // GameApp.DebugManager.IsDebug = (bool)GameApp.ArchiveManager.ArchiveToData(AESKey.AESKEYS[archive.KeyId], archive.IsDebug);
+            GameApp.DebugManager.IsDebug = true;
             // test
             // List<string> list = (List<string>)GameApp.ArchiveManager.ArchiveToData(AESKey.AESKEYS[archive.KeyId], test.list1);
             // for (int i = 0; i < list.Count - 1; i++)
