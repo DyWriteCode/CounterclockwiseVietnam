@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 2244942423
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 587c05b7c9fe26ba88b3dd33998fcd26
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Resources/Sounds/hit.wav
+- Assets/Resources/Sounds/mapbgm.ogg
+- Assets/Resources/Sounds/attack.mp3
+- Assets/Resources/Sounds/fightbgm.mp3
+- Assets/Resources/Sounds/login.wav
+- Assets/Resources/Sounds/hitlightning.wav
+Dependencies: []

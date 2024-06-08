@@ -12,5 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1872c5d5f790c9a4f960e03b36db213e, type: 3}
   m_Name: ABConfig
   m_EditorClassIdentifier: 
-  m_AllPrefabPath: []
-  m_AllFileDirAB: []
+  m_AllPrefabPath:
+  - Assets/Resources/View
+  - Assets/Resources/Effect
+  - Assets/Resources/Figure
+  - Assets/Resources/Model
+  m_AllFileDirAB:
+  - ABName: data
+    Path: Assets/Resources/Data
+  - ABName: icon
+    Path: Assets/Resources/Icon
+  - ABName: sounds
+    Path: Assets/Resources/Sounds

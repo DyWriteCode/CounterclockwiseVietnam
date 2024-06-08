@@ -2,10 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using UnityEngine;
 
 /// <summary>
@@ -51,6 +49,33 @@ public class ArchiveManager
         yield return null;
     }
 
+    public void SaveEditorArchive(ArchiveData save, string fileName)
+    {
+        if (File.Exists(Application.streamingAssetsPath + "/PlayerData" + $"/{fileName}.bin"))
+        {
+            File.Delete(Application.streamingAssetsPath + "/PlayerData" + $"/{fileName}.bin");
+            File.Delete(Application.streamingAssetsPath + "/PlayerData" + $"/{fileName}.bin.meta");
+        }
+        // 创建一个二进制格式化程序
+        BinaryFormatter bf = new BinaryFormatter();  // 引入命名空间using System.Runtime.Serialization.Formatters.Binary;
+        // 创建一个文件流（就是在Assets中创建的一个文件夹名称为StreamFile,然后系统会给我创建一个byBin的文本文档用于保存信息）
+        FileStream fileStream = File.Create(Application.streamingAssetsPath + "/PlayerData" + $"/{fileName}.bin");  //引入命名空间using System.IO;
+        // 用二进制格式化程序的序列化方法来序列化Save对象，参数：创建的文件流和需要系列化对象
+        bf.Serialize(fileStream, save);
+        // 关闭流
+        fileStream.Close();
+        //检测这个二进制文件是否存在，也就是是否保存成功
+        if (File.Exists(Application.streamingAssetsPath + "/PlayerData" + $"/{fileName}.bin"))
+        {
+            Debug.Log("The game has been saved");
+        }
+        else
+        {
+            Debug.Log("The game has not been saved");
+        }
+        return;
+    }
+
     // 游戏读档
     public T LoadArchive<T>(string fileName) where T : ArchiveData, new()
     {
@@ -90,6 +115,19 @@ public class ArchiveManager
         else
         {
             GameApp.ViewManager.Open(ViewType.TipView, "游戏删档失败");
+        }
+    }
+
+    public void DelEditorArchive(string fileName)
+    {
+        if (File.Exists(Application.streamingAssetsPath + "/PlayerData" + $"/{fileName}.bin"))
+        {
+            File.Delete(Application.streamingAssetsPath + "/PlayerData" + $"/{fileName}.bin");
+            Debug.Log("The game was deleted successfully");
+        }
+        else
+        {
+            Debug.Log("The game was not deleted successfully");
         }
     }
 
@@ -239,9 +277,23 @@ public class ArchiveManager
         }
     }
 
-    public System.Object ArchiveToDataDict(string key, string item)
+    public System.Object ArchiveToDataDict(string key, string value)
     {
-        Dictionary<object, object> result = null;
+        Dictionary<object, object> result = new Dictionary<object, object>();
+        // test
+        // Debug.Log(value);
+        if (_AES.DecryptString(key, value).Substring(0, 5) == TypeIdentifier["dict"])
+        {
+            string[] temp = Tools.CutString(_AES.DecryptString(key, value), "[", "]").Split("<;>");
+            foreach (var item in temp)
+            {
+                string[] tempItem = item.Split("<->");
+                // test
+                //Debug.Log(DecProcessItem(key, tempItem[0]));
+                //Debug.Log(DecProcessItem(key, tempItem[1]));
+                result[DecProcessItem(key, tempItem[0])] = DecProcessItem(key, tempItem[1]);
+            }
+        }
         return result;
     }
 

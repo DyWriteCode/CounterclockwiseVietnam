@@ -3,7 +3,7 @@ guid: c1213902e4bf604428816787e37d5335
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -25,7 +25,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -65,6 +65,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -76,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -88,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -100,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -112,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -124,6 +129,46 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1757,85 +1802,85 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SpearWarrior_purple_54: 2087113968
-      SpearWarrior_purple_70: 1400562081
-      SpearWarrior_purple_72: 664250194
-      SpearWarrior_purple_63: -1834669518
-      SpearWarrior_purple_29: -294062192
-      SpearWarrior_purple_33: -1765994785
-      SpearWarrior_purple_38: -445315659
-      SpearWarrior_purple_25: -83731824
-      SpearWarrior_purple_59: -1514539986
-      SpearWarrior_purple_14: 1688464924
-      SpearWarrior_purple_28: -1826100615
-      SpearWarrior_purple_50: -669939422
-      SpearWarrior_purple_24: -1904818480
-      SpearWarrior_purple_37: 876760207
-      SpearWarrior_purple_19: 1748094311
-      SpearWarrior_purple_57: -1187334617
-      SpearWarrior_purple_61: 935376384
-      SpearWarrior_purple_10: -1598041065
-      SpearWarrior_purple_44: 879173057
-      SpearWarrior_purple_65: 975456362
-      SpearWarrior_purple_26: -1161430367
-      SpearWarrior_purple_11: -586608402
-      SpearWarrior_purple_53: 331283903
-      SpearWarrior_purple_45: 1496855788
-      SpearWarrior_purple_36: 510672183
-      SpearWarrior_purple_48: 1274611455
       SpearWarrior_purple_0: 185646876
-      SpearWarrior_purple_3: -391311668
-      SpearWarrior_purple_47: -1439463578
-      SpearWarrior_purple_42: 908189426
-      SpearWarrior_purple_56: -1622923093
-      SpearWarrior_purple_23: -1712723994
-      SpearWarrior_purple_31: -50302014
-      SpearWarrior_purple_30: -818626046
-      SpearWarrior_purple_51: 1453776653
-      SpearWarrior_purple_67: -789104371
-      SpearWarrior_purple_6: -661222762
-      SpearWarrior_purple_15: -568565714
-      SpearWarrior_purple_68: -1635385612
-      SpearWarrior_purple_66: 1944055081
-      SpearWarrior_purple_2: 1020500792
-      SpearWarrior_purple_13: -2097902290
-      SpearWarrior_purple_43: 820924139
-      SpearWarrior_purple_55: -267926875
-      SpearWarrior_purple_41: -1318311263
-      SpearWarrior_purple_17: -1386810668
-      SpearWarrior_purple_62: -1536004691
-      SpearWarrior_purple_73: -1382726011
       SpearWarrior_purple_1: 380399082
+      SpearWarrior_purple_10: -1598041065
+      SpearWarrior_purple_11: -586608402
       SpearWarrior_purple_12: 1870466652
-      SpearWarrior_purple_22: -841014015
-      SpearWarrior_purple_49: -427817482
+      SpearWarrior_purple_13: -2097902290
+      SpearWarrior_purple_14: 1688464924
+      SpearWarrior_purple_15: -568565714
       SpearWarrior_purple_16: 496014950
-      SpearWarrior_purple_32: 1286250669
-      SpearWarrior_purple_9: 1027240917
-      SpearWarrior_purple_39: 75128657
-      SpearWarrior_purple_21: -616951719
-      SpearWarrior_purple_75: 625279536
-      SpearWarrior_purple_35: 1867048861
-      SpearWarrior_purple_8: 203195621
-      SpearWarrior_purple_4: -1917464720
-      SpearWarrior_purple_5: 671776850
-      SpearWarrior_purple_40: 1841412070
-      SpearWarrior_purple_20: -785928842
-      SpearWarrior_purple_74: -1812340604
+      SpearWarrior_purple_17: -1386810668
       SpearWarrior_purple_18: 218832886
+      SpearWarrior_purple_19: 1748094311
+      SpearWarrior_purple_2: 1020500792
+      SpearWarrior_purple_20: -785928842
+      SpearWarrior_purple_21: -616951719
+      SpearWarrior_purple_22: -841014015
+      SpearWarrior_purple_23: -1712723994
+      SpearWarrior_purple_24: -1904818480
+      SpearWarrior_purple_25: -83731824
+      SpearWarrior_purple_26: -1161430367
+      SpearWarrior_purple_27: -1615212311
+      SpearWarrior_purple_28: -1826100615
+      SpearWarrior_purple_29: -294062192
+      SpearWarrior_purple_3: -391311668
+      SpearWarrior_purple_30: -818626046
+      SpearWarrior_purple_31: -50302014
+      SpearWarrior_purple_32: 1286250669
+      SpearWarrior_purple_33: -1765994785
+      SpearWarrior_purple_34: 1452904833
+      SpearWarrior_purple_35: 1867048861
+      SpearWarrior_purple_36: 510672183
+      SpearWarrior_purple_37: 876760207
+      SpearWarrior_purple_38: -445315659
+      SpearWarrior_purple_39: 75128657
+      SpearWarrior_purple_4: -1917464720
+      SpearWarrior_purple_40: 1841412070
+      SpearWarrior_purple_41: -1318311263
+      SpearWarrior_purple_42: 908189426
+      SpearWarrior_purple_43: 820924139
+      SpearWarrior_purple_44: 879173057
+      SpearWarrior_purple_45: 1496855788
       SpearWarrior_purple_46: 813681326
+      SpearWarrior_purple_47: -1439463578
+      SpearWarrior_purple_48: 1274611455
+      SpearWarrior_purple_49: -427817482
+      SpearWarrior_purple_5: 671776850
+      SpearWarrior_purple_50: -669939422
+      SpearWarrior_purple_51: 1453776653
       SpearWarrior_purple_52: 705378381
-      SpearWarrior_purple_60: 2003282879
+      SpearWarrior_purple_53: 331283903
+      SpearWarrior_purple_54: 2087113968
+      SpearWarrior_purple_55: -267926875
+      SpearWarrior_purple_56: -1622923093
+      SpearWarrior_purple_57: -1187334617
       SpearWarrior_purple_58: 1073206373
-      SpearWarrior_purple_71: 783560048
+      SpearWarrior_purple_59: -1514539986
+      SpearWarrior_purple_6: -661222762
+      SpearWarrior_purple_60: 2003282879
+      SpearWarrior_purple_61: 935376384
+      SpearWarrior_purple_62: -1536004691
+      SpearWarrior_purple_63: -1834669518
       SpearWarrior_purple_64: -741772209
-      SpearWarrior_purple_76: 1982985749
+      SpearWarrior_purple_65: 975456362
+      SpearWarrior_purple_66: 1944055081
+      SpearWarrior_purple_67: -789104371
+      SpearWarrior_purple_68: -1635385612
       SpearWarrior_purple_69: 1592966659
       SpearWarrior_purple_7: -2010728148
-      SpearWarrior_purple_27: -1615212311
-      SpearWarrior_purple_34: 1452904833
-  spritePackingTag: 
+      SpearWarrior_purple_70: 1400562081
+      SpearWarrior_purple_71: 783560048
+      SpearWarrior_purple_72: 664250194
+      SpearWarrior_purple_73: -1382726011
+      SpearWarrior_purple_74: -1812340604
+      SpearWarrior_purple_75: 625279536
+      SpearWarrior_purple_76: 1982985749
+      SpearWarrior_purple_8: 203195621
+      SpearWarrior_purple_9: 1027240917
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
-  assetBundleName: 
+  assetBundleName: hero2
   assetBundleVariant: 

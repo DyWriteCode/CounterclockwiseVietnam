@@ -54,8 +54,8 @@ public class BundleEditor
             else
             {
                 m_AllFileDir.Add(fileDir.ABName, fileDir.Path);
-                m_AllFileAB .Add(fileDir.Path);
-                m_ConfigFile .Add(fileDir.Path);
+                m_AllFileAB.Add(fileDir.Path);
+                m_ConfigFile.Add(fileDir.Path);
             }
         }
         Debug.Log("------------------------------------------------------------");

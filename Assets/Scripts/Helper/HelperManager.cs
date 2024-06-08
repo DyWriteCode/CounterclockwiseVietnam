@@ -9,4 +9,5 @@ public class HelperManager
 {
     public TimeHelper TimeHelper = new();
     public JsonHelper JsonHelper = new();
+    public ToolsActive Tools = new();
 }

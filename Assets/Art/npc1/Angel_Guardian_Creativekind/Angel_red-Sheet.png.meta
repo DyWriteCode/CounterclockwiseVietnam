@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -123,6 +129,46 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1273,63 +1319,62 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Angel_red-Sheet_22: 893212102
-      Angel_red-Sheet_29: -1360929800
-      Angel_red-Sheet_25: 790135097
-      Angel_red-Sheet_41: -1516101447
-      Angel_red-Sheet_46: 788055350
-      Angel_red-Sheet_52: -264017532
-      Angel_red-Sheet_3: 1682886952
-      Angel_red-Sheet_26: 795349915
-      Angel_red-Sheet_11: -1223838136
-      Angel_red-Sheet_34: 1060517081
-      Angel_red-Sheet_4: -1200484103
-      Angel_red-Sheet_42: -505464323
-      Angel_red-Sheet_24: 1281633163
-      Angel_red-Sheet_8: 331741145
-      Angel_red-Sheet_28: -1258665071
-      Angel_red-Sheet_10: 1900273809
-      Angel_red-Sheet_53: -1572717207
-      Angel_red-Sheet_23: 2095058205
-      Angel_red-Sheet_27: 1998112807
-      Angel_red-Sheet_40: -463023080
-      Angel_red-Sheet_12: 74031064
-      Angel_red-Sheet_39: 356539079
-      Angel_red-Sheet_20: 168489023
-      Angel_red-Sheet_44: -1178764674
-      Angel_red-Sheet_48: -1638668699
-      Angel_red-Sheet_32: -2145738823
-      Angel_red-Sheet_18: 1267917828
-      Angel_red-Sheet_47: 71717491
-      Angel_red-Sheet_30: -1242672188
-      Angel_red-Sheet_15: -1589532880
-      Angel_red-Sheet_43: 626145993
-      Angel_red-Sheet_7: -1406463270
-      Angel_red-Sheet_2: -1676093683
-      Angel_red-Sheet_17: 1077830014
-      Angel_red-Sheet_21: 1291487807
-      Angel_red-Sheet_38: 1930657839
-      Angel_red-Sheet_50: -382484394
-      Angel_red-Sheet_1: -591703080
-      Angel_red-Sheet_36: 1527350615
-      Angel_red-Sheet_19: -226462414
-      Angel_red-Sheet_6: -1352510347
-      Angel_red-Sheet_5: 1249176035
-      Angel_red-Sheet_33: 284750138
-      Angel_red-Sheet_14: -547000085
-      Angel_red-Sheet_13: -1213532171
-      Angel_red-Sheet_9: 390385785
-      Angel_red-Sheet_45: 1353357857
-      Angel_red-Sheet_37: 283479395
-      Angel_red-Sheet_16: -1092664803
       Angel_red-Sheet_0: -1931526253
-      Angel_red-Sheet_35: 1342721754
-      Angel_red-Sheet_51: 1387803751
+      Angel_red-Sheet_1: -591703080
+      Angel_red-Sheet_10: 1900273809
+      Angel_red-Sheet_11: -1223838136
+      Angel_red-Sheet_12: 74031064
+      Angel_red-Sheet_13: -1213532171
+      Angel_red-Sheet_14: -547000085
+      Angel_red-Sheet_15: -1589532880
+      Angel_red-Sheet_16: -1092664803
+      Angel_red-Sheet_17: 1077830014
+      Angel_red-Sheet_18: 1267917828
+      Angel_red-Sheet_19: -226462414
+      Angel_red-Sheet_2: -1676093683
+      Angel_red-Sheet_20: 168489023
+      Angel_red-Sheet_21: 1291487807
+      Angel_red-Sheet_22: 893212102
+      Angel_red-Sheet_23: 2095058205
+      Angel_red-Sheet_24: 1281633163
+      Angel_red-Sheet_25: 790135097
+      Angel_red-Sheet_26: 795349915
+      Angel_red-Sheet_27: 1998112807
+      Angel_red-Sheet_28: -1258665071
+      Angel_red-Sheet_29: -1360929800
+      Angel_red-Sheet_3: 1682886952
+      Angel_red-Sheet_30: -1242672188
       Angel_red-Sheet_31: 1753448601
+      Angel_red-Sheet_32: -2145738823
+      Angel_red-Sheet_33: 284750138
+      Angel_red-Sheet_34: 1060517081
+      Angel_red-Sheet_35: 1342721754
+      Angel_red-Sheet_36: 1527350615
+      Angel_red-Sheet_37: 283479395
+      Angel_red-Sheet_38: 1930657839
+      Angel_red-Sheet_39: 356539079
+      Angel_red-Sheet_4: -1200484103
+      Angel_red-Sheet_40: -463023080
+      Angel_red-Sheet_41: -1516101447
+      Angel_red-Sheet_42: -505464323
+      Angel_red-Sheet_43: 626145993
+      Angel_red-Sheet_44: -1178764674
+      Angel_red-Sheet_45: 1353357857
+      Angel_red-Sheet_46: 788055350
+      Angel_red-Sheet_47: 71717491
+      Angel_red-Sheet_48: -1638668699
       Angel_red-Sheet_49: 452252721
-  spritePackingTag: 
+      Angel_red-Sheet_5: 1249176035
+      Angel_red-Sheet_50: -382484394
+      Angel_red-Sheet_51: 1387803751
+      Angel_red-Sheet_52: -264017532
+      Angel_red-Sheet_53: -1572717207
+      Angel_red-Sheet_6: -1352510347
+      Angel_red-Sheet_7: -1406463270
+      Angel_red-Sheet_8: 331741145
+      Angel_red-Sheet_9: 390385785
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
-  assetBundleName: 
+  assetBundleName: loadingview
   assetBundleVariant: 

@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 1
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -123,6 +129,46 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -2323,113 +2369,112 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      big_50: -1491803021
-      big_42: 623649995
-      big_35: -669394258
-      big_16: 640968240
-      big_93: 288494105
-      big_72: -1666268223
-      big_92: -668408860
-      big_22: 402748364
-      big_26: 2026927910
-      big_88: -546841124
-      big_34: -1246323466
-      big_48: -1112566717
-      big_53: -76983735
-      big_89: 2028535650
-      big_47: 920539273
-      big_77: -2023952714
-      big_8: -1168491586
-      big_10: 1911301665
-      big_79: -322387788
-      big_7: -908973423
-      big_45: 1603037153
-      big_29: -96860325
-      big_62: -1163886338
-      big_55: 303052390
-      big_66: 793616032
-      big_25: 1250259416
-      big_23: 671495692
-      big_54: -1146903903
-      big_44: 161125391
       big_0: -321602448
-      big_5: -714975258
-      big_49: 584571930
-      big_64: 863177918
-      big_75: -803980695
-      big_24: -2139384022
-      big_98: 830182446
-      big_20: 394929165
-      big_84: 2047074055
-      big_61: -1938135972
-      big_46: -1900164897
-      big_57: -780935120
-      big_11: 92033980
-      big_69: 1792422052
-      big_65: 991823214
-      big_102: -2021311281
-      big_18: 1169414452
-      big_4: -698886744
-      big_85: -2080198557
-      big_36: 463015916
-      big_14: 1041697079
-      big_17: 828342814
-      big_38: -1655719164
-      big_86: 458125511
-      big_37: 2118017132
-      big_95: 1300028541
-      big_103: 805868738
-      big_52: 1083486324
-      big_73: 1888996358
-      big_101: 58589232
-      big_2: 969007347
-      big_68: 213356532
-      big_67: 51540660
-      big_99: 542069382
-      big_74: 1295185149
-      big_33: -1509300052
-      big_82: 412174194
-      big_3: -2038013896
-      big_81: -1730404380
-      big_41: -419889341
-      big_90: -313776290
-      big_19: -1196673326
-      big_97: -911705348
-      big_51: 369758014
-      big_28: 2048717844
-      big_30: -76536567
-      big_70: 564953953
-      big_60: -741984204
-      big_6: -1462057309
-      big_58: 1665081963
-      big_100: 2131045536
-      big_43: 1165057887
-      big_59: 798888197
-      big_94: 244573710
       big_1: 1742235121
-      big_83: -686027966
-      big_71: -1270064244
-      big_78: -1567342109
-      big_56: -990906592
-      big_9: 1218303330
-      big_63: 892010726
-      big_13: -865325312
-      big_87: 1366345771
-      big_21: -649604755
-      big_32: -478110712
-      big_39: 117343923
-      big_15: 603400219
-      big_96: 984697696
-      big_31: -1165387440
+      big_10: 1911301665
+      big_100: 2131045536
+      big_101: 58589232
+      big_102: -2021311281
+      big_103: 805868738
+      big_11: 92033980
       big_12: 1637122532
-      big_40: 950494474
-      big_76: 1082463442
+      big_13: -865325312
+      big_14: 1041697079
+      big_15: 603400219
+      big_16: 640968240
+      big_17: 828342814
+      big_18: 1169414452
+      big_19: -1196673326
+      big_2: 969007347
+      big_20: 394929165
+      big_21: -649604755
+      big_22: 402748364
+      big_23: 671495692
+      big_24: -2139384022
+      big_25: 1250259416
+      big_26: 2026927910
       big_27: -131695167
+      big_28: 2048717844
+      big_29: -96860325
+      big_3: -2038013896
+      big_30: -76536567
+      big_31: -1165387440
+      big_32: -478110712
+      big_33: -1509300052
+      big_34: -1246323466
+      big_35: -669394258
+      big_36: 463015916
+      big_37: 2118017132
+      big_38: -1655719164
+      big_39: 117343923
+      big_4: -698886744
+      big_40: 950494474
+      big_41: -419889341
+      big_42: 623649995
+      big_43: 1165057887
+      big_44: 161125391
+      big_45: 1603037153
+      big_46: -1900164897
+      big_47: 920539273
+      big_48: -1112566717
+      big_49: 584571930
+      big_5: -714975258
+      big_50: -1491803021
+      big_51: 369758014
+      big_52: 1083486324
+      big_53: -76983735
+      big_54: -1146903903
+      big_55: 303052390
+      big_56: -990906592
+      big_57: -780935120
+      big_58: 1665081963
+      big_59: 798888197
+      big_6: -1462057309
+      big_60: -741984204
+      big_61: -1938135972
+      big_62: -1163886338
+      big_63: 892010726
+      big_64: 863177918
+      big_65: 991823214
+      big_66: 793616032
+      big_67: 51540660
+      big_68: 213356532
+      big_69: 1792422052
+      big_7: -908973423
+      big_70: 564953953
+      big_71: -1270064244
+      big_72: -1666268223
+      big_73: 1888996358
+      big_74: 1295185149
+      big_75: -803980695
+      big_76: 1082463442
+      big_77: -2023952714
+      big_78: -1567342109
+      big_79: -322387788
+      big_8: -1168491586
       big_80: -636267098
+      big_81: -1730404380
+      big_82: 412174194
+      big_83: -686027966
+      big_84: 2047074055
+      big_85: -2080198557
+      big_86: 458125511
+      big_87: 1366345771
+      big_88: -546841124
+      big_89: 2028535650
+      big_9: 1218303330
+      big_90: -313776290
       big_91: -1135160730
-  spritePackingTag: 
+      big_92: -668408860
+      big_93: 288494105
+      big_94: 244573710
+      big_95: 1300028541
+      big_96: 984697696
+      big_97: -911705348
+      big_98: 830182446
+      big_99: 542069382
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
-  assetBundleName: 
+  assetBundleName: fightselectheroview
   assetBundleVariant: 

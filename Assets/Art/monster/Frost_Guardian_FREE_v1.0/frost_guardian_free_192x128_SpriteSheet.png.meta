@@ -3,7 +3,7 @@ guid: 84c93025f94906a4b90291a0b9cfd108
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -25,7 +25,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -65,6 +65,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -76,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -88,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -100,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -112,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -124,6 +129,46 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1253,61 +1298,61 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      frost_guardian_free_192x128_SpriteSheet_5: 1865695698
-      frost_guardian_free_192x128_SpriteSheet_22: 1094853345
-      frost_guardian_free_192x128_SpriteSheet_23: -331720315
-      frost_guardian_free_192x128_SpriteSheet_42: -1571128717
-      frost_guardian_free_192x128_SpriteSheet_24: 714276005
-      frost_guardian_free_192x128_SpriteSheet_29: 695453538
-      frost_guardian_free_192x128_SpriteSheet_14: 1625331916
-      frost_guardian_free_192x128_SpriteSheet_27: -123928218
-      frost_guardian_free_192x128_SpriteSheet_30: 2131308535
-      frost_guardian_free_192x128_SpriteSheet_45: -1441632932
-      frost_guardian_free_192x128_SpriteSheet_36: 1989790079
-      frost_guardian_free_192x128_SpriteSheet_2: -1782896023
-      frost_guardian_free_192x128_SpriteSheet_18: 841960336
+      frost_guardian_free_192x128_SpriteSheet_0: 1743498689
+      frost_guardian_free_192x128_SpriteSheet_1: -892462794
+      frost_guardian_free_192x128_SpriteSheet_10: -1053061583
       frost_guardian_free_192x128_SpriteSheet_11: 229787729
       frost_guardian_free_192x128_SpriteSheet_12: -2083874865
-      frost_guardian_free_192x128_SpriteSheet_37: 1874320644
-      frost_guardian_free_192x128_SpriteSheet_15: -610885721
-      frost_guardian_free_192x128_SpriteSheet_10: -1053061583
-      frost_guardian_free_192x128_SpriteSheet_28: 846752362
-      frost_guardian_free_192x128_SpriteSheet_40: 1009073421
-      frost_guardian_free_192x128_SpriteSheet_16: -967445311
-      frost_guardian_free_192x128_SpriteSheet_19: 390030977
-      frost_guardian_free_192x128_SpriteSheet_49: 2015650850
-      frost_guardian_free_192x128_SpriteSheet_8: 1847302385
-      frost_guardian_free_192x128_SpriteSheet_25: 1265972230
-      frost_guardian_free_192x128_SpriteSheet_43: -544276319
-      frost_guardian_free_192x128_SpriteSheet_3: -1905890430
-      frost_guardian_free_192x128_SpriteSheet_35: 1713431683
-      frost_guardian_free_192x128_SpriteSheet_9: -468765705
-      frost_guardian_free_192x128_SpriteSheet_20: -663249362
-      frost_guardian_free_192x128_SpriteSheet_38: -1599442850
-      frost_guardian_free_192x128_SpriteSheet_1: -892462794
-      frost_guardian_free_192x128_SpriteSheet_32: -1648181170
-      frost_guardian_free_192x128_SpriteSheet_21: 643606630
-      frost_guardian_free_192x128_SpriteSheet_44: 830713723
-      frost_guardian_free_192x128_SpriteSheet_31: 1193135814
-      frost_guardian_free_192x128_SpriteSheet_17: 620397737
-      frost_guardian_free_192x128_SpriteSheet_41: -125807075
-      frost_guardian_free_192x128_SpriteSheet_33: -835742146
-      frost_guardian_free_192x128_SpriteSheet_50: -1439663006
-      frost_guardian_free_192x128_SpriteSheet_4: -329150502
-      frost_guardian_free_192x128_SpriteSheet_48: -737712289
-      frost_guardian_free_192x128_SpriteSheet_39: -1119158491
       frost_guardian_free_192x128_SpriteSheet_13: -1578843832
+      frost_guardian_free_192x128_SpriteSheet_14: 1625331916
+      frost_guardian_free_192x128_SpriteSheet_15: -610885721
+      frost_guardian_free_192x128_SpriteSheet_16: -967445311
+      frost_guardian_free_192x128_SpriteSheet_17: 620397737
+      frost_guardian_free_192x128_SpriteSheet_18: 841960336
+      frost_guardian_free_192x128_SpriteSheet_19: 390030977
+      frost_guardian_free_192x128_SpriteSheet_2: -1782896023
+      frost_guardian_free_192x128_SpriteSheet_20: -663249362
+      frost_guardian_free_192x128_SpriteSheet_21: 643606630
+      frost_guardian_free_192x128_SpriteSheet_22: 1094853345
+      frost_guardian_free_192x128_SpriteSheet_23: -331720315
+      frost_guardian_free_192x128_SpriteSheet_24: 714276005
+      frost_guardian_free_192x128_SpriteSheet_25: 1265972230
       frost_guardian_free_192x128_SpriteSheet_26: -2013441302
-      frost_guardian_free_192x128_SpriteSheet_0: 1743498689
-      frost_guardian_free_192x128_SpriteSheet_6: -844506634
+      frost_guardian_free_192x128_SpriteSheet_27: -123928218
+      frost_guardian_free_192x128_SpriteSheet_28: 846752362
+      frost_guardian_free_192x128_SpriteSheet_29: 695453538
+      frost_guardian_free_192x128_SpriteSheet_3: -1905890430
+      frost_guardian_free_192x128_SpriteSheet_30: 2131308535
+      frost_guardian_free_192x128_SpriteSheet_31: 1193135814
+      frost_guardian_free_192x128_SpriteSheet_32: -1648181170
+      frost_guardian_free_192x128_SpriteSheet_33: -835742146
       frost_guardian_free_192x128_SpriteSheet_34: 382901768
+      frost_guardian_free_192x128_SpriteSheet_35: 1713431683
+      frost_guardian_free_192x128_SpriteSheet_36: 1989790079
+      frost_guardian_free_192x128_SpriteSheet_37: 1874320644
+      frost_guardian_free_192x128_SpriteSheet_38: -1599442850
+      frost_guardian_free_192x128_SpriteSheet_39: -1119158491
+      frost_guardian_free_192x128_SpriteSheet_4: -329150502
+      frost_guardian_free_192x128_SpriteSheet_40: 1009073421
+      frost_guardian_free_192x128_SpriteSheet_41: -125807075
+      frost_guardian_free_192x128_SpriteSheet_42: -1571128717
+      frost_guardian_free_192x128_SpriteSheet_43: -544276319
+      frost_guardian_free_192x128_SpriteSheet_44: 830713723
+      frost_guardian_free_192x128_SpriteSheet_45: -1441632932
       frost_guardian_free_192x128_SpriteSheet_46: -589990413
+      frost_guardian_free_192x128_SpriteSheet_47: 1665228933
+      frost_guardian_free_192x128_SpriteSheet_48: -737712289
+      frost_guardian_free_192x128_SpriteSheet_49: 2015650850
+      frost_guardian_free_192x128_SpriteSheet_5: 1865695698
+      frost_guardian_free_192x128_SpriteSheet_50: -1439663006
       frost_guardian_free_192x128_SpriteSheet_51: 1096525426
       frost_guardian_free_192x128_SpriteSheet_52: -1509036345
-      frost_guardian_free_192x128_SpriteSheet_47: 1665228933
+      frost_guardian_free_192x128_SpriteSheet_6: -844506634
       frost_guardian_free_192x128_SpriteSheet_7: -1568103442
-  spritePackingTag: 
+      frost_guardian_free_192x128_SpriteSheet_8: 1847302385
+      frost_guardian_free_192x128_SpriteSheet_9: -468765705
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
-  assetBundleName: 
+  assetBundleName: icemonster
   assetBundleVariant: 

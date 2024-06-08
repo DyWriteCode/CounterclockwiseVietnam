@@ -1,0 +1,26 @@
+ManifestFileVersion: 0
+CRC: 2133986371
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: bce6b662fdec7af5a0532be6593c5529
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Resources/Data/role.txt
+- Assets/Resources/Data/skill.txt
+- Assets/Resources/Data/supplies.txt
+- Assets/Resources/Data/massif.txt
+- Assets/Resources/Data/dialogue.txt
+- Assets/Resources/Data/option.txt
+- Assets/Resources/Data/enemy.txt
+- Assets/Resources/Data/player.txt
+- Assets/Resources/Data/pitfall.txt
+- Assets/Resources/Data/level.txt
+Dependencies: []

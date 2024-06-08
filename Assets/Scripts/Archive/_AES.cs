@@ -44,7 +44,7 @@ public class _AES
     public static string DecryptString(string key, string cipherText)
     {
         byte[] iv = new byte[16];
-        byte[] buffer = Convert.FromBase64String(cipherText);
+        byte[] buffer = Convert.FromBase64String(cipherText.Trim().Replace("%", "").Replace(",", "").Replace(" ", "+"));
 
         using (Aes aes = Aes.Create())
         {
