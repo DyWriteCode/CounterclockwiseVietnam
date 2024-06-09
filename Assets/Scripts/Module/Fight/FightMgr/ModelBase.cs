@@ -53,7 +53,7 @@ public class ModelBase : MonoBehaviour
     protected virtual void OnSelectCallback(System.Object args)
     {
         // 执行未选中
-        GameApp.MsgCenter.PostEvent(Defines.OnUnSelectEvent);
+        GameApp.MessageManager.PostEvent(Defines.OnUnSelectEvent);
         // test
         // bodySp.color = Color.red;
         GameApp.MapManager.ShowStepGird(this, Step);
@@ -70,15 +70,15 @@ public class ModelBase : MonoBehaviour
     // 注册事件
     protected virtual void AddEvents()
     {
-        GameApp.MsgCenter.AddEvent(gameObject, Defines.OnSelectEvent, OnSelectCallback);
-        GameApp.MsgCenter.AddEvent(Defines.OnUnSelectEvent, OnUnSelectCallback);
+        GameApp.MessageManager.AddEvent(gameObject, Defines.OnSelectEvent, OnSelectCallback);
+        GameApp.MessageManager.AddEvent(Defines.OnUnSelectEvent, OnUnSelectCallback);
     }
 
     // 移除事件
     protected virtual void RemoveEvents()
     {
-        GameApp.MsgCenter.RemoveEvent(gameObject, Defines.OnSelectEvent, OnSelectCallback);
-        GameApp.MsgCenter.RemoveEvent(Defines.OnUnSelectEvent, OnUnSelectCallback);
+        GameApp.MessageManager.RemoveEvent(gameObject, Defines.OnSelectEvent, OnSelectCallback);
+        GameApp.MessageManager.RemoveEvent(Defines.OnUnSelectEvent, OnUnSelectCallback);
     }
 
     private void Awake()

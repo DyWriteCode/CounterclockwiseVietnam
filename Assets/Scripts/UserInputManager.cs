@@ -23,11 +23,11 @@ public class UserInputManager
                     if (col != null)
                     {
                         // 检测到有碰撞体的对象
-                        GameApp.MsgCenter.PostEvent(col.gameObject, Defines.OnSelectEvent);
+                        GameApp.MessageManager.PostEvent(col.gameObject, Defines.OnSelectEvent);
                     }
                     else
                     {
-                        GameApp.MsgCenter.PostEvent(Defines.OnUnSelectEvent);
+                        GameApp.MessageManager.PostEvent(Defines.OnUnSelectEvent);
                     }
                 });
             }

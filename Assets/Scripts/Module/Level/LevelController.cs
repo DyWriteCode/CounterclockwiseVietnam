@@ -34,15 +34,15 @@ public class LevelController : BaseController
     // 注册全局事件
     public override void InitGlobalEvent()
     {
-        GameApp.MsgCenter.AddEvent(Defines.ShowLevelDesEvent, onShowLevelDesCallback);
-        GameApp.MsgCenter.AddEvent(Defines.HideLevelDesEvent, onHideLevelDesCallback);
+        GameApp.MessageManager.AddEvent(Defines.ShowLevelDesEvent, onShowLevelDesCallback);
+        GameApp.MessageManager.AddEvent(Defines.HideLevelDesEvent, onHideLevelDesCallback);
     }
 
     // 移除全局事件
     public override void RemoveGlobalEvent()
     {
-        GameApp.MsgCenter.RemoveEvent(Defines.ShowLevelDesEvent, onShowLevelDesCallback);
-        GameApp.MsgCenter.RemoveEvent(Defines.HideLevelDesEvent, onHideLevelDesCallback);
+        GameApp.MessageManager.RemoveEvent(Defines.ShowLevelDesEvent, onShowLevelDesCallback);
+        GameApp.MessageManager.RemoveEvent(Defines.HideLevelDesEvent, onHideLevelDesCallback);
     }
 
     private void onShowLevelDesCallback(System.Object args)

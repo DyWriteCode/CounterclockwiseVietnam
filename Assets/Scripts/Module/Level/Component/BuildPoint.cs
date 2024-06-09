@@ -10,7 +10,7 @@ public class BuildPoint : MonoBehaviour
     {
         // test
         // Debug.Log("enter");
-        GameApp.MsgCenter.PostEvent(Defines.ShowLevelDesEvent, LevelId);
+        GameApp.MessageManager.PostEvent(Defines.ShowLevelDesEvent, LevelId);
     }
 
 
@@ -18,6 +18,6 @@ public class BuildPoint : MonoBehaviour
     {
         // test
         // Debug.Log("exit");
-        GameApp.MsgCenter.PostEvent(Defines.HideLevelDesEvent);
+        GameApp.MessageManager.PostEvent(Defines.HideLevelDesEvent);
     }
 }

@@ -44,7 +44,7 @@ public class Hero : ModelBase, ISkill
                 return;
             }
             // 执行未选中
-            GameApp.MsgCenter.PostEvent(Defines.OnUnSelectEvent);       
+            GameApp.MessageManager.PostEvent(Defines.OnUnSelectEvent);       
             // 不可以操作
             if (IsStop == false)
             {
@@ -61,12 +61,12 @@ public class Hero : ModelBase, ISkill
 
     private void addOptionEvent()
     {
-        GameApp.MsgCenter.AddTempEvent(Defines.OnAttackEvent, OnAttackCallBack);
-        GameApp.MsgCenter.AddTempEvent(Defines.OnIdleEvent, OnIdleCallBack);
+        GameApp.MessageManager.AddTempEvent(Defines.OnAttackEvent, OnAttackCallBack);
+        GameApp.MessageManager.AddTempEvent(Defines.OnIdleEvent, OnIdleCallBack);
         // 与OnInteractEvent这个事件合并了
-        // GameApp.MsgCenter.AddTempEvent(Defines.OnPickUpItemEvent, OnPickUpItemCallback);
-        GameApp.MsgCenter.AddTempEvent(Defines.OnInteractEvent, OnInteractCallback);
-        GameApp.MsgCenter.AddTempEvent(Defines.OnCancelEvent, OnCancelCallBack);
+        // GameApp.MessageManager.AddTempEvent(Defines.OnPickUpItemEvent, OnPickUpItemCallback);
+        GameApp.MessageManager.AddTempEvent(Defines.OnInteractEvent, OnInteractCallback);
+        GameApp.MessageManager.AddTempEvent(Defines.OnCancelEvent, OnCancelCallBack);
     }
 
     // 取消 移动

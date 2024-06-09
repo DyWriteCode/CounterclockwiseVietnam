@@ -14,6 +14,8 @@ public class BundleEditor
 {
     public static string ABCONFIGPATH = "Assets/Editor/AssetBundle/ABConfig.asset";
     public static string m_BundleTargetPath = Application.streamingAssetsPath + "/AssetBundle";
+    public static string xmlPath = Application.dataPath + "/AssetBundleConfig.xml";
+    public static string bytePath = "Assets/Data/ABData/AssetBundleConfig.bytes";
     // key为AB包名字 value为文件路径
     public static Dictionary<string, string> m_AllFileDir = new Dictionary<string, string>();
     // 过滤的list
@@ -92,7 +94,7 @@ public class BundleEditor
                 }
             }
         }
-        foreach(string name in m_AllFileDir.Keys)
+        foreach (string name in m_AllFileDir.Keys)
         {
             SetABName(name, m_AllFileDir[name]);
         }
@@ -164,10 +166,10 @@ public class BundleEditor
 
     public static bool ContainAllFileAB(string path)
     {
-        for (int i = 0;i < m_AllFileAB.Count;i++)
+        for (int i = 0; i < m_AllFileAB.Count; i++)
         {
             if (path == m_AllFileAB[i] || path.Contains(m_AllFileAB[i]))
-            { 
+            {
                 return true;
             }
         }
@@ -176,7 +178,7 @@ public class BundleEditor
 
     public static bool ContainABName(string name, string[] strs)
     {
-        for(int i = 0;i < strs.Length;i++)
+        for (int i = 0; i < strs.Length; i++)
         {
             if (name == strs[i])
             {
@@ -203,7 +205,7 @@ public class BundleEditor
 
     public static void SetABName(string name, List<string> paths)
     {
-        for(int i = 0; i < paths.Count;i++)
+        for (int i = 0; i < paths.Count; i++)
         {
             SetABName(name, paths[i]);
         }
@@ -214,10 +216,10 @@ public class BundleEditor
         string[] allBundles = AssetDatabase.GetAllAssetBundleNames();
         // key为全路径 value为包名
         Dictionary<string, string> resPathDic = new Dictionary<string, string>();
-        for (int i = 0;i < allBundles.Length ; i++)
+        for (int i = 0; i < allBundles.Length; i++)
         {
             string[] allBundlePath = AssetDatabase.GetAssetPathsFromAssetBundle(allBundles[i]);
-            for (int j = 0; j < allBundlePath.Length ; j++)
+            for (int j = 0; j < allBundlePath.Length; j++)
             {
                 if (allBundlePath[j].EndsWith(".cs"))
                 {
@@ -262,7 +264,7 @@ public class BundleEditor
     {
         AssetBundleConfig config = new AssetBundleConfig();
         config.AssetBundleList = new List<ABBase>();
-        foreach(string path in resPathDic.Keys)
+        foreach (string path in resPathDic.Keys)
         {
             ABBase abBase = new ABBase();
             abBase.Path = path;
@@ -294,7 +296,6 @@ public class BundleEditor
             config.AssetBundleList.Add(abBase);
         }
         // 写入XML
-        string xmlPath = Application.dataPath + "/AssetBundleConfig.xml";
         if (File.Exists(xmlPath))
         {
             File.Delete(xmlPath);
@@ -306,11 +307,10 @@ public class BundleEditor
         sw.Close();
         fileStream.Close();
         // 写入二进制
-        foreach(ABBase abBase in config.AssetBundleList)
+        foreach (ABBase abBase in config.AssetBundleList)
         {
             abBase.Path = "";
         }
-        string bytePath = m_BundleTargetPath + "/AssetBundleConfig.bytes";
         FileStream fs = new FileStream(bytePath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(fs, config);

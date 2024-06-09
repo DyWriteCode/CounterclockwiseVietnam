@@ -8,4 +8,9 @@ using UnityEngine;
 public class DebugManager
 {
     public bool IsDebug = true;
+
+    public DebugManager()
+    {
+
+    }
 }

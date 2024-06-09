@@ -35,7 +35,7 @@ public class ShowPathCommand : BaseCommand
             }
             else
             {
-                GameApp.MsgCenter.PostEvent(Defines.OnUnSelectEvent);
+                GameApp.MessageManager.PostEvent(Defines.OnUnSelectEvent);
                 // 不移动就直接显示操作选项
                 // 不知道为啥会出现小问题 有时间修补
                 GameApp.ViewManager.Open(ViewType.SelectOptionView, this.model.data["Event"], (Vector2)this.model.transform.position);

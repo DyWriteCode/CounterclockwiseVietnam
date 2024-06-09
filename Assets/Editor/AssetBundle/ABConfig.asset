@@ -24,3 +24,5 @@ MonoBehaviour:
     Path: Assets/Resources/Icon
   - ABName: sounds
     Path: Assets/Resources/Sounds
+  - ABName: assetbundleconfig
+    Path: Assets/Data/ABData

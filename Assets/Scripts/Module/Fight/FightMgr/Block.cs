@@ -38,14 +38,14 @@ public class Block : MonoBehaviour
         selectSp = transform.Find("select").GetComponent<SpriteRenderer>();
         gridSp = transform.Find("grid").GetComponent<SpriteRenderer>();
         dirSp = transform.Find("dir").GetComponent<SpriteRenderer>();
-        GameApp.MsgCenter.AddEvent(gameObject, Defines.OnSelectEvent, OnSelectCallBack);
-        GameApp.MsgCenter.AddEvent(Defines.OnUnSelectEvent, OnUnSelectCallBack);
+        GameApp.MessageManager.AddEvent(gameObject, Defines.OnSelectEvent, OnSelectCallBack);
+        GameApp.MessageManager.AddEvent(Defines.OnUnSelectEvent, OnUnSelectCallBack);
     }
 
     private void OnDestroy()
     {
-        GameApp.MsgCenter.RemoveEvent(gameObject, Defines.OnSelectEvent, OnSelectCallBack);
-        GameApp.MsgCenter.RemoveEvent(Defines.OnUnSelectEvent, OnUnSelectCallBack);
+        GameApp.MessageManager.RemoveEvent(gameObject, Defines.OnSelectEvent, OnSelectCallBack);
+        GameApp.MessageManager.RemoveEvent(Defines.OnUnSelectEvent, OnUnSelectCallBack);
     }
 
     // 显示格子
@@ -64,7 +64,7 @@ public class Block : MonoBehaviour
     // 选中事件回调函数
     private void OnSelectCallBack(System.Object args)
     {
-        GameApp.MsgCenter.PostEvent(Defines.OnUnSelectEvent);
+        GameApp.MessageManager.PostEvent(Defines.OnUnSelectEvent);
         if (GameApp.CommandManager.IsRunningCommand == false)
         {
             GameApp.ViewManager.Open(ViewType.FightOptionDesView);
