@@ -28,6 +28,7 @@ public class SupplieEditor : Editor
             supplie.RowIndex = (int)MathF.Abs(min_y - cellPos.y);
             supplie.ColIndex = (int)MathF.Abs(min_x - cellPos.x);
             supplie.transform.position = tilemap.CellToWorld(cellPos) + new Vector3(0.5f, 0.5f, -1);
+            EditorUtility.SetDirty(supplie);
         }
     }
 }

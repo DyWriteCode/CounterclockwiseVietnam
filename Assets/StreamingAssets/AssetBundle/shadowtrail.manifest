@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 1961925504
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6ebc846e61f03d1ef8ef1112df3aafae
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: cfd227a7d477a555032d2811fed2eef6
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7b5f258d3f3c3ef4a8f6b741cd19a028, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Resources/Common/ShadowTrail.prefab
+Dependencies: []

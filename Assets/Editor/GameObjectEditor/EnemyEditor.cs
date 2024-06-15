@@ -28,6 +28,7 @@ public class EnemyEditor : Editor
             enemy.RowIndex = (int)MathF.Abs(min_y - cellPos.y);
             enemy.ColIndex = (int)MathF.Abs(min_x - cellPos.x);
             enemy.transform.position = tilemap.CellToWorld(cellPos) + new Vector3(0.5f, 0.5f, -1);
+            EditorUtility.SetDirty(enemy);
         }
     }
 }

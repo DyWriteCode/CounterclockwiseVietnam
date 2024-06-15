@@ -1,0 +1,163 @@
+ManifestFileVersion: 0
+CRC: 4113220759
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: data
+      Dependencies: {}
+    Info_1:
+      Name: icon
+      Dependencies: {}
+    Info_2:
+      Name: sounds
+      Dependencies: {}
+    Info_3:
+      Name: assetbundleconfig
+      Dependencies: {}
+    Info_4:
+      Name: dialogueview
+      Dependencies: {}
+    Info_5:
+      Name: dragheroview
+      Dependencies: {}
+    Info_6:
+      Name: enemydesview
+      Dependencies:
+        Dependency_0: dialogueview
+    Info_7:
+      Name: fightoptiondesview
+      Dependencies:
+        Dependency_0: dialogueview
+    Info_8:
+      Name: fightselectheroview
+      Dependencies:
+        Dependency_0: dialogueview
+        Dependency_1: fightoptiondesview
+    Info_9:
+      Name: fightview
+      Dependencies:
+        Dependency_0: dialogueview
+    Info_10:
+      Name: herodesview
+      Dependencies:
+        Dependency_0: dialogueview
+        Dependency_1: enemydesview
+    Info_11:
+      Name: hitnum
+      Dependencies:
+        Dependency_0: dialogueview
+    Info_12:
+      Name: loadingview
+      Dependencies:
+        Dependency_0: dialogueview
+    Info_13:
+      Name: lossview
+      Dependencies:
+        Dependency_0: dialogueview
+        Dependency_1: fightoptiondesview
+    Info_14:
+      Name: massifdesview
+      Dependencies:
+        Dependency_0: dialogueview
+        Dependency_1: enemydesview
+    Info_15:
+      Name: messageview
+      Dependencies:
+        Dependency_0: dialogueview
+    Info_16:
+      Name: selectlevelview
+      Dependencies:
+        Dependency_0: dialogueview
+        Dependency_1: fightselectheroview
+    Info_17:
+      Name: selectoptionview
+      Dependencies:
+        Dependency_0: dialogueview
+        Dependency_1: fightoptiondesview
+    Info_18:
+      Name: setview
+      Dependencies:
+        Dependency_0: dialogueview
+        Dependency_1: fightoptiondesview
+        Dependency_2: fightselectheroview
+    Info_19:
+      Name: speakview
+      Dependencies:
+        Dependency_0: dialogueview
+    Info_20:
+      Name: startview
+      Dependencies:
+        Dependency_0: dialogueview
+        Dependency_1: fightoptiondesview
+    Info_21:
+      Name: suppliedesview
+      Dependencies:
+        Dependency_0: dialogueview
+        Dependency_1: enemydesview
+    Info_22:
+      Name: tipview
+      Dependencies:
+        Dependency_0: dialogueview
+    Info_23:
+      Name: upgradeview
+      Dependencies:
+        Dependency_0: dialogueview
+        Dependency_1: loadingview
+    Info_24:
+      Name: winview
+      Dependencies:
+        Dependency_0: dialogueview
+        Dependency_1: fightoptiondesview
+    Info_25:
+      Name: hit02
+      Dependencies: {}
+    Info_26:
+      Name: emeny
+      Dependencies:
+        Dependency_0: fightselectheroview
+    Info_27:
+      Name: massif
+      Dependencies:
+        Dependency_0: fightselectheroview
+        Dependency_1: emeny
+    Info_28:
+      Name: supplie
+      Dependencies:
+        Dependency_0: fightselectheroview
+        Dependency_1: emeny
+    Info_29:
+      Name: block
+      Dependencies: {}
+    Info_30:
+      Name: emo
+      Dependencies:
+        Dependency_0: fightselectheroview
+        Dependency_1: emeny
+    Info_31:
+      Name: gbl
+      Dependencies:
+        Dependency_0: fightselectheroview
+        Dependency_1: emeny
+    Info_32:
+      Name: hero2
+      Dependencies:
+        Dependency_0: fightselectheroview
+        Dependency_1: emeny
+    Info_33:
+      Name: icemonster
+      Dependencies:
+        Dependency_0: fightselectheroview
+        Dependency_1: emeny
+    Info_34:
+      Name: knight
+      Dependencies:
+        Dependency_0: fightselectheroview
+        Dependency_1: emeny
+    Info_35:
+      Name: pig
+      Dependencies:
+        Dependency_0: fightselectheroview
+        Dependency_1: emeny
+    Info_36:
+      Name: shadowtrail
+      Dependencies: {}

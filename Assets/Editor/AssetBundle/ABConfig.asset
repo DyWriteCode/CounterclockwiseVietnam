@@ -17,6 +17,7 @@ MonoBehaviour:
   - Assets/Resources/Effect
   - Assets/Resources/Figure
   - Assets/Resources/Model
+  - Assets/Resources/Common
   m_AllFileDirAB:
   - ABName: data
     Path: Assets/Resources/Data

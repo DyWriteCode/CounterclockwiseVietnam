@@ -28,6 +28,7 @@ public class TerrainEditor : Editor
             massif.RowIndex = (int)MathF.Abs(min_y - cellPos.y);
             massif.ColIndex = (int)MathF.Abs(min_x - cellPos.x);
             massif.transform.position = tilemap.CellToWorld(cellPos) + new Vector3(0.5f, 0.5f, -1);
+            EditorUtility.SetDirty(massif);
         }
     }
 }
