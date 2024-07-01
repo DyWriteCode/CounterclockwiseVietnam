@@ -4,9 +4,9 @@ using UnityEngine;
 using System;
 
 /// <summary>
-/// 单例
+/// 单例基础类
 /// </summary>
-public class Singleton<T> where T : new()
+public class Singleton<T> where T : class, new()
 {
     private static readonly T instance = Activator.CreateInstance<T>();
     public static T Instance
@@ -15,6 +15,10 @@ public class Singleton<T> where T : new()
         { 
             return instance; 
         } 
+        set
+        {
+            return;
+        }
     }
 
     // 初始化

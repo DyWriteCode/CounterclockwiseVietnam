@@ -1,5 +1,8 @@
 using System;
 
+/// <summary>
+/// 获取crc算法类
+/// </summary>
 public static class _CRC32
 {
     static UInt32[] crcTable =

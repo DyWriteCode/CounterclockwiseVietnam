@@ -22,6 +22,7 @@ public class GameDataManager
             10002,
             10003,
         };
+        Money = 10000;
         // 这个一样效果
         // heros.Add(10001);
         // heros.Add(10002);
