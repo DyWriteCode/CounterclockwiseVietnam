@@ -14,11 +14,13 @@ public class TimerManager
         timer = new GameTimer();
     }
 
+    // 注册计时器
     public void Register(float time, System.Action callback)
     {
         timer.Register(time, callback);
     }
 
+    // 检测计时器是否运行完毕并触发回调
     public void OnUpdate(float dt)
     {
         timer.OnUpdate(dt);

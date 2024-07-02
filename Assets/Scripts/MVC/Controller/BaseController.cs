@@ -94,11 +94,13 @@ public class BaseController
         this.model.controller = this;
     }
 
+    // 获取模板数据
     public BaseModel GetModel()
     {
         return model;
     }
 
+    // 获取模板数据
     public T GetModel<T>() where T : BaseModel
     {
         return model as T;

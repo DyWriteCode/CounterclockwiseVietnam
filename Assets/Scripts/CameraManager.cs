@@ -23,6 +23,7 @@ public class CameraManager
         camTf.transform.position = pos;
     }
 
+    // 还原摄像机位置
     public void ResetPos()
     {
         camTf.transform.position = prePos;

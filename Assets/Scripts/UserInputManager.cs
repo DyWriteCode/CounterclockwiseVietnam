@@ -14,10 +14,11 @@ public class UserInputManager
         {
             if (EventSystem.current.IsPointerOverGameObject())
             {
-                // 点击到UI
+                // 鼠标点击到UI
             }
             else
             {
+                // 触发对应事件
                 Tools.ScreenPointToRay2D(Camera.main, Input.mousePosition, delegate (Collider2D col)
                 {
                     if (col != null)
@@ -27,6 +28,7 @@ public class UserInputManager
                     }
                     else
                     {
+                        // 没有检测到有碰撞体的对象 
                         GameApp.MessageManager.PostEvent(Defines.OnUnSelectEvent);
                     }
                 });

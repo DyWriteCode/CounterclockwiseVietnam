@@ -19,6 +19,7 @@ public class BaseModel
 
     }
 
+    // 初始化
     public virtual void Init()
     {
 

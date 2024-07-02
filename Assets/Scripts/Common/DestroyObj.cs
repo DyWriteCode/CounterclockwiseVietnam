@@ -11,6 +11,7 @@ public class DestroyObj : MonoBehaviour
 
     void Start()
     {
+        // 在指定时间后删除
         Destroy(gameObject, Timer);
     }
 }

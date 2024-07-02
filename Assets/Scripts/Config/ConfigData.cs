@@ -18,6 +18,7 @@ public class ConfigData
         this.datas = new Dictionary<int, Dictionary<string, string>>();
     }
 
+    // 加载文件
     public TextAsset LoadFile()
     {
         return Resources.Load<TextAsset>($"Data/{fileName}");
@@ -42,6 +43,7 @@ public class ConfigData
         }
     }
 
+    // 通过ID获取数据
     public Dictionary<string, string> GetDataById(int id)
     {
         if (datas.ContainsKey(id))
@@ -51,6 +53,7 @@ public class ConfigData
         return null;
     }
 
+    // 获取整个表的数据
     public Dictionary<int, Dictionary<string, string>> GetLines()
     {
         return datas;

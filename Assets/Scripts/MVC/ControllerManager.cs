@@ -54,6 +54,7 @@ public class ControllerManager
         _modules.Clear();
     }
 
+    // 清除所有模块
     public void ClearAllModules()
     {
         List<int> keys = _modules.Keys.ToList();

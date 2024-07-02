@@ -5,6 +5,9 @@ using UnityEditor;
 using UnityEditor.Callbacks;
 using System.IO;
 
+/// <summary>
+/// 针对打包后能够提前出现一个页面 用以调整分辨率大小 便于开发
+/// </summary>
 public class PostProcessLauncherCopy
 {
     [PostProcessBuildAttribute(1)]

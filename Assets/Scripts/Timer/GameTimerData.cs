@@ -16,6 +16,7 @@ public class GameTimerData
         this.callback = callback;
     }
 
+    // 检测计时器是否运行完毕并触发回调
     public bool OnUpdate(float dt)
     {
         timer -= dt;

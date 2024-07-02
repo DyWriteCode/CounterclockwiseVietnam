@@ -34,6 +34,7 @@ public class ConfigManager
         loadList.Clear();
     }
 
+    // 获取注册对象
     public ConfigData GetConfigData(string file)
     {
         if (configs.ContainsKey(file))

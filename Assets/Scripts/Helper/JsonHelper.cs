@@ -19,8 +19,9 @@ public class JsonHelper
         return json;
     }
 
+    // 打印Socket报文
     public void Log(int messageID,IMessage message) {
 
-        Debug.Log($"报文ID:{messageID}\n包体{SerializeObject(message)}");
+        Debug.Log($"ID :{messageID}\nPackage Body : {SerializeObject(message)}");
     }
 }

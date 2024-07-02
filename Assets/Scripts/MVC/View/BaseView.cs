@@ -36,11 +36,13 @@ public class BaseView : MonoBehaviour, IBaseView
 
     }
 
+    // 触发其他控制器事件
     public void ApplyControllerFunc(int controllerKey, string eventName, params object[] args)
     {
         this.Controller.ApplyControllerFunc(controllerKey, eventName, args);
     }
 
+    // 触发本模块事件
     public void ApplyFunc(string eventName, params object[] args)
     {
         this.Controller.ApplyFunc(eventName, args);
@@ -62,16 +64,19 @@ public class BaseView : MonoBehaviour, IBaseView
         _isInit = true;
     }
 
+    // 初始化UI
     public virtual void InitUI()
     {
         
     }
 
+    // 视图是否已经初始化
     public bool IsInit()
     {
         return _isInit;
     }
 
+    // 视图是否显示
     public bool IsShow()
     {
         return _canvas.enabled == true;

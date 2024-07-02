@@ -22,10 +22,11 @@ public class GameDataManager
             10002,
             10003,
         };
-        Money = 10000;
         // 这个一样效果
         // heros.Add(10001);
         // heros.Add(10002);
         // heros.Add(10003);
+        // 默认给一点 至少做个样子 虽然说没实现相关的商店功能
+        Money = 10000;
     }
 }

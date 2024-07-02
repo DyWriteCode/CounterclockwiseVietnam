@@ -14,12 +14,14 @@ public class GameTimer
         timers = new List<GameTimerData>();
     }
 
+    // 注册计时器
     public void Register(float timer, System.Action callback)
     {
         GameTimerData data = new GameTimerData(timer, callback);
         timers.Add(data);
     }
 
+    // 同update一起运行 检测每个计时器是否运行完毕
     public void OnUpdate(float dt)
     {
         for (int i = timers.Count - 1; i >= 0; i--)
