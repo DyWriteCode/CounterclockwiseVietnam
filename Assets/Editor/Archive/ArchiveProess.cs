@@ -7,6 +7,9 @@ using System.Data;
 using System.IO;
 using UnityEngine.UI;
 
+/// <summary>
+/// 对存档进行处理
+/// </summary>
 public static class ArchiveProess
 {
     [MenuItem("Tools/Archive/CreateNewArchive")]

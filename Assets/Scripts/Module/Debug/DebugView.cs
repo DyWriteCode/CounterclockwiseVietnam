@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// 特殊的view 用来在打包后测试日志的输出 定位bug
@@ -14,7 +15,8 @@ class DebugView : MonoBehaviour
         public string stackTrace;
         public LogType type;
     }
-    public KeyCode toggleKey = KeyCode.Tab; // 规定进入调试模式的按键
+    // 规定进入调试模式的按键 
+    // public KeyCode toggleKey = KeyCode.Space; 
     public bool restrictLogCount = false; // 是否只保留一定数量的日志
     public int maxLogs = 1000; // 最大保留日志数量
     readonly List<Log> logs = new List<Log>();
@@ -30,7 +32,7 @@ class DebugView : MonoBehaviour
             { LogType.Log, Color.white },
             { LogType.Warning, Color.yellow },
         };
-    const string windowTitle = "Console";
+    const string windowTitle = "ConsoleWindow";
     const int margin = 20;
     readonly GUIContent clearLabel = new GUIContent("Clear", "Clear the contents of the console.");
     readonly GUIContent collapseLabel = new GUIContent("Collapse", "Hide repeated messages.");
@@ -49,27 +51,31 @@ class DebugView : MonoBehaviour
 
     void Update()
     {
-        if (GameApp.DebugManager.IsDebug != true)
+        if (GameApp.DebugManager.IsDebug == true)
         {
-            return;
+            if (Keyboard.current.tabKey.wasPressedThisFrame == true)
+            {
+                visible = !visible;
+            }
         }
-        if (Input.GetKeyDown(toggleKey))
+        else
         {
-            visible = !visible;
+            visible = false;
+            return;
         }
     }
 
     void OnGUI()
     {
-        if (GameApp.DebugManager.IsDebug != true)
+        if (GameApp.DebugManager.IsDebug == false)
         {
             return;
         }
-        if (!visible)
+        if (visible == false)
         {
             return;
         }
-        windowRect = GUILayout.Window(123456, windowRect, DrawConsoleWindow, windowTitle);
+        windowRect = GUILayout.Window(20090918, windowRect, DrawConsoleWindow, windowTitle);
     }
 
     // 显示列出记录的日志的窗口

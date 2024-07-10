@@ -23,6 +23,7 @@ public class SetView : BaseView
         base.Open(args);
         Find<Toggle>("bg/IsOpnSound").isOn = GameApp.SoundManager.IsStop;
         Find<Toggle>("bg/IsDebug").isOn = GameApp.DebugManager.IsDebug;
+        // Find<Toggle>("bg/IsDebug").isOn = true;
         Find<Slider>("bg/soundCount").value = GameApp.SoundManager.BgmVolume;
         Find<Slider>("bg/effectCount").value = GameApp.SoundManager.EffectVolume;
     }

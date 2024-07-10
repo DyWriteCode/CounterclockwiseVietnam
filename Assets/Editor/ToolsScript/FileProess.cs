@@ -5,9 +5,15 @@ using UnityEditor;
 using Excel;
 using System.Data;
 using System.IO;
-using UnityEngine.UI;
-public static class MyEditor
+
+/// <summary>
+/// 把Excel文件转成TXT格式文件
+/// </summary>
+public static class FileProess
 {
+    /// <summary>
+    /// 运行Excel转换
+    /// </summary>
     [MenuItem("Tools/ExcelToCSV")]
     public static void ExportExcelToTxt()
     {
@@ -49,13 +55,19 @@ public static class MyEditor
 
                 readTableToTxt(files[i], "Resources/Data", table);
             }
-            EditorUtility.DisplayProgressBar("Clear AB Names", $"Name : {files[i]}", i * 1.0f / files.Length);
+            EditorUtility.DisplayProgressBar("Clear", $"Name : {files[i]}", i * 1.0f / files.Length);
         }
 
         EditorUtility.ClearProgressBar();
         AssetDatabase.Refresh();
     }
 
+    /// <summary>
+    /// 读取数据到TXT里面
+    /// </summary>
+    /// <param name="filePath">需要读取的文件路径</param>
+    /// <param name="outPathStr">需要输出的文件路径</param>
+    /// <param name="table">存放在哪个table</param>
     private static void readTableToTxt(string filePath, string outPathStr, DataTable table)
     {
         string fileName = Path.GetFileNameWithoutExtension(filePath);

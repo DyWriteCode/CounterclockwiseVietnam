@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// 绑定在karas身上便于自适应canvas大小
+/// 绑定在canvas身上便于自适应canvas大小
 /// </summary>
 public class CanvasMatch : MonoBehaviour
 {

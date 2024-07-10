@@ -25,6 +25,9 @@ public class BundleEditor
     // 储存所有有效路径
     public static List<string> m_ConfigFile = new List<string>();
 
+    /// <summary>
+    /// 进行打包
+    /// </summary>
     [MenuItem("Tools/AssetBundle/BuildAssetBundle")]
     public static void BuildAssetBundles()
     {

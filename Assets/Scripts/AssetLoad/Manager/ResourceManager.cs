@@ -88,6 +88,68 @@ public class DoubleLinkedList<T> where T : class, new()
         m_Count++;
         return Tail;
     }
+
+    // 移除掉某一个节点
+    public void RemoveNode(DoubleLinkedListNode<T> pNode)
+    {
+        if (pNode == null)
+        {
+            return;
+        }
+        if (pNode == Head)
+        {
+            Head = pNode.next;
+        }
+        if (pNode == Tail)
+        {
+            Tail = pNode.prev;
+        }
+        if (pNode.next != null)
+        {
+            pNode.prev.next = pNode.next;
+        }
+        if (pNode.prev != null)
+        {
+            pNode.next.prev = pNode.prev;
+        }
+        pNode.prev = pNode.next = null;
+        pNode.t = null;
+        m_DoubleLinkedNodePool.Recycle(pNode);
+        m_Count--;
+    }
+
+    // 把某一个节点移至头部
+    public void MoveToHead(DoubleLinkedListNode<T> pNode)
+    {
+        if (pNode == null || pNode == Head)
+        {
+            return;
+        }
+        if (pNode.prev == null && pNode.next == Head)
+        {
+            return;
+        }
+        if (pNode == Tail)
+        {
+            Tail = pNode.prev;
+        }
+        if (pNode.prev != Tail)
+        {
+            pNode.prev.next = pNode.next;
+        }
+        if (pNode.next != Tail)
+        {
+            pNode.next.prev = pNode.prev;
+        }
+        pNode.prev = Tail;
+        pNode.next = Head;
+        pNode.prev = pNode;
+        Head = pNode;
+        if (Tail == null)
+        {
+            Tail = Head;
+        }
+    }
 }
 
 /// <summary>

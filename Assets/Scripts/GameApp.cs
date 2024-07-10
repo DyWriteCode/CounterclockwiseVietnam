@@ -50,9 +50,9 @@ public class GameApp : Singleton<GameApp>
         DialogueManager = new DialogueManager();
         DebugManager = new DebugManager();
         NetManager = new NetManager();
+        ObjectManager = new ObjectManager();
         ResourceManager = new ResourceManager();
         AssetBundleManager = new AssetBundleManager();
-        ObjectManager = new ObjectManager();
     }
 
     public override void Update(float dt)

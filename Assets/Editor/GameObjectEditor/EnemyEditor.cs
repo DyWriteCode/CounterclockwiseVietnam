@@ -5,6 +5,9 @@ using UnityEngine.Tilemaps;
 using UnityEditor;
 using System;
 
+/// <summary>
+/// 在Inspector上添加一个GUI按钮方便去调整位置 To Enemy
+/// </summary>
 [CanEditMultipleObjects, CustomEditor(typeof(Enemy))]
 public class EnemyEditor : Editor
 {
