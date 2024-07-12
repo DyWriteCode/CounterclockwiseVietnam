@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3394517367
+CRC: 3347848816
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f75459d806b24aec0e3bdb0f90e8c571
+    Hash: 0d62ab0d3dc9e542a1396d77deba961d
   TypeTreeHash:
     serializedVersion: 2
     Hash: 10175b200fc604cd4ea88dd6f0e3f962
@@ -59,7 +59,7 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.SpriteState
 Assets:
-- "Assets/Art/monster/\uFFFD\uFFFD\uFFFD\uFFFD\u04B0\uFFFD\uFFFD/Hellfire_rhino-Sheet_red.png"
+- Assets/Art/monster/WildBoar/Hellfire_rhino-Sheet_red.png
 - "Assets/Animations/\u6076\u9B54\u5251\u58EB/die.anim"
 - "Assets/Animations/\u6076\u9B54\u5251\u58EB/attack.anim"
 - "Assets/Animations/\u6076\u9B54\u5251\u58EB/move.anim"

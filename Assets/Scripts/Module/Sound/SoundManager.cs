@@ -1,4 +1,4 @@
-using System.Collections;
+         using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
@@ -11,6 +11,7 @@ public class SoundManager
     private AudioSource bgmSource; // 播放bgm的音频组件
     private Dictionary<string, AudioClip> clips; // 音频缓存字典
     private bool isStop; // 是否静音
+
     public bool IsStop
     {
         get
@@ -31,18 +32,27 @@ public class SoundManager
         }
     }
     private float bgmVolume; // bgm当前音量
-    public float BgmVolume { 
-        get => bgmVolume;
+
+    public float BgmVolume {
+        get
+        {
+            return bgmVolume;
+        }
         set
         {
             bgmVolume = value;
             bgmSource.volume = bgmVolume;
         }
     }
+
     private float effectVolume; // 音效当前音量(攻击，受伤，防御等短音效)
+
     public float EffectVolume
     {
-        get => effectVolume;
+        get
+        {
+            return effectVolume;
+        }
         set
         {
             effectVolume = value;
@@ -54,8 +64,8 @@ public class SoundManager
         clips = new Dictionary<string, AudioClip>();
         bgmSource = GameObject.Find("game").GetComponent<AudioSource>();
         isStop = false;
-        bgmVolume = 1.0f;
-        effectVolume = 1.0f;
+        bgmVolume = 0.0f;
+        effectVolume = 0.0f;
     }
 
     public void PlayBGM(string res)

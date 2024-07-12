@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2820211700
+CRC: 2739507132
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 46ad4393c35b1f5e83da132ebc1403da
+    Hash: 48e56010c7f958872da07592098464de
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3965dabdb05c3b60377238bcd15bca46
@@ -65,7 +65,7 @@ Assets:
 - "Assets/Animations/\u96EA\u602A/attack1.anim"
 - Assets/Controllers/emoqishiController.controller
 - Assets/Resources/Figure/emeny.prefab
-- "Assets/Art/monster/\uFFFD\uFFFD\uFFFD\uFFFD\u02B9\uFFFD\uFFFD\u02BF/8_sword_warrior-red_no_back_swords-Sheet.png"
+- Assets/Art/monster/GameEnemy/8_sword_warrior-red_no_back_swords-Sheet.png
 - "Assets/Animations/\u96EA\u602A/die.anim"
 - Assets/Shaders/DefaultColorFlash.shader
 - "Assets/Animations/\u96EA\u602A/idle.anim"

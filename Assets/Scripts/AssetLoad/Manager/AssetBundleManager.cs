@@ -19,6 +19,26 @@ public class ResourceItem
     public List<string> m_DependAssetBundle = null;
     // 该资源加载完成的AssetBundle
     public AssetBundle m_AssetBundle = null;
+    // --------------------------------------------
+    // 资源对象
+    public Object m_Obj = null;
+    // 资源唯一标识符
+    public int m_Guid = 0;
+    // 资源最后使用的时间
+    public float m_LastUseTime = 0.0f;
+    // 引用计数
+    private int m_RefCount = 0;
+    public int RefCount
+    {
+        get
+        {
+            return m_RefCount;
+        }
+        set
+        {
+            m_RefCount = value;
+        }
+    }
 }
 
 /// <summary>
@@ -113,8 +133,8 @@ public class AssetBundleManager
         if (m_AssetBundleItemDic.TryGetValue(crc, out item) == false || item == null)
         {
             AssetBundle assetBundle = null;
-            string fullPath = $"{Application.streamingAssetsPath}/{name}";
-            if (File.Exists(fullPath))
+            string fullPath = $"{Application.streamingAssetsPath}/AssetBundle/{name}";
+            if (File.Exists(fullPath) == true)
             {
                 assetBundle = AssetBundle.LoadFromFile(fullPath);
             }
@@ -148,7 +168,7 @@ public class AssetBundleManager
                 UnLoadAssetBundle(item.m_DependAssetBundle[i]);
             }
         }
-        UnLoadAssetBundle(item.m_AssetName);
+        UnLoadAssetBundle(item.m_AssetBundleName);
     }
 
     // 根据名字卸载AB包

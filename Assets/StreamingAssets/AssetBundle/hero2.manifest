@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2338899751
+CRC: 3325018626
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2d8a5965c55f2eab53eb57267c3c8933
+    Hash: d88e9194b5ea85b974f70eb326bdd5db
   TypeTreeHash:
     serializedVersion: 2
     Hash: 10175b200fc604cd4ea88dd6f0e3f962
@@ -59,7 +59,7 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.SpriteState
 Assets:
-- "Assets/Art/monster/\uFFFD\uFFFD\u0127\u01F9\uFFFD\uFFFD/SpearWarrior_purple.png"
+- Assets/Art/monster/DemonSpearman/SpearWarrior_purple.png
 - Assets/Controllers/emoqiangbingController.controller
 - "Assets/Animations/\u91CE\u732A/idle.anim"
 - "Assets/Animations/\u91CE\u732A/attack.anim"
