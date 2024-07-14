@@ -32,6 +32,9 @@ public class GameApp : Singleton<GameApp>
     // 初始化所有管理器
     public override void Init()
     {
+        ObjectManager = new ObjectManager();
+        ResourceManager = new ResourceManager();
+        AssetBundleManager = new AssetBundleManager();
         SoundManager = new SoundManager();
         ControllerManager = new ControllerManager();
         ViewManager = new ViewManager();
@@ -50,9 +53,6 @@ public class GameApp : Singleton<GameApp>
         DialogueManager = new DialogueManager();
         DebugManager = new DebugManager();
         NetManager = new NetManager();
-        ObjectManager = new ObjectManager();
-        ResourceManager = new ResourceManager();
-        AssetBundleManager = new AssetBundleManager();
     }
 
     public override void Update(float dt)

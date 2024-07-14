@@ -81,7 +81,7 @@ public class GameScenes : MonoBehaviour
         GameApp.ConfigManager.Register("supplies", new ConfigData("supplies"));
     }
     
-    void Update()
+    private void Update()
     {
         dt = Time.deltaTime;
         GameApp.Instance.Update(dt);

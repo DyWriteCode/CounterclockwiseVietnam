@@ -77,7 +77,9 @@ public class SoundManager
         // 没有当前音频
         if (clips.ContainsKey(res) == false)
         {
+            GameApp.AssetBundleManager.LoadAssetBundleConfig();
             AudioClip clip = Resources.Load<AudioClip>($"Sounds/{res}");
+            // AudioClip clip = GameApp.ResourceManager.LoadResource<AudioClip>($"Assets/Resources/Sounds/{res}.wav");
             clips.Add(res, clip);
         }
         bgmSource.clip = clips[res];

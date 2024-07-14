@@ -271,6 +271,64 @@ public class CMapList<T> where T : class, new()
 }
 
 /// <summary>
+/// 资源加载优先级
+/// </summary>
+public enum LoadResPriority
+{
+    RES_HIGHEST = 0, // 最高优先级
+    RES_MIDDLE, // 一般优先级
+    RES_SLOWEST, // 最低优先级
+    RES_NUM,
+}
+
+// <summary>
+/// 异步加载资源传入参数类
+/// </summary>
+public class AsyncLoadResParam
+{
+    public List<AsyncCallack> m_CallbackList = new List<AsyncCallack>();
+    public uint m_Crc = 0;
+    public string m_Path = string.Empty;
+    public LoadResPriority m_Priority = LoadResPriority.RES_SLOWEST;
+    // 在对象池中用到所以说要设置一个reset方法
+    public void Reset()
+    {
+        m_Crc = 0;
+        m_Path = string.Empty;
+        m_Priority = LoadResPriority.RES_SLOWEST;
+        m_CallbackList.Clear();
+    }
+}
+
+/// <summary>
+/// 异步回调函数类
+/// </summary>
+public class AsyncCallack
+{
+    public OnAsyncObjFinish m_DealFinish = null;
+    public object param1 = null;
+    public object param2 = null;
+    public object param3 = null;
+    public object param4 = null;
+    public object param5 = null;
+
+    public void ReSet()
+    {
+        m_DealFinish = null;
+        param1 = null;
+        param2 = null;
+        param3 = null;
+        param4 = null;
+        param5 = null;
+    }
+}
+
+/// <summary>
+/// 异步加载回调
+/// </summary>
+public delegate void OnAsyncObjFinish(string path, Object obj, object param1 = null, object param2 = null, object param3 = null, object param4 = null, object param5 = null);
+
+/// <summary>
 /// 基于AssetBundle的资源管理
 /// </summary>
 public class ResourceManager : Singleton<ResourceManager>
@@ -281,6 +339,26 @@ public class ResourceManager : Singleton<ResourceManager>
     public Dictionary<uint, ResourceItem> AssetDic { get; set; } = new Dictionary<uint, ResourceItem>();
     // 没有引用的资源块 达到缓存最大时释放这个列表里面没用的资源块
     protected CMapList<ResourceItem> m_NoRefrenceAssetMapList = new CMapList<ResourceItem>();
+    // Mono脚本
+    protected MonoBehaviour m_MonoStart;
+    // 正在异步加载资源的列表
+    protected List<AsyncLoadResParam>[] m_LoadingAssetList = new List<AsyncLoadResParam>[(int)LoadResPriority.RES_NUM];
+    // 正在异步加载的dictionary
+    protected Dictionary<uint, AsyncLoadResParam> m_LoadingAssetDic = new Dictionary<uint, AsyncLoadResParam>();
+    // 异步回调函数对象池
+    protected ClassObjectPool<AsyncCallack> m_AsyncCallackPool = new ClassObjectPool<AsyncCallack>(200);
+    // 异步回调参数的对象池
+    protected ClassObjectPool<AsyncLoadResParam> m_AsyncLoadResParamPool = new ClassObjectPool<AsyncLoadResParam>(100);
+
+    public void Init(MonoBehaviour mono)
+    {
+        for (int i = 0; i < (int)LoadResPriority.RES_NUM; i++)
+        {
+            m_LoadingAssetList[i] = new List<AsyncLoadResParam>();
+        }
+        m_MonoStart = mono;
+        m_MonoStart.StartCoroutine(AsyncLoadCor());
+    }
 
     // 同步资源加载方法 从AB包中加载
     // 外部直接调用 且只加载不需要实例化的资源 如音频文字等
@@ -453,5 +531,14 @@ public class ResourceManager : Singleton<ResourceManager>
         item.RefCount--;
         DestoryResouceItme(item);
         return true;
+    }
+
+    // 异步加载
+    IEnumerator AsyncLoadCor()
+    {
+        while (true)
+        {
+            yield return null;
+        }
     }
 }

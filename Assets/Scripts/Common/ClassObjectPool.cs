@@ -25,14 +25,14 @@ public class ClassObjectPool<T> where T : class, new()
     }
 
     // 从池内取对象
-    public T Spawn(bool cteateIfPoolEmpty = false)
+    public T Spawn(bool createIfPoolEmpty = false)
     {
         if (m_Pool.Count > 0)
         {
             T rtn = m_Pool.Pop();
             if (rtn == null)
             {
-                if (cteateIfPoolEmpty == true)
+                if (createIfPoolEmpty == true)
                 {
                     rtn = new T();
                 }
@@ -42,7 +42,7 @@ public class ClassObjectPool<T> where T : class, new()
         }
         else
         {
-            if (cteateIfPoolEmpty == true)
+            if (createIfPoolEmpty == true)
             {
                 T rtn = new T();
                 m_NoRecycleCount++;
