@@ -1,27 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// <summary>
-/// 模型基类
-/// </summary>
-public class BaseModel
-{
-    public BaseController controller;
-
-    public BaseModel(BaseController ctl)
-    {
-        controller = ctl;
-    }
-
-    public BaseModel()
-    {
-
-    }
-
-    // 初始化
-    public virtual void Init()
-    {
-
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:53f269656996561c9692e0280de1d2bad1117eb8bb09b7d92a7ea73df5819b39
+size 397

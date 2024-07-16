@@ -1,16 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// <summary>
-/// 游戏调试管理器
-/// </summary>
-public class DebugManager
-{
-    public bool IsDebug = true;
-
-    public DebugManager()
-    {
-
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d93dfc1264b575ba2b2ab97abeebe5946c59563d876d83d2a0ee60273d60bcdc
+size 253

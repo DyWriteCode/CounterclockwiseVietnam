@@ -1,32 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-
-/// <summary>
-/// 英雄被拖拽出来后的图标界面
-/// </summary>
-public class DragHeroView : BaseView
-{
-    private void Update()
-    {
-        // 拖拽中跟随鼠标移动 显示的时候才移动
-        if (_canvas.enabled == false)
-        {
-            return;
-        }
-        // 鼠标坐标转换为世界坐标
-        Vector2 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = worldPos;
-    }
-
-    public override void Open(params object[] args)
-    {
-        transform.GetComponent<Image>().SetIcon(args[0].ToString());
-    }
-
-    public DragHeroView() : base()
-    {
-
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ee989770887bb721382f428e16deb60f6e25b1f99fb3b7a55cbd29ce0cc4d8c7
+size 775

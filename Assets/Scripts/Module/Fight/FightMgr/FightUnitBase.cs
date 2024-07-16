@@ -1,19 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// <summary>
-/// 战斗单元
-/// </summary>
-public class FightUnitBase
-{
-    public virtual void Init()
-    {
-
-    }
-
-    public virtual bool Update(float dt)
-    {
-        return false;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:37e4b2bb9e91db6dbaa757243c40c365f19de1c55a2dacd07999badb5b6b593a
+size 296

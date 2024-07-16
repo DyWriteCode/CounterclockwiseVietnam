@@ -1,30 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// <summary>
-/// 等待指令
-/// </summary>
-public class WaitCommand : BaseCommand
-{
-    private float time;
-    System.Action callback;
-
-    public WaitCommand(float t, System.Action callback = null)
-    {
-        this.time = t;
-        this.callback = callback;
-    }
-
-    public override bool Update(float dt)
-    {
-        this.time -= dt;
-        if (this.time <= 0)
-        {
-            callback?.Invoke();
-            return true;
-        }
-        return false;
-    }
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:953fca85aef8394cc37fd53a5636fe1d48d3a46abdf4b834b7c3d5a3d70dbdd3
+size 592

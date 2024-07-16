@@ -1,30 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// <summary>
-/// 视图类型枚举
-/// </summary>
-public enum ViewType
-{
-    StartView,
-    SetView,
-    MessageView,
-    LoadingView,
-    SelectLevelView,
-    UpgradeView,
-    FightView,
-    FightSelectHeroView,
-    DragHeroView,
-    TipView,
-    HeroDesView,
-    EnemyDesView,
-    MassifDesView,
-    SupplieDesView,
-    SelectOptionView,
-    FightOptionDesView,
-    LossView,
-    WinView,
-    DialogueView,
-    SpeakView,
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7016b5c309e6725a53484af37e7f52a32c7d3f2f26b1dd01d8600b2513f3c9b7
+size 538

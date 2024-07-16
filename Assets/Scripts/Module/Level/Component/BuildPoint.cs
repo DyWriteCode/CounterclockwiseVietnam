@@ -1,23 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class BuildPoint : MonoBehaviour
-{
-    public int LevelId; // 设置关卡ID
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        // test
-        // Debug.Log("enter");
-        GameApp.MessageManager.PostEvent(Defines.ShowLevelDesEvent, LevelId);
-    }
-
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        // test
-        // Debug.Log("exit");
-        GameApp.MessageManager.PostEvent(Defines.HideLevelDesEvent);
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:fbd22d4f5eb7fcf19ac50581539fbea7f1c20668c891bf3a4b5faac4f3993e2b
+size 566

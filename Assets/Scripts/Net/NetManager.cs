@@ -1,22 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// <summary>
-/// 网络管理器
-/// </summary>
-public class NetManager
-{
-    // 创建一个工厂实例
-    public BufferFactory bufferFactory;
-
-    public NetManager()
-    {
-        bufferFactory = new BufferFactory();
-    }
-
-    public void Update(float dt)
-    {
-        
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:6bb0f42a0feb989195ee2604d1e8767ee96ed02dc0d2b26bdcf37d331f2336da
+size 388

@@ -1,30 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// <summary>
-/// 游戏计时器数据
-/// </summary>
-public class GameTimerData
-{
-    private float timer; // 计时时长
-    private System.Action callback; // 回调函数
-
-    public GameTimerData(float timer, System.Action callback)
-    {
-        this.timer = timer;
-        this.callback = callback;
-    }
-
-    // 检测计时器是否运行完毕并触发回调
-    public bool OnUpdate(float dt)
-    {
-        timer -= dt;
-        if (timer <= 0)
-        {
-            callback.Invoke();
-            return true;
-        }
-        return false;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:760a1d0f4b7432b56f517a1bce05a2739bec252d22a3ab1444cd3f8144f3d3d7
+size 673

@@ -1,11 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// <summary>
-/// 加载界面
-/// </summary>
-public class LoadingView : BaseView
-{
-    // to do...
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:48337d3b4013ff3e1c9d23508901971e584100ed498913eb653f55308a928628
+size 193
