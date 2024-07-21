@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 读取.csv格式的数据表(以","隔开的数据格式 )
+/// 读取.bytes格式的数据表(以","隔开的数据格式 )
 /// 后期通过网络框架获取MySQL数据内容
 /// </summary>
 public class ConfigData
