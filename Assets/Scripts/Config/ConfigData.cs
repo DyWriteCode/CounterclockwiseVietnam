@@ -1,3 +1,61 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:70cf2d4373097ac146a579a86ad3a58cef4e97ccd2f14531f3250dc45cd0ee19
-size 1931
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// 读取.csv格式的数据表(以","隔开的数据格式 )
+/// 后期通过网络框架获取MySQL数据内容
+/// </summary>
+public class ConfigData
+{
+    // 后期这个数据表通过网络框架, 解析, 获取
+    // Key是字典的ID, 值是每一行的数据
+    private Dictionary<int, Dictionary<string, string>> datas; // 每一个存储表所存储的数据
+    public string fileName; // 配置表文件名称
+
+    public ConfigData(string fileName) {
+        this.fileName = fileName;
+        this.datas = new Dictionary<int, Dictionary<string, string>>();
+    }
+
+    // 加载文件
+    public TextAsset LoadFile()
+    {
+        return Resources.Load<TextAsset>($"Data/{fileName}");
+    }
+
+    // 读取
+    public void Load(string txt)
+    {
+        string[] dataArr = txt.Split('\n'); // 换行
+        // 获取第一行数据作为每一行数据字典key的值
+        string[] titleArr = dataArr[0].Trim().Split("<,>"); // 逗号切割
+        // 内容从第三行开始读起(下标从二开始)
+        for (int i = 2; i < dataArr.Length; i++)
+        {
+            string[] tempArr = dataArr[i].Trim().Split("<,>");
+            Dictionary<string, string> tempData = new Dictionary<string, string>();
+            for (int j = 0; j < tempArr.Length; j++)
+            {
+                tempData.Add(GameApp.ArchiveManager.ArchiveToDataNormal(PlayerPrefs.GetString("AESKEY"), titleArr[j]) as string, GameApp.ArchiveManager.ArchiveToDataNormal(PlayerPrefs.GetString("AESKEY"), tempArr[j].Trim('\0')) as string);
+            }
+            datas.Add(int.Parse(tempData["Id"]), tempData);
+        }
+    }
+
+    // 通过ID获取数据
+    public Dictionary<string, string> GetDataById(int id)
+    {
+        if (datas.ContainsKey(id))
+        {
+            return datas[id];
+        }
+        return null;
+    }
+
+    // 获取整个表的数据
+    public Dictionary<int, Dictionary<string, string>> GetLines()
+    {
+        return datas;
+    }
+}

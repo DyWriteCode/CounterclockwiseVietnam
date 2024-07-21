@@ -1,4 +1,0 @@
-Id,Name,Type,Attack,Hp,Icon,Step,Skill,Interact
-Id,名称,类型,攻击力,血量,图标,行动力,技能,交互
-10001,弹药箱,1,1,1,enemy03,0,10010,1
-10002,医疗箱,1,1,1,enemy03,0,10010,1
