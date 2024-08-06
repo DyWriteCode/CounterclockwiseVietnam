@@ -6,6 +6,8 @@ using System.Linq;
 using System.IO;
 using System.Xml.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using Game.Common;
+using Game.Common.Algorithm;
 
 /// <summary>
 /// AB包打包工具类

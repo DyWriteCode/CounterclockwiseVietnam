@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using Game.Common;
 using UnityEngine.UI;
 
 /// <summary>

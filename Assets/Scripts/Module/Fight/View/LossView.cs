@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a2e07bc30e6713e64701e21c49a19a7099c26fe7fd4e96f6aad8a1871916d1eb
-size 913
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Game.Common;
+using UnityEngine.UI;
+
+/// <summary>
+/// 失败页面
+/// </summary>
+public class LossView : BaseView
+{
+    protected override void OnStart()
+    {
+        base.OnStart();
+        Find<Button>("bg/okBtn").onClick.AddListener(delegate ()
+        {
+            // 卸载战斗中的资源
+            GameApp.FightManager.ReLoadRes();
+            GameApp.ViewManager.CloseAll();
+
+            // 切换场景
+            LoadingModel load = new LoadingModel();
+            load.SceneName = "map";
+            load.callback = delegate ()
+            {
+                GameApp.SoundManager.PlayBGM("mapbgm");
+                GameApp.ViewManager.Open(ViewType.SelectLevelView);
+            };
+            Controller.ApplyControllerFunc(ControllerType.Loading, Defines.LoadingScene, load);
+        });
+    }
+}

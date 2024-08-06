@@ -2,16 +2,16 @@
 <AssetBundleConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <AssetBundleList Path="Assets/Data/ABData/AssetBundleConfig.bytes" Crc="227658186" AssetBundleName="assetbundleconfig" AssetName="AssetBundleConfig.bytes" />
   <AssetBundleList Path="Assets/Resources/Model/block.prefab" Crc="1776458230" AssetBundleName="block" AssetName="block.prefab" />
-  <AssetBundleList Path="Assets/Resources/Data/dialogue.bin" Crc="2659029328" AssetBundleName="data" AssetName="dialogue.bin" />
-  <AssetBundleList Path="Assets/Resources/Data/enemy.bin" Crc="4260661143" AssetBundleName="data" AssetName="enemy.bin" />
-  <AssetBundleList Path="Assets/Resources/Data/level.bin" Crc="2675160679" AssetBundleName="data" AssetName="level.bin" />
-  <AssetBundleList Path="Assets/Resources/Data/massif.bin" Crc="4044021748" AssetBundleName="data" AssetName="massif.bin" />
-  <AssetBundleList Path="Assets/Resources/Data/option.bin" Crc="766689997" AssetBundleName="data" AssetName="option.bin" />
-  <AssetBundleList Path="Assets/Resources/Data/pitfall.bin" Crc="194792310" AssetBundleName="data" AssetName="pitfall.bin" />
-  <AssetBundleList Path="Assets/Resources/Data/player.bin" Crc="2521249656" AssetBundleName="data" AssetName="player.bin" />
-  <AssetBundleList Path="Assets/Resources/Data/role.bin" Crc="3287742116" AssetBundleName="data" AssetName="role.bin" />
-  <AssetBundleList Path="Assets/Resources/Data/skill.bin" Crc="901176917" AssetBundleName="data" AssetName="skill.bin" />
-  <AssetBundleList Path="Assets/Resources/Data/supplies.bin" Crc="3464100171" AssetBundleName="data" AssetName="supplies.bin" />
+  <AssetBundleList Path="Assets/Resources/Data/dialogue.bytes" Crc="2019481330" AssetBundleName="data" AssetName="dialogue.bytes" />
+  <AssetBundleList Path="Assets/Resources/Data/enemy.bytes" Crc="1050365571" AssetBundleName="data" AssetName="enemy.bytes" />
+  <AssetBundleList Path="Assets/Resources/Data/level.bytes" Crc="3425178833" AssetBundleName="data" AssetName="level.bytes" />
+  <AssetBundleList Path="Assets/Resources/Data/massif.bytes" Crc="1756181087" AssetBundleName="data" AssetName="massif.bytes" />
+  <AssetBundleList Path="Assets/Resources/Data/option.bytes" Crc="148229882" AssetBundleName="data" AssetName="option.bytes" />
+  <AssetBundleList Path="Assets/Resources/Data/pitfall.bytes" Crc="936963006" AssetBundleName="data" AssetName="pitfall.bytes" />
+  <AssetBundleList Path="Assets/Resources/Data/player.bytes" Crc="3453397136" AssetBundleName="data" AssetName="player.bytes" />
+  <AssetBundleList Path="Assets/Resources/Data/role.bytes" Crc="3430449634" AssetBundleName="data" AssetName="role.bytes" />
+  <AssetBundleList Path="Assets/Resources/Data/skill.bytes" Crc="4084103278" AssetBundleName="data" AssetName="skill.bytes" />
+  <AssetBundleList Path="Assets/Resources/Data/supplies.bytes" Crc="3125031182" AssetBundleName="data" AssetName="supplies.bytes" />
   <AssetBundleList Path="Assets/Resources/View/DialogueView.prefab" Crc="1400099704" AssetBundleName="dialogueview" AssetName="DialogueView.prefab" />
   <AssetBundleList Path="Assets/Resources/View/DragHeroView.prefab" Crc="2223237745" AssetBundleName="dragheroview" AssetName="DragHeroView.prefab" />
   <AssetBundleList Path="Assets/Resources/Figure/emeny.prefab" Crc="3080260330" AssetBundleName="emeny" AssetName="emeny.prefab" />

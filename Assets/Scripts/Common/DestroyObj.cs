@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eabb23d1af4f576c32a2ee5ab07da453773deb861bad6004b733999329c51be0
-size 319
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// 自动删除物体
+/// </summary>
+namespace Game.Common
+{
+    public class DestroyObj : MonoBehaviour
+    {
+        public float Timer;
+
+        void Start()
+        {
+            // 在指定时间后删除
+            Destroy(gameObject, Timer);
+        }
+    }
+
+}

@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bf926c8109de557a3cd01190d63c6d6a7641b4db9aaab2df2bd641d4dd3c6b37
-size 563
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Game.Archive.Data
+{
+    /// <summary>
+    /// 设置方面的存档
+    /// </summary>
+    [System.Serializable]
+    public class SetArchive : ArchiveData
+    {
+        // 存档内容以这样的方式存 {"Type", AES("Value")} => 废弃
+        // 存档内容以这样的方式存 AES("type [value;value;value......]")
+        public string IsStop; // 是否静音 bool
+        public string BgmVolume; // Bgm音量 float
+        public string EffectVolume; // Effect音量 float
+        public string IsDebug; // 是否debug bool
+    }
+}

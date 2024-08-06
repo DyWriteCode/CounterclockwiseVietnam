@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Game.Common;
+using Game.Test;
+using Game.Archive.AES;
+using Game.Archive.Data;
+using Game.Common.Tools;
 
 /// <summary>
 /// 开始游戏界面
@@ -107,7 +112,7 @@ public class StartView : BaseView
         // 在开始就初始化好音频
         SetArchive archive = GameApp.ArchiveManager.LoadArchive<SetArchive>("SetArchive");
         // test
-        TestAchive test = GameApp.ArchiveManager.LoadArchive<TestAchive>("TestArchive");
+        // test = GameApp.ArchiveManager.LoadArchive<TestAchive>("TestArchive");
         if (archive.IsRight != false)
         {
             GameApp.SoundManager.IsStop = (bool)GameApp.ArchiveManager.ArchiveToDataNormal(AESKey.AESKEYS[archive.KeyId], archive.IsStop);

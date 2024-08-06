@@ -1,3 +1,41 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3e5a96cf7ca2cd973b4019720a88ba4472a0cbb0e4ba5374f203df62fe1f7693
-size 1218
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using Game.Common;
+using Game.Common.Tools;
+
+/// <summary>
+/// 用户控制管理器 键盘操作 鼠标操作等
+/// </summary>
+public class UserInputManager
+{
+    public void Update()
+    {
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                // 鼠标点击到UI
+            }
+            else
+            {
+                // 触发对应事件
+                Tools.ScreenPointToRay2D(Camera.main, Input.mousePosition, delegate (Collider2D col)
+                {
+                    if (col != null)
+                    {
+                        // 检测到有碰撞体的对象
+                        GameApp.MessageManager.PostEvent(col.gameObject, Defines.OnSelectEvent);
+                    }
+                    else
+                    {
+                        // 没有检测到有碰撞体的对象 
+                        GameApp.MessageManager.PostEvent(Defines.OnUnSelectEvent);
+                    }
+                });
+            }
+        }
+    }
+}

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Game.Common;
 
 /// <summary>
 /// 双向链表类

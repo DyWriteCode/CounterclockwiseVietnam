@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a0bfeb841704ae5efddede251c494d7354d9572b5aad7a02f61b3b0d4033e648
-size 310
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Game.Common.Tools;
+
+namespace Game.Helper
+{
+    /// <summary>
+    /// 一些类的帮助器管理器
+    /// </summary>
+    public class HelperManager
+    {
+        public TimeHelper TimeHelper = new();
+        public JsonHelper JsonHelper = new();
+        public ToolsActive Tools = new();
+    }
+}
