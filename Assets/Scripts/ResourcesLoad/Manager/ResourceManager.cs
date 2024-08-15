@@ -170,9 +170,39 @@ public class AsyncCallack
 public delegate void OnAsyncObjFinish(string path, Object obj, object param1 = null, object param2 = null, object param3 = null, object param4 = null, object param5 = null);
 
 /// <summary>
+/// 游戏对象加载单位
+/// </summary>
+public class ResourceObj
+{
+    // crc
+    public uint m_crc = 0;
+    // 为实例化的资源 ResourceItem
+    public ResourceItem m_resItem = null;
+    // 实例化的GameObject
+    public GameObject m_cloneObj = null;
+    // 是否跳场景清除
+    public bool m_bClear = true;
+    // 存储GUID
+    public long m_Guid = 0;
+    // 是否已经放回对象池
+    public bool m_Already = false;
+
+    // 重置
+    public void ReSet()
+    {
+        m_crc = 0;
+        m_resItem = null;
+        m_cloneObj = null;
+        m_bClear = true;
+        m_Guid = 0;
+        m_Already = false;
+    }
+}
+
+/// <summary>
 /// 基于AssetBundle的资源管理
 /// </summary>
-public class ResourceManager : Singleton<ResourceManager>
+public class ResourceManager
 {
     public bool m_LoadFromAssetBundle = false;
     // 缓存使用的资源列表
@@ -222,18 +252,27 @@ public class ResourceManager : Singleton<ResourceManager>
 #if UNITY_EDITOR 
         if (m_LoadFromAssetBundle == false)
         {
-            obj = LoadAssetByEditor<T>(path);
-            if (item != null)
-            {
-                if (item.m_Object != null)
-                {
-                    obj = item.m_Object as T;
+            //obj = LoadAssetByEditor<T>(path);
+            //if (item != null)
+            //{
+            //    if (item.m_Object != null)
+            //    {
+            //        obj = item.m_Object as T;
 
-                }
+            //    }
+            //}
+            //else
+            //{
+            //    item = GameApp.AssetBundleManager.FindResourceItem(crc);
+            //}
+            item = GameApp.AssetBundleManager.FindResourceItem(crc);
+            if (item.m_Object != null)
+            {
+                obj = item.m_Object as T;
             }
             else
             {
-                item = GameApp.AssetBundleManager.FindResourceItem(crc);
+                obj = LoadAssetByEditor<T>(path);
             }
         }
 #endif
@@ -254,6 +293,68 @@ public class ResourceManager : Singleton<ResourceManager>
         }
         CacheResourceItem(path, ref item, crc, obj);
         return obj;
+    }
+
+    // 同步加载资源 只需要加载需要实例化的资源如game object
+    public ResourceObj LoadResource(string path, ResourceObj resObj)
+    {
+        if (resObj == null)
+        {
+            return null;
+        }
+        uint crc = resObj.m_crc == 0 ? _CRC32.GetCRC32(path) : resObj.m_crc;
+        ResourceItem item = GetCacheResourceItem(crc);
+        if (item != null)
+        {
+            resObj.m_resItem = item;
+            return resObj;
+        }
+        Object obj = null;
+#if UNITY_EDITOR
+        if (m_LoadFromAssetBundle == false)
+        {
+            //obj = LoadAssetByEditor<Object>(path);
+            //if (item != null)
+            //{
+            //    if (item.m_Object != null)
+            //    {
+            //        obj = item.m_Object as Object;
+            //    }
+            //}
+            //else
+            //{
+            //    item = AssetBundleManager.Instance.FindResourceItem(crc);
+            //}
+            item = GameApp.AssetBundleManager.FindResourceItem(crc);
+            if (item.m_Object != null)
+            {
+                obj = item.m_Object as Object;
+            }
+            else
+            {
+                obj = LoadAssetByEditor<Object>(path);
+            }
+        }
+#endif
+        if (obj == null)
+        {
+            item = GameApp.AssetBundleManager.LoadResouceAssetBundle(crc);
+            if (item != null && item.m_AssetBundle != null)
+            {
+                if (item.m_Object != null)
+                {
+                    obj = item.m_Object as Object;
+                }
+                else
+                {
+                    obj = item.m_AssetBundle.LoadAsset<Object>(item.m_AssetName);
+                }
+            }
+        }
+        CacheResourceItem(path, ref item, crc, obj);
+        resObj.m_resItem = item;
+        resObj.m_bClear = item.m_Clear;
+        return resObj;
     }
 
 #if UNITY_EDITOR
@@ -354,6 +455,25 @@ public class ResourceManager : Singleton<ResourceManager>
             AssetDic.Add(item.m_crc, item);
         }
 
+    }
+
+    // 卸载资源
+    public bool ReleaseResouce(ResourceObj resObj, bool destroyCache = false)
+    {
+        if (resObj == null)
+        {
+            return false;
+        }
+        ResourceItem item = null;
+        if (AssetDic.TryGetValue(resObj.m_crc, out item) == false || item == null)
+        {
+            Debug.Log($"The resource does not exist or has been released multiple times : {resObj.m_cloneObj.name}");
+            return false;
+        }
+        GameObject.Destroy(resObj.m_cloneObj);
+        item.RefCount--;
+        DestoryResouceItme(item);
+        return true;
     }
 
     /// <summary>
@@ -612,5 +732,28 @@ public class ResourceManager : Singleton<ResourceManager>
         // 转换场景不清空缓存
         item.m_Clear = false;
         ReleaseResouce(path, false);
+    }
+
+    // 增加res obj引用计数
+    public int IncreaseResouceRef(ResourceObj resObj, int count = 1)
+    {
+        if (resObj != null)
+        {
+            return IncreaseResouceRef(resObj.m_crc, count);
+        }
+        return 0;
+    }
+
+    // 增加res obj引用计数
+    public int IncreaseResouceRef(uint crc, int count = 1)
+    {
+        ResourceItem item = null;
+        if (AssetDic.TryGetValue(crc, out item) == false || item == null)
+        {
+            return 0;
+        }
+        item.RefCount += count;
+        item.m_LastUseTime = Time.realtimeSinceStartup;
+        return item.RefCount;
     }
 }

@@ -10,10 +10,21 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class GameScenes : SingletonMono<GameScenes>
 {
-    public Texture2D mouseTxt; // 鼠标图标
-    // 保证在切换场景时不被删除的物体以节省资源
+    /// <summary>
+    /// 鼠标图标
+    /// </summary>
+    public Texture2D mouseTxt;
+    /// <summary>
+    /// 保证在切换场景时不被删除的物体以节省资源
+    /// </summary>
     public List<GameObject> KeepAlive = new List<GameObject>();
+    /// <summary>
+    /// 每针间隔时间
+    /// </summary>
     private float dt;
+    /// <summary>
+    /// 是否加载完毕
+    /// </summary>
     private static bool isLoaded = false;
 
     public override void Awake()
@@ -64,7 +75,9 @@ public class GameScenes : SingletonMono<GameScenes>
         GameApp.Instance.Update(dt);
     }
 
-    // 注册控制器
+    /// <summary>
+    /// 注册控制器
+    /// </summary>
     void RegisterModule()
     {
         GameApp.ControllerManager.Register(ControllerType.Game, new GameController());
@@ -76,13 +89,17 @@ public class GameScenes : SingletonMono<GameScenes>
         GameApp.ControllerManager.Register(ControllerType.Dialogue, new DialogueController());
     }
 
-    // 初始化所有控制器
+    /// <summary>
+    /// 初始化所有控制器
+    /// </summary>
     void InitModule()
     {
         GameApp.ControllerManager.InitAllModules();
     }
 
-    // 注册配置表
+    /// <summary>
+    /// 注册配置表
+    /// </summary>
     void RegisterConfigs()
     {
         GameApp.ConfigManager.Register("enemy", new ConfigData("enemy"));

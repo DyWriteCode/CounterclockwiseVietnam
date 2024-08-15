@@ -11,29 +11,94 @@ using Game.Helper;
 /// </summary>
 public class GameApp : Singleton<GameApp>
 {
-    public static SoundManager SoundManager; // 音频管理器定义
-    public static ControllerManager ControllerManager;// 控制器管理器定义
-    public static ViewManager ViewManager; // 视图管理器定义
-    public static ConfigManager ConfigManager; // 配置表管理器定义
-    public static CameraManager CameraManager; // 摄像机管理器定义
-    public static MessageManager MessageManager; // 消息(事件)管理器(中心)定义 / 事件监听
-    public static TimerManager TimerManager; // 计时器管理器定义
-    public static FightWorldManager FightManager; // 战斗管理器定义
-    public static MapManager MapManager; // 地图管理器定义
-    public static GameDataManager GameDataManager; // 游戏数据管理器定义
-    public static UserInputManager UserInputManager; // 用户控制管理器定义
-    public static CommandManager CommandManager; // 命令管理器定义
-    public static SkillManager SkillManager; // 技能管理器定义
-    public static HelperManager HelperManager; // 帮助器管理器定义
-    public static ArchiveManager ArchiveManager; // 存档管理器定义
-    public static DialogueManager DialogueManager; // 剧情对话管理器定义
-    public static DebugManager DebugManager; // Debug管理器定义
-    public static NetManager NetManager; // 网络管理器定义
+    /// <summary>
+    /// 音频管理器
+    /// </summary>
+    public static SoundManager SoundManager;
+    /// <summary>
+    /// 控制器管理器
+    /// </summary>
+    public static ControllerManager ControllerManager;
+    /// <summary>
+    /// 视图管理器
+    /// </summary>
+    public static ViewManager ViewManager;
+    /// <summary>
+    /// 配置表管理器
+    /// </summary>
+    public static ConfigManager ConfigManager;
+    /// <summary>
+    /// 摄像机管理器定义
+    /// </summary>
+    public static CameraManager CameraManager;
+    /// <summary>
+    /// 消息(事件)管理器(中心) / 事件监听
+    /// </summary>
+    public static MessageManager MessageManager;
+    /// <summary>
+    /// 计时器管理器
+    /// </summary>
+    public static TimerManager TimerManager;
+    /// <summary>
+    /// 战斗管理器
+    /// </summary>
+    public static FightWorldManager FightManager;
+    /// <summary>
+    /// 地图管理器定义
+    /// </summary>
+    public static MapManager MapManager;
+    /// <summary>
+    /// 游戏数据管理器定义
+    /// </summary>
+    public static GameDataManager GameDataManager;
+    /// <summary>
+    /// 用户控制管理器
+    /// </summary>
+    public static UserInputManager UserInputManager;
+    /// <summary>
+    /// 命令管理器
+    /// </summary>
+    public static CommandManager CommandManager;
+    /// <summary>
+    /// 技能管理器
+    /// </summary>
+    public static SkillManager SkillManager;
+    /// <summary>
+    /// 帮助器管理器
+    /// </summary>
+    public static HelperManager HelperManager;
+    /// <summary>
+    /// 存档管理器
+    /// </summary>
+    public static ArchiveManager ArchiveManager;
+    /// <summary>
+    /// 剧情对话管理器
+    /// </summary>
+    public static DialogueManager DialogueManager;
+    /// <summary>
+    /// Debug管理器
+    /// </summary>
+    public static DebugManager DebugManager;
+    /// <summary>
+    /// 网络管理器
+    /// </summary>
+    public static NetManager NetManager;
+    /// <summary>
+    /// 基于AssetBundle的资源管理器
+    /// </summary>
     public static ResourceManager ResourceManager;
+    /// <summary>
+    /// AssetBundle管理器
+    /// </summary>
     public static AssetBundleManager AssetBundleManager;
+    /// <summary>
+    /// 基于ResourceManager的对象管理器
+    /// </summary>
     public static ObjectManager ObjectManager;
 
-    // 初始化所有管理器
+    /// <summary>
+    /// 初始化所有管理器
+    /// </summary>
     public override void Init()
     {
         ObjectManager = new ObjectManager();
@@ -59,6 +124,7 @@ public class GameApp : Singleton<GameApp>
         NetManager = new NetManager();
     }
 
+    // dt 每针间隔时间
     public override void Update(float dt)
     {
         TimerManager.OnUpdate(dt);

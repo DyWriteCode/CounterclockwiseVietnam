@@ -11,13 +11,17 @@ using Game.Common.Tools;
 /// </summary>
 public class UserInputManager
 {
+    /// <summary>
+    /// 每一帧调用
+    /// </summary>
     public void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Mouse.current.leftButton.wasPressedThisFrame == true)
         {
-            if (EventSystem.current.IsPointerOverGameObject())
+            if (EventSystem.current.IsPointerOverGameObject() == true)
             {
                 // 鼠标点击到UI
+                // TODO : 到时候可以做回放系统的时候可以在这里写一下逻辑
             }
             else
             {
