@@ -79,6 +79,7 @@ public class ObjectManager
         List<ResourceObj> st = null;
         if (m_ObjectPoolDic.TryGetValue(crc, out st) == true && st != null && st.Count > 0)
         {
+            GameApp.ResourceManager.IncreaseResouceRef(crc);
             ResourceObj resourceObj = st[0];
             st.RemoveAt(0);
             GameObject obj = resourceObj.m_cloneObj;
@@ -184,6 +185,7 @@ public class ObjectManager
             {
                 temp.Add(resObj);
                 resObj.m_Already = true;
+                GameApp.ResourceManager.DecreaseResouceRef(resObj);
             }
             else
             {

@@ -756,4 +756,27 @@ public class ResourceManager
         item.m_LastUseTime = Time.realtimeSinceStartup;
         return item.RefCount;
     }
+
+    // 减少res obj引用计数
+    public int DecreaseResouceRef(ResourceObj resObj, int count = 1)
+    {
+        if (resObj != null)
+        {
+            return DecreaseResouceRef(resObj.m_crc, count);
+        }
+        return 0;
+    }
+
+    // 减少res obj引用计数
+    public int DecreaseResouceRef(uint crc, int count = 1)
+    {
+        ResourceItem item = null;
+        if (AssetDic.TryGetValue(crc, out item) == false || item == null)
+        {
+            return 0;
+        }
+        item.RefCount -= count;
+        item.m_LastUseTime = Time.realtimeSinceStartup;
+        return item.RefCount;
+    }
 }
