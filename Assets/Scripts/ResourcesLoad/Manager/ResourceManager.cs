@@ -232,7 +232,7 @@ public class ResourceObj
 /// </summary>
 public class ResourceManager
 {
-    protected long m_Guid = 0;
+    protected long m_Guid = Random.Range(123456789, 987654321);
     public bool m_LoadFromAssetBundle = false;
     // 缓存使用的资源列表
     // 下面.net 4.0之后属性新写法 虽然说时候我也不知道为什么这样写 但写成属性试验没问题
@@ -453,6 +453,7 @@ public class ResourceManager
         }
         // 释放asset bundle
         GameApp.AssetBundleManager.ReleaseAssetBundle(item);
+        GameApp.ObjectManager.ClearPoolObject(item.m_crc);
         if (item.m_Object != null)
         {
             item.m_Object = null;
@@ -751,6 +752,34 @@ public class ResourceManager
             DestoryResouceItme(item, item.m_Clear);
         }
         tempList.Clear();
+    }
+
+    // 取消异步加载
+    public bool CancleLoad(ResourceObj resource)
+    {
+        AsyncLoadResParam param = null;
+        if (m_LoadingAssetDic.TryGetValue(resource.m_crc, out param) == true && m_LoadingAssetList[(int)param.m_Priority].Contains(param) == true)
+        {
+            for (int i = param.m_CallbackList.Count; i >= 0; i--)
+            {
+                AsyncCallback callback = param.m_CallbackList[i];
+                if (callback != null && resource == callback.m_resourceObj)
+                {
+                    callback.ReSet();
+                    m_AsyncCallackPool.Recycle(callback);
+                    param.m_CallbackList.Remove(callback);
+                }
+            }
+            if (param.m_CallbackList.Count <= 0)
+            {
+                param.Reset();
+                m_LoadingAssetList[(int)param.m_Priority].Remove(param);
+                m_AsyncLoadResParamPool.Recycle(param);
+                m_LoadingAssetDic.Remove(resource.m_crc);
+                return true;
+            }
+        }
+        return false;
     }
 
     /// <summary>
